@@ -28,12 +28,18 @@ object LiteverTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalLiteverTypography.current
+
+    val spacing: LiteverSpacing
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalLiteverSpacing.current
 }
 
 @Composable
 fun LiteverTheme(
     colors: LiteverColors? = null,
     typography: LiteverTypography = defaultLiteverTypography,
+    spacing: LiteverSpacing = LiteverSpacing(),
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
@@ -64,7 +70,8 @@ fun LiteverTheme(
 
     CompositionLocalProvider(
         LocalLiteverColors provides targetColors,
-        LocalLiteverTypography provides typography
+        LocalLiteverTypography provides typography,
+        LocalLiteverSpacing provides spacing
     ) {
         MaterialTheme(
             colorScheme = materialColorScheme,

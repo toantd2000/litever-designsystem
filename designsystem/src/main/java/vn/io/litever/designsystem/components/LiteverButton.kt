@@ -1,6 +1,6 @@
 package vn.io.litever.designsystem.components
 
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,7 +24,7 @@ fun LiteverButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier.height(52.dp),
+        modifier = modifier.heightIn(min = 48.dp),
         enabled = enabled,
         shape = shape,
         colors = colors,
@@ -47,7 +47,7 @@ fun LiteverOutlinedButton(
 ) {
     OutlinedButton(
         onClick = onClick,
-        modifier = modifier.height(52.dp),
+        modifier = modifier.heightIn(min = 48.dp),
         enabled = enabled,
         shape = shape,
         colors = colors,
@@ -69,7 +69,7 @@ fun LiteverTextButton(
 ) {
     TextButton(
         onClick = onClick,
-        modifier = modifier.height(52.dp),
+        modifier = modifier.heightIn(min = 48.dp),
         enabled = enabled,
         shape = shape,
         colors = colors,

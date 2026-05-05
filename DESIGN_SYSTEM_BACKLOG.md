@@ -7,22 +7,26 @@ This document tracks UI components and features that need to be added to `liteve
 - Replace direct usages of `Icons.Rounded...` in components (like `LiteverTextField`, `LiteverTopAppBar`) with `LiteverIcons`.
 - This ensures consistency and makes it easy to switch icon sets globally later.
 
-## 2. Navigation Components
-- **`LiteverNavigationBar` & `LiteverNavigationBarItem`**: For bottom navigation.
-- **`LiteverNavigationDrawer`**: For side menus.
-
-## 3. Selection Controls
+## 2. Selection Controls
 - **`LiteverCheckbox`**: For multi-selection forms.
 - **`LiteverRadioButton`**: For single-selection forms.
 
-## 4. Feedback & Overlays
+## 3. Feedback & Overlays
 - **`LiteverSnackbar`**: Wrapper for showing brief messages at the bottom.
 - **`LiteverModalBottomSheet`**: For bottom sheet dialogs, increasingly popular over traditional dialogs.
 
-## 5. Auxiliary Components
+## 4. Auxiliary Components
 - **`LiteverDivider`**: Standardized horizontal and vertical dividers.
 - **`LiteverChip`** / **`LiteverFilterChip`**: For tags, filters, and quick actions.
 - **`LiteverBadge`**: For notification counts on icons.
+
+---
+
+## ✅ Completed Components
+- **`LiteverNavigationDrawer`**: Standardized modal navigation drawer and drawer sheet.
+- **`LiteverListItem`**: Generic list item component for consistent lists.
+- **`LiteverDialog`**: Flexible dialog component supporting custom button layouts.
+- **`LiteverSegmentedButton`**: Themed segmented button for mode switching.
 
 ## Notes
 The components above should follow the established pattern of wrapping Material 3 components and integrating seamlessly with `LiteverTheme` (using `LiteverTheme.colors`, `LiteverTheme.typography`, `LiteverTheme.spacing`, etc.).

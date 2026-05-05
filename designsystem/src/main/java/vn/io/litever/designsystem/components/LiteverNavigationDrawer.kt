@@ -2,12 +2,15 @@ package vn.io.litever.designsystem.components
 
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverShapes
 import vn.io.litever.designsystem.theme.LiteverTheme
 
@@ -49,7 +52,7 @@ fun LiteverDrawerSheet(
     content: @Composable ColumnScope.() -> Unit
 ) {
     ModalDrawerSheet(
-        modifier = modifier,
+        modifier = modifier.width(320.dp),
         drawerShape = drawerShape,
         drawerContainerColor = drawerContainerColor,
         drawerContentColor = drawerContentColor,
@@ -85,7 +88,7 @@ fun LiteverNavigationDrawerItem(
         label = label,
         selected = selected,
         onClick = onClick,
-        modifier = modifier,
+        modifier = modifier.padding(NavigationDrawerItemDefaults.ItemPadding),
         icon = icon,
         badge = badge,
         shape = shape,

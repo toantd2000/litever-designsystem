@@ -7,6 +7,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import vn.io.litever.designsystem.theme.LiteverTheme
 
+import androidx.compose.ui.unit.dp
+
 /**
  * A standard segmented button row for the Litever application.
  * Wraps Material 3 SingleChoiceSegmentedButtonRow with the app's design tokens.
@@ -15,7 +17,7 @@ import vn.io.litever.designsystem.theme.LiteverTheme
 @OptIn(ExperimentalMaterial3Api::class)
 fun LiteverSingleChoiceSegmentedButtonRow(
     modifier: Modifier = Modifier,
-    space: androidx.compose.ui.unit.Dp = SegmentedButtonDefaults.BorderWidth,
+    space: androidx.compose.ui.unit.Dp = 8.dp,
     content: @Composable RowScope.() -> Unit
 ) {
     SingleChoiceSegmentedButtonRow(
@@ -34,7 +36,7 @@ fun LiteverSingleChoiceSegmentedButtonRow(
 fun SingleChoiceSegmentedButtonRowScope.LiteverSegmentedButton(
     selected: Boolean,
     onClick: () -> Unit,
-    shape: Shape,
+    shape: Shape = SegmentedButtonDefaults.itemShape(index = 0, count = 1), // This will be overridden by row logic usually, but we can set a default
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     icon: @Composable () -> Unit = { SegmentedButtonDefaults.Icon(selected) },

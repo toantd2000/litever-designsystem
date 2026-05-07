@@ -31,6 +31,12 @@ Thư viện cung cấp 4 trụ cột chính, tất cả đều được truy xu�
    Text(color = LiteverTheme.colors.onBackground)
    ```
 
+3. **Tailwind Colors (Bảng màu Tailwind):** Cung cấp hệ màu chuẩn Tailwind CSS v4 (OKLCH converted) cho các nhu cầu tùy chỉnh nâng cao. Truy xuất qua `TailwindColors`.
+   ```kotlin
+   Modifier.background(TailwindColors.Blue.`500`)
+   Modifier.border(1.dp, TailwindColors.Slate.`200`)
+   ```
+
 2. **Typography (Kiểu chữ):**
    ```kotlin
    Text("Xin chào", style = LiteverTheme.typography.titleLarge)

@@ -201,85 +201,97 @@ class LiteverColors(
     )
 }
 
-// Default Light Palette
+// Default Light Palette (Blue, Cyan, Gray, Slate)
 val liteverLightColors = LiteverColors(
-    primary = Color(0xFF825513),
-    onPrimary = Color(0xFFFFFFFF),
-    primaryContainer = Color(0xFFFFDDB8),
-    onPrimaryContainer = Color(0xFF653E00),
-    inversePrimary = Color(0xFFF8BB71),
-    secondary = Color(0xFF715A41),
-    onSecondary = Color(0xFFFFFFFF),
-    secondaryContainer = Color(0xFFFCDDBD),
-    onSecondaryContainer = Color(0xFF57432B),
-    tertiary = Color(0xFF54643D),
-    onTertiary = Color(0xFFFFFFFF),
-    tertiaryContainer = Color(0xFFD7E9B9),
-    onTertiaryContainer = Color(0xFF3D4C28),
-    background = Color(0xFFFFF8F4),
-    onBackground = Color(0xFF211A13),
-    surface = Color(0xFFFFF8F4),
-    onSurface = Color(0xFF211A13),
-    surfaceVariant = Color(0xFFF1E0D0),
-    onSurfaceVariant = Color(0xFF504539),
-    surfaceTint = Color(0xFF825513),
-    inverseSurface = Color(0xFF372F27),
-    inverseOnSurface = Color(0xFFFCEEE2),
-    error = Color(0xFFBA1A1A),
-    onError = Color(0xFFFFFFFF),
-    errorContainer = Color(0xFFFFDAD6),
-    onErrorContainer = Color(0xFF93000A),
-    outline = Color(0xFF827568),
-    outlineVariant = Color(0xFFD4C4B5),
-    scrim = Color(0xFF000000),
-    surfaceBright = Color(0xFFFFF8F4),
-    surfaceDim = Color(0xFFE5D8CC),
-    surfaceContainerLowest = Color(0xFFFFFFFF),
-    surfaceContainerLow = Color(0xFFFFF1E5),
-    surfaceContainer = Color(0xFFF9ECE0),
-    surfaceContainerHigh = Color(0xFFF3E6DA),
-    surfaceContainerHighest = Color(0xFFEEE0D4),
+    primary = TailwindColors.Blue.c600,
+    onPrimary = TailwindColors.White,
+    primaryContainer = TailwindColors.Blue.c100,
+    onPrimaryContainer = TailwindColors.Blue.c900,
+    inversePrimary = TailwindColors.Blue.c400,
+
+    secondary = TailwindColors.Cyan.c600,
+    onSecondary = TailwindColors.White,
+    secondaryContainer = TailwindColors.Cyan.c100,
+    onSecondaryContainer = TailwindColors.Cyan.c900,
+
+    tertiary = TailwindColors.Gray.c500,
+    onTertiary = TailwindColors.White,
+    tertiaryContainer = TailwindColors.Gray.c100,
+    onTertiaryContainer = TailwindColors.Gray.c900,
+
+    background = TailwindColors.Slate.c50,
+    onBackground = TailwindColors.Slate.c900,
+    surface = TailwindColors.Slate.c50,
+    onSurface = TailwindColors.Slate.c900,
+    surfaceVariant = TailwindColors.Slate.c200,
+    onSurfaceVariant = TailwindColors.Slate.c700,
+    surfaceTint = TailwindColors.Blue.c600,
+    inverseSurface = TailwindColors.Slate.c800,
+    inverseOnSurface = TailwindColors.Slate.c50,
+
+    error = TailwindColors.Red.c600,
+    onError = TailwindColors.White,
+    errorContainer = TailwindColors.Red.c100,
+    onErrorContainer = TailwindColors.Red.c900,
+
+    outline = TailwindColors.Slate.c400,
+    outlineVariant = TailwindColors.Slate.c300,
+    scrim = TailwindColors.Black,
+
+    surfaceBright = TailwindColors.Slate.c50,
+    surfaceDim = TailwindColors.Slate.c200,
+    surfaceContainerLowest = TailwindColors.White,
+    surfaceContainerLow = TailwindColors.Slate.c50,
+    surfaceContainer = TailwindColors.Slate.c100,
+    surfaceContainerHigh = TailwindColors.Slate.c200,
+    surfaceContainerHighest = TailwindColors.Slate.c300,
     isLight = true
 )
 
-// Default Dark Palette
+// Default Dark Palette (Blue, Cyan, Gray, Slate)
 val liteverDarkColors = LiteverColors(
-    primary = Color(0xFFF8BB71),
-    onPrimary = Color(0xFF472A00),
-    primaryContainer = Color(0xFF653E00),
-    onPrimaryContainer = Color(0xFFFFDDB8),
-    inversePrimary = Color(0xFF825513),
-    secondary = Color(0xFFDFC2A2),
-    onSecondary = Color(0xFF3F2D17),
-    secondaryContainer = Color(0xFF57432B),
-    onSecondaryContainer = Color(0xFFFCDDBD),
-    tertiary = Color(0xFFBBCD9E),
-    onTertiary = Color(0xFF273513),
-    tertiaryContainer = Color(0xFF3D4C28),
-    onTertiaryContainer = Color(0xFFD7E9B9),
-    background = Color(0xFF18120C),
-    onBackground = Color(0xFFEEE0D4),
-    surface = Color(0xFF18120C),
-    onSurface = Color(0xFFEEE0D4),
-    surfaceVariant = Color(0xFF504539),
-    onSurfaceVariant = Color(0xFFD4C4B5),
-    surfaceTint = Color(0xFFF8BB71),
-    inverseSurface = Color(0xFFEEE0D4),
-    inverseOnSurface = Color(0xFF372F27),
-    error = Color(0xFFFFB4AB),
-    onError = Color(0xFF690005),
-    errorContainer = Color(0xFF93000A),
-    onErrorContainer = Color(0xFFFFDAD6),
-    outline = Color(0xFF9C8E80),
-    outlineVariant = Color(0xFF504539),
-    scrim = Color(0xFF000000),
-    surfaceBright = Color(0xFF403830),
-    surfaceDim = Color(0xFF18120C),
-    surfaceContainerLowest = Color(0xFF130D07),
-    surfaceContainerLow = Color(0xFF211A13),
-    surfaceContainer = Color(0xFF251E17),
-    surfaceContainerHigh = Color(0xFF302921),
-    surfaceContainerHighest = Color(0xFF3B332B),
+    primary = TailwindColors.Blue.c400,
+    onPrimary = TailwindColors.Blue.c900,
+    primaryContainer = TailwindColors.Blue.c800,
+    onPrimaryContainer = TailwindColors.Blue.c100,
+    inversePrimary = TailwindColors.Blue.c600,
+
+    secondary = TailwindColors.Cyan.c400,
+    onSecondary = TailwindColors.Cyan.c900,
+    secondaryContainer = TailwindColors.Cyan.c800,
+    onSecondaryContainer = TailwindColors.Cyan.c100,
+
+    tertiary = TailwindColors.Gray.c400,
+    onTertiary = TailwindColors.Gray.c900,
+    tertiaryContainer = TailwindColors.Gray.c800,
+    onTertiaryContainer = TailwindColors.Gray.c100,
+
+    background = TailwindColors.Slate.c900,
+    onBackground = TailwindColors.Slate.c50,
+    surface = TailwindColors.Slate.c900,
+    onSurface = TailwindColors.Slate.c50,
+    surfaceVariant = TailwindColors.Slate.c700,
+    onSurfaceVariant = TailwindColors.Slate.c300,
+    surfaceTint = TailwindColors.Blue.c400,
+    inverseSurface = TailwindColors.Slate.c200,
+    inverseOnSurface = TailwindColors.Slate.c900,
+
+    error = TailwindColors.Red.c400,
+    onError = TailwindColors.Red.c900,
+    errorContainer = TailwindColors.Red.c800,
+    onErrorContainer = TailwindColors.Red.c100,
+
+    outline = TailwindColors.Slate.c500,
+    outlineVariant = TailwindColors.Slate.c600,
+    scrim = TailwindColors.Black,
+
+    surfaceBright = TailwindColors.Slate.c800,
+    surfaceDim = TailwindColors.Slate.c900,
+    surfaceContainerLowest = TailwindColors.Black,
+    surfaceContainerLow = TailwindColors.Slate.c900,
+    surfaceContainer = TailwindColors.Slate.c800,
+    surfaceContainerHigh = TailwindColors.Slate.c700,
+    surfaceContainerHighest = TailwindColors.Slate.c600,
     isLight = false
 )
 
@@ -288,5 +300,5 @@ val LocalLiteverColors = staticCompositionLocalOf<LiteverColors> {
 }
 
 // Brand Colors
-val brandLite = Color(0xFF6B7280)
-val brandVer = Color(0xFF2563EB)
+val brandLite = TailwindColors.Gray.c500
+val brandVer = TailwindColors.Blue.c600

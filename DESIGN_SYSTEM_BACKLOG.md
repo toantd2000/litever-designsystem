@@ -27,6 +27,7 @@ This document tracks UI components and features that need to be added to `liteve
 - **`LiteverListItem`**: Generic list item component for consistent lists.
 - **`LiteverDialog`**: Flexible dialog component supporting custom button layouts.
 - **`LiteverSegmentedButton`**: Themed segmented button for mode switching.
+- **Tailwind Color Palette**: Comprehensive Tailwind CSS v4 color palette accessible via `TailwindColors`.
 
 ## Notes
 The components above should follow the established pattern of wrapping Material 3 components and integrating seamlessly with `LiteverTheme` (using `LiteverTheme.colors`, `LiteverTheme.typography`, `LiteverTheme.spacing`, etc.).

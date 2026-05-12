@@ -8,10 +8,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import vn.io.litever.designsystem.R
+import vn.io.litever.designsystem.theme.LiteverShapes
+import vn.io.litever.designsystem.theme.LiteverTheme
 
 @Composable
 fun LiteverTimePickerDialog(
@@ -27,12 +30,12 @@ fun LiteverTimePickerDialog(
         properties = DialogProperties(usePlatformDefaultWidth = false)
     ) {
         Surface(
-            shape = MaterialTheme.shapes.extraLarge,
+            shape = LiteverShapes.extraLarge,
             tonalElevation = 6.dp,
             modifier = Modifier
                 .width(IntrinsicSize.Min)
                 .height(IntrinsicSize.Min)
-                .background(shape = MaterialTheme.shapes.extraLarge, color = containerColor),
+                .background(shape = LiteverShapes.extraLarge, color = containerColor),
             color = containerColor
         ) {
             Column(
@@ -56,6 +59,24 @@ fun LiteverTimePickerDialog(
                     dismissButton?.invoke()
                     confirmButton()
                 }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview(showBackground = true)
+@Composable
+fun LiteverTimePickerDialogPreview() {
+    LiteverTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            val state = rememberTimePickerState()
+            LiteverTimePickerDialog(
+                onDismissRequest = {},
+                confirmButton = { TextButton(onClick = {}) { Text("OK") } },
+                dismissButton = { TextButton(onClick = {}) { Text("Cancel") } }
+            ) {
+                TimePicker(state = state)
             }
         }
     }

@@ -1,10 +1,15 @@
 package vn.io.litever.designsystem.components
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverTheme
 import vn.io.litever.designsystem.theme.LiteverShapes
@@ -75,4 +80,48 @@ fun LiteverTextButton(
         colors = colors,
         content = { content() }
     )
+}
+
+@Preview(showBackground = true, name = "Light Mode")
+@Composable
+fun LiteverButtonPreview() {
+    LiteverTheme(darkTheme = false) {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            Column {
+                LiteverButton(onClick = {}) {
+                    Text("Primary Button")
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                LiteverOutlinedButton(onClick = {}) {
+                    Text("Outlined Button")
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                LiteverTextButton(onClick = {}) {
+                    Text("Text Button")
+                }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "Dark Mode")
+@Composable
+fun LiteverButtonDarkPreview() {
+    LiteverTheme(darkTheme = true) {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            Column {
+                LiteverButton(onClick = {}) {
+                    Text("Primary Button")
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                LiteverOutlinedButton(onClick = {}) {
+                    Text("Outlined Button")
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                LiteverTextButton(onClick = {}) {
+                    Text("Text Button")
+                }
+            }
+        }
+    }
 }

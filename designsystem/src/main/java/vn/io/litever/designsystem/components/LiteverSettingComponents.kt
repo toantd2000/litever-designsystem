@@ -3,6 +3,9 @@ package vn.io.litever.designsystem.components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Notifications
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -10,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverTheme
 import vn.io.litever.designsystem.theme.LiteverShapes
@@ -133,5 +137,33 @@ fun LiteverSettingsGroup(
             border = BorderStroke(1.dp, LiteverTheme.colors.outlineVariant.copy(alpha = 0.2f)),
             content = content
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LiteverSettingsPreview() {
+    LiteverTheme {
+        Surface {
+            Column {
+                LiteverSettingsGroup(title = "Account") {
+                    LiteverSettingsItem(
+                        title = "Profile",
+                        subtitle = "Manage your profile information",
+                        icon = Icons.Rounded.Person,
+                        onClick = {}
+                    )
+                }
+                LiteverSettingsGroup(title = "General") {
+                    LiteverSettingsSwitchItem(
+                        title = "Notifications",
+                        subtitle = "Enable or disable notifications",
+                        icon = Icons.Rounded.Notifications,
+                        checked = true,
+                        onCheckedChange = {}
+                    )
+                }
+            }
+        }
     }
 }

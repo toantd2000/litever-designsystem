@@ -1,14 +1,27 @@
 package vn.io.litever.designsystem.components
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Clear
+import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import vn.io.litever.designsystem.theme.LiteverShapes
+import vn.io.litever.designsystem.theme.LiteverTheme
 
 /**
  * A custom TextField wrapper for the Litever application.
@@ -31,7 +44,7 @@ fun LiteverTextField(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     visualTransformation: VisualTransformation = VisualTransformation.None,
-    shape: Shape = MaterialTheme.shapes.large,
+    shape: Shape = LiteverShapes.large,
 ) {
     OutlinedTextField(
         value = value,
@@ -61,4 +74,32 @@ fun LiteverTextField(
         shape = shape,
         colors = OutlinedTextFieldDefaults.colors()
     )
+}
+
+@Preview(showBackground = true, name = "Light Mode")
+@Composable
+fun LiteverTextFieldPreview() {
+    LiteverTheme(darkTheme = false) {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            var text by remember { mutableStateOf("Hello") }
+            Column {
+                LiteverTextField(
+                    value = text,
+                    onValueChange = { text = it },
+                    label = "Label",
+                    placeholder = "Placeholder",
+                    leadingIcon = { Icon(Icons.Rounded.Email, contentDescription = null) },
+                    onClearClick = { text = "" }
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                LiteverTextField(
+                    value = "",
+                    onValueChange = {},
+                    label = "Error State",
+                    isError = true,
+                    supportingText = { Text("Error message") }
+                )
+            }
+        }
+    }
 }

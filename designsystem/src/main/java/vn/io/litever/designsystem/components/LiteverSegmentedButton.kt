@@ -1,13 +1,18 @@
 package vn.io.litever.designsystem.components
 
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
-import vn.io.litever.designsystem.theme.LiteverTheme
-
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import vn.io.litever.designsystem.theme.LiteverTheme
 
 /**
  * A standard segmented button row for the Litever application.
@@ -18,7 +23,7 @@ import androidx.compose.ui.unit.dp
 fun LiteverSingleChoiceSegmentedButtonRow(
     modifier: Modifier = Modifier,
     space: androidx.compose.ui.unit.Dp = 8.dp,
-    content: @Composable RowScope.() -> Unit
+    content: @Composable SingleChoiceSegmentedButtonRowScope.() -> Unit
 ) {
     SingleChoiceSegmentedButtonRow(
         modifier = modifier,
@@ -60,4 +65,26 @@ fun SingleChoiceSegmentedButtonRowScope.LiteverSegmentedButton(
         label = label,
         colors = colors
     )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview(showBackground = true)
+@Composable
+fun LiteverSegmentedButtonPreview() {
+    LiteverTheme {
+        Surface(modifier = Modifier.padding(16.dp)) {
+            var selectedIndex by remember { mutableIntStateOf(0) }
+            val options = listOf("Day", "Month", "Year")
+            LiteverSingleChoiceSegmentedButtonRow {
+                options.forEachIndexed { index, label ->
+                    LiteverSegmentedButton(
+                        selected = selectedIndex == index,
+                        onClick = { selectedIndex = index },
+                        shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
+                        label = { Text(label) }
+                    )
+                }
+            }
+        }
+    }
 }

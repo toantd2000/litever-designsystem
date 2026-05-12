@@ -1,6 +1,24 @@
 package vn.io.litever.designsystem.theme
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 object TailwindColors {
     object Amber {
@@ -369,4 +387,74 @@ object TailwindColors {
 
     val Black = Color(0xFF000000)
     val White = Color(0xFFFFFFFF)
+}
+
+@Composable
+private fun ColorSwatch(name: String, color: Color) {
+    Box(
+        modifier = Modifier
+            .size(40.dp)
+            .background(color),
+        contentAlignment = Alignment.Center
+    ) {
+        val textColor = if (color.luminance() > 0.5f) Color.Black else Color.White
+        Text(text = name, color = textColor, style = MaterialTheme.typography.labelSmall)
+    }
+}
+
+@Composable
+private fun ColorRow(name: String, colors: List<Color>) {
+    Column(modifier = Modifier.padding(vertical = 8.dp)) {
+        Text(text = name, style = MaterialTheme.typography.titleSmall)
+        Row(modifier = Modifier.fillMaxWidth()) {
+            colors.forEachIndexed { index, color ->
+                val label = when (index) {
+                    0 -> "50"
+                    1 -> "100"
+                    2 -> "200"
+                    3 -> "300"
+                    4 -> "400"
+                    5 -> "500"
+                    6 -> "600"
+                    7 -> "700"
+                    8 -> "800"
+                    9 -> "900"
+                    10 -> "950"
+                    else -> ""
+                }
+                Box(modifier = Modifier.weight(1f)) {
+                    ColorSwatch(label, color)
+                }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TailwindColorsPreview() {
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState())
+    ) {
+        ColorRow("Blue", listOf(
+            TailwindColors.Blue.c50, TailwindColors.Blue.c100, TailwindColors.Blue.c200,
+            TailwindColors.Blue.c300, TailwindColors.Blue.c400, TailwindColors.Blue.c500,
+            TailwindColors.Blue.c600, TailwindColors.Blue.c700, TailwindColors.Blue.c800,
+            TailwindColors.Blue.c900, TailwindColors.Blue.c950
+        ))
+        ColorRow("Gray", listOf(
+            TailwindColors.Gray.c50, TailwindColors.Gray.c100, TailwindColors.Gray.c200,
+            TailwindColors.Gray.c300, TailwindColors.Gray.c400, TailwindColors.Gray.c500,
+            TailwindColors.Gray.c600, TailwindColors.Gray.c700, TailwindColors.Gray.c800,
+            TailwindColors.Gray.c900, TailwindColors.Gray.c950
+        ))
+        ColorRow("Red", listOf(
+            TailwindColors.Red.c50, TailwindColors.Red.c100, TailwindColors.Red.c200,
+            TailwindColors.Red.c300, TailwindColors.Red.c400, TailwindColors.Red.c500,
+            TailwindColors.Red.c600, TailwindColors.Red.c700, TailwindColors.Red.c800,
+            TailwindColors.Red.c900, TailwindColors.Red.c950
+        ))
+    }
 }

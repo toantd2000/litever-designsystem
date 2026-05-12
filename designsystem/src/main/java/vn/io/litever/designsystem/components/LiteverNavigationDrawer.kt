@@ -1,14 +1,20 @@
 package vn.io.litever.designsystem.components
 
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverShapes
@@ -94,4 +100,26 @@ fun LiteverNavigationDrawerItem(
         shape = shape,
         colors = colors
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LiteverDrawerPreview() {
+    LiteverTheme {
+        LiteverDrawerSheet {
+            Spacer(Modifier.height(12.dp))
+            LiteverNavigationDrawerItem(
+                label = { Text("Home") },
+                selected = true,
+                onClick = {},
+                icon = { Icon(Icons.Rounded.Home, contentDescription = null) }
+            )
+            LiteverNavigationDrawerItem(
+                label = { Text("Settings") },
+                selected = false,
+                onClick = {},
+                icon = { Icon(Icons.Rounded.Settings, contentDescription = null) }
+            )
+        }
+    }
 }

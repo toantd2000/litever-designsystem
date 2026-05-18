@@ -199,6 +199,11 @@ class LiteverColors(
         surfaceContainerHighest = surfaceContainerHighest,
         isLight = isLight
     )
+
+    val brandLite: Color
+        get() = if (isLight) TailwindColors.Gray.c500 else TailwindColors.Gray.c300
+    val brandVer: Color
+        get() = if (isLight) TailwindColors.Blue.c600 else TailwindColors.Blue.c400
 }
 
 // Default Light Palette (Blue, Cyan, Gray, Slate)
@@ -298,7 +303,3 @@ val liteverDarkColors = LiteverColors(
 val LocalLiteverColors = staticCompositionLocalOf<LiteverColors> {
     error("No LiteverColors provided")
 }
-
-// Brand Colors
-val brandLite = TailwindColors.Gray.c500
-val brandVer = TailwindColors.Blue.c600

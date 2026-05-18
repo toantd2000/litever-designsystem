@@ -16,8 +16,6 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import vn.io.litever.designsystem.theme.LiteverTheme
-import vn.io.litever.designsystem.theme.brandLite
-import vn.io.litever.designsystem.theme.brandVer
 
 /**
  * The official Litever brand logo component.
@@ -35,7 +33,7 @@ fun LiteverLogo(
             text = buildAnnotatedString {
                 withStyle(
                     style = SpanStyle(
-                        color = brandLite,
+                        color = LiteverTheme.colors.brandLite,
                         fontWeight = FontWeight.Light,
                         fontSize = fontSize
                     )
@@ -44,7 +42,7 @@ fun LiteverLogo(
                 }
                 withStyle(
                     style = SpanStyle(
-                        color = brandVer,
+                        color = LiteverTheme.colors.brandVer,
                         fontWeight = FontWeight.Bold,
                         fontSize = fontSize
                     )

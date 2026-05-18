@@ -3,6 +3,7 @@ package vn.io.litever.designsystem.components
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -58,7 +59,7 @@ fun LiteverDrawerSheet(
     content: @Composable ColumnScope.() -> Unit
 ) {
     ModalDrawerSheet(
-        modifier = modifier.width(320.dp),
+        modifier = modifier.fillMaxWidth(fraction = 0.75f),
         drawerShape = drawerShape,
         drawerContainerColor = drawerContainerColor,
         drawerContentColor = drawerContentColor,

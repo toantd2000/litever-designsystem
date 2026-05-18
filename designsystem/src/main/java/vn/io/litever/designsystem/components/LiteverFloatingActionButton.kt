@@ -22,8 +22,6 @@ fun LiteverFloatingActionButton(
     FloatingActionButton(
         onClick = onClick,
         modifier = modifier,
-        containerColor = LiteverTheme.colors.primaryContainer,
-        contentColor = LiteverTheme.colors.onPrimaryContainer,
         content = content
     )
 }

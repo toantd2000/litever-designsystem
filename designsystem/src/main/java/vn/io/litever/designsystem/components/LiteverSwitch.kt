@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchColors
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,18 +22,16 @@ import vn.io.litever.designsystem.theme.LiteverTheme
 fun LiteverSwitch(
     checked: Boolean,
     onCheckedChange: ((Boolean) -> Unit)?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    colors: SwitchColors = SwitchDefaults.colors()
 ) {
     Switch(
         checked = checked,
         onCheckedChange = onCheckedChange,
         modifier = modifier,
-        colors = SwitchDefaults.colors(
-            checkedThumbColor = LiteverTheme.colors.primary,
-            checkedTrackColor = LiteverTheme.colors.primaryContainer,
-            uncheckedThumbColor = LiteverTheme.colors.onSurfaceVariant,
-            uncheckedTrackColor = LiteverTheme.colors.surfaceVariant
-        )
+        enabled = enabled,
+        colors = colors
     )
 }
 

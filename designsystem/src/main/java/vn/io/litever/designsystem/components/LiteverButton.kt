@@ -1,9 +1,9 @@
 package vn.io.litever.designsystem.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -20,16 +20,13 @@ fun LiteverButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     shape: Shape = LiteverShapes.medium,
-    colors: ButtonColors = ButtonDefaults.buttonColors(
-        containerColor = LiteverTheme.colors.primary,
-        contentColor = LiteverTheme.colors.onPrimary
-    ),
+    colors: ButtonColors = ButtonDefaults.buttonColors(),
     elevation: ButtonElevation? = ButtonDefaults.buttonElevation(),
     content: @Composable () -> Unit
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier.heightIn(min = 48.dp),
+        modifier = modifier,
         enabled = enabled,
         shape = shape,
         colors = colors,
@@ -44,19 +41,23 @@ fun LiteverOutlinedButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     shape: Shape = LiteverShapes.medium,
-    colors: ButtonColors = ButtonDefaults.outlinedButtonColors(
-        contentColor = LiteverTheme.colors.primary
-    ),
+    colors: ButtonColors = ButtonDefaults.outlinedButtonColors(),
     elevation: ButtonElevation? = null,
+    border: BorderStroke? = null,
     content: @Composable () -> Unit
 ) {
+    val finalBorder = border ?: BorderStroke(
+        width = 1.dp,
+        color = if (enabled) colors.contentColor else colors.disabledContentColor
+    )
     OutlinedButton(
         onClick = onClick,
-        modifier = modifier.heightIn(min = 48.dp),
+        modifier = modifier,
         enabled = enabled,
         shape = shape,
         colors = colors,
         elevation = elevation,
+        border = finalBorder,
         content = { content() }
     )
 }
@@ -67,14 +68,12 @@ fun LiteverTextButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     shape: Shape = LiteverShapes.medium,
-    colors: ButtonColors = ButtonDefaults.textButtonColors(
-        contentColor = LiteverTheme.colors.primary
-    ),
+    colors: ButtonColors = ButtonDefaults.textButtonColors(),
     content: @Composable () -> Unit
 ) {
     TextButton(
         onClick = onClick,
-        modifier = modifier.heightIn(min = 48.dp),
+        modifier = modifier,
         enabled = enabled,
         shape = shape,
         colors = colors,

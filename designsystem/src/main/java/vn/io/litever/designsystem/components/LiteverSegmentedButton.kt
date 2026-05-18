@@ -1,8 +1,14 @@
 package vn.io.litever.designsystem.components
 
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.*
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonColors
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
+import androidx.compose.material3.SingleChoiceSegmentedButtonRowScope
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -11,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverTheme
 
@@ -22,7 +29,7 @@ import vn.io.litever.designsystem.theme.LiteverTheme
 @OptIn(ExperimentalMaterial3Api::class)
 fun LiteverSingleChoiceSegmentedButtonRow(
     modifier: Modifier = Modifier,
-    space: androidx.compose.ui.unit.Dp = 8.dp,
+    space: Dp = (-4).dp,
     content: @Composable SingleChoiceSegmentedButtonRowScope.() -> Unit
 ) {
     SingleChoiceSegmentedButtonRow(
@@ -30,6 +37,24 @@ fun LiteverSingleChoiceSegmentedButtonRow(
         space = space,
         content = content
     )
+}
+
+/**
+ * Default configurations and shape factories for LiteverSegmentedButton.
+ */
+object LiteverSegmentedButtonDefaults {
+    /**
+     * Returns a uniform, theme-aware corner shape for the segmented button items.
+     * Ensures all items (including middle items) match the overall shape rounding.
+     */
+    @Composable
+    fun itemShape(
+        index: Int,
+        count: Int,
+        baseShape: Shape = LiteverTheme.shapes.medium
+    ): Shape {
+        return baseShape
+    }
 }
 
 /**
@@ -41,19 +66,12 @@ fun LiteverSingleChoiceSegmentedButtonRow(
 fun SingleChoiceSegmentedButtonRowScope.LiteverSegmentedButton(
     selected: Boolean,
     onClick: () -> Unit,
-    shape: Shape = SegmentedButtonDefaults.itemShape(index = 0, count = 1), // This will be overridden by row logic usually, but we can set a default
+    shape: Shape = LiteverTheme.shapes.medium,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     icon: @Composable () -> Unit = { SegmentedButtonDefaults.Icon(selected) },
     label: @Composable () -> Unit,
-    colors: SegmentedButtonColors = SegmentedButtonDefaults.colors(
-        activeContainerColor = LiteverTheme.colors.primaryContainer,
-        activeContentColor = LiteverTheme.colors.onPrimaryContainer,
-        activeBorderColor = LiteverTheme.colors.outline,
-        inactiveContainerColor = LiteverTheme.colors.surface,
-        inactiveContentColor = LiteverTheme.colors.onSurface,
-        inactiveBorderColor = LiteverTheme.colors.outline,
-    )
+    colors: SegmentedButtonColors = SegmentedButtonDefaults.colors()
 ) {
     SegmentedButton(
         selected = selected,
@@ -63,7 +81,7 @@ fun SingleChoiceSegmentedButtonRowScope.LiteverSegmentedButton(
         enabled = enabled,
         icon = icon,
         label = label,
-        colors = colors
+        colors = colors,
     )
 }
 
@@ -80,7 +98,6 @@ fun LiteverSegmentedButtonPreview() {
                     LiteverSegmentedButton(
                         selected = selectedIndex == index,
                         onClick = { selectedIndex = index },
-                        shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
                         label = { Text(label) }
                     )
                 }

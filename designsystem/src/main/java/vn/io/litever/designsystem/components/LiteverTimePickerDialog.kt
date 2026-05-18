@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -22,7 +23,8 @@ fun LiteverTimePickerDialog(
     confirmButton: @Composable () -> Unit,
     title: String = stringResource(R.string.select_time),
     dismissButton: @Composable (() -> Unit)? = null,
-    containerColor: Color = MaterialTheme.colorScheme.surface,
+    containerColor: Color = LiteverTheme.colors.surface,
+    tonalElevation: Dp = AlertDialogDefaults.TonalElevation,
     content: @Composable () -> Unit
 ) {
     Dialog(
@@ -31,11 +33,10 @@ fun LiteverTimePickerDialog(
     ) {
         Surface(
             shape = LiteverShapes.extraLarge,
-            tonalElevation = 6.dp,
+            tonalElevation = tonalElevation,
             modifier = Modifier
-                .width(IntrinsicSize.Min)
-                .height(IntrinsicSize.Min)
-                .background(shape = LiteverShapes.extraLarge, color = containerColor),
+                .width(IntrinsicSize.Max)
+                .height(IntrinsicSize.Min),
             color = containerColor
         ) {
             Column(
@@ -47,14 +48,15 @@ fun LiteverTimePickerDialog(
                         .fillMaxWidth()
                         .padding(bottom = 20.dp),
                     text = title,
-                    style = MaterialTheme.typography.labelMedium
+                    style = MaterialTheme.typography.headlineSmall
                 )
                 content()
                 Row(
                     modifier = Modifier
-                        .padding(top = 12.dp)
+                        .padding(top = 20.dp)
                         .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End
+                    horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     dismissButton?.invoke()
                     confirmButton()
@@ -62,6 +64,40 @@ fun LiteverTimePickerDialog(
             }
         }
     }
+}
+
+@Composable
+fun LiteverTimePickerDialog(
+    onDismissRequest: () -> Unit,
+    confirmButtonText: String,
+    onConfirmClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    title: String = stringResource(R.string.select_time),
+    dismissButtonText: String? = null,
+    onDismissClick: (() -> Unit)? = null,
+    containerColor: Color = LiteverTheme.colors.surface,
+    tonalElevation: Dp = AlertDialogDefaults.TonalElevation,
+    content: @Composable () -> Unit
+) {
+    LiteverTimePickerDialog(
+        onDismissRequest = onDismissRequest,
+        confirmButton = {
+            LiteverButton(onClick = onConfirmClick) {
+                Text(text = confirmButtonText)
+            }
+        },
+        title = title,
+        dismissButton = dismissButtonText?.let {
+            {
+                LiteverOutlinedButton(onClick = onDismissClick ?: onDismissRequest) {
+                    Text(text = it)
+                }
+            }
+        },
+        containerColor = containerColor,
+        tonalElevation = tonalElevation,
+        content = content
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

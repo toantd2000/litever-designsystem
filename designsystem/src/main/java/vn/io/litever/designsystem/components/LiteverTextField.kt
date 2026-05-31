@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Clear
-import androidx.compose.material.icons.rounded.Email
+import vn.io.litever.designsystem.theme.LiteverIcons
+import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.automirrored.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -57,7 +57,7 @@ fun LiteverTextField(
             {
                 IconButton(onClick = onClearClick) {
                     Icon(
-                        imageVector = Icons.Rounded.Clear,
+                        imageVector = LiteverIcons.Rounded.Clear,
                         contentDescription = "Clear"
                     )
                 }
@@ -88,7 +88,7 @@ fun LiteverTextFieldPreview() {
                     onValueChange = { text = it },
                     label = "Label",
                     placeholder = "Placeholder",
-                    leadingIcon = { Icon(Icons.Rounded.Email, contentDescription = null) },
+                    leadingIcon = { Icon(LiteverIcons.Rounded.Email, contentDescription = null) },
                     onClearClick = { text = "" }
                 )
                 Spacer(modifier = Modifier.height(8.dp))

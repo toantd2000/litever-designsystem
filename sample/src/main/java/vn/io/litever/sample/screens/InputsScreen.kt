@@ -3,9 +3,9 @@ package vn.io.litever.sample.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Create
-import androidx.compose.material.icons.rounded.Warning
+import vn.io.litever.designsystem.theme.LiteverIcons
+import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.automirrored.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -26,6 +26,10 @@ fun InputsScreen(modifier: Modifier = Modifier) {
     var segmentedIndex by remember { mutableIntStateOf(0) }
     val options = listOf(strings.daily, strings.monthly, strings.yearly)
     var switchValue by remember { mutableStateOf(true) }
+    
+    var checkboxValue1 by remember { mutableStateOf(true) }
+    var checkboxValue2 by remember { mutableStateOf(false) }
+    var radioSelected by remember { mutableStateOf(options[0]) }
 
     Column(
         modifier = modifier
@@ -90,6 +94,55 @@ fun InputsScreen(modifier: Modifier = Modifier) {
         }
 
         Spacer(modifier = Modifier.height(20.dp))
+        
+        // Section: Icon Buttons
+        Text(
+            text = strings.iconButtonsTitle,
+            style = LiteverTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = LiteverTheme.colors.primary,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+
+        LiteverCard(modifier = Modifier.fillMaxWidth()) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                LiteverIconButton(
+                    onClick = {},
+                    enabled = buttonsEnabled
+                ) {
+                    Icon(LiteverIcons.Rounded.Home, contentDescription = null)
+                }
+                
+                LiteverFilledIconButton(
+                    onClick = {},
+                    enabled = buttonsEnabled
+                ) {
+                    Icon(LiteverIcons.Rounded.Add, contentDescription = null)
+                }
+                
+                LiteverFilledTonalIconButton(
+                    onClick = {},
+                    enabled = buttonsEnabled
+                ) {
+                    Icon(LiteverIcons.Rounded.Settings, contentDescription = null)
+                }
+                
+                LiteverOutlinedIconButton(
+                    onClick = {},
+                    enabled = buttonsEnabled
+                ) {
+                    Icon(LiteverIcons.Rounded.Person, contentDescription = null)
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
 
         // Section: TextFields
         Text(
@@ -107,7 +160,7 @@ fun InputsScreen(modifier: Modifier = Modifier) {
                     onValueChange = { textValue = it },
                     label = strings.enterText,
                     placeholder = strings.placeholderText,
-                    leadingIcon = { Icon(Icons.Rounded.Create, contentDescription = null) },
+                    leadingIcon = { Icon(LiteverIcons.Rounded.Create, contentDescription = null) },
                     onClearClick = { textValue = "" },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
@@ -123,7 +176,7 @@ fun InputsScreen(modifier: Modifier = Modifier) {
                     supportingText = {
                         Text(strings.invalidInput)
                     },
-                    leadingIcon = { Icon(Icons.Rounded.Warning, contentDescription = null) },
+                    leadingIcon = { Icon(LiteverIcons.Rounded.Warning, contentDescription = null) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -185,6 +238,48 @@ fun InputsScreen(modifier: Modifier = Modifier) {
                         checked = switchValue,
                         onCheckedChange = { switchValue = it }
                     )
+                }
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                Text(
+                    strings.checkboxesTitle,
+                    style = LiteverTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    LiteverCheckbox(
+                        checked = checkboxValue1,
+                        onCheckedChange = { checkboxValue1 = it }
+                    )
+                    Text("Option A", modifier = Modifier.padding(start = 8.dp))
+                    Spacer(modifier = Modifier.width(16.dp))
+                    LiteverCheckbox(
+                        checked = checkboxValue2,
+                        onCheckedChange = { checkboxValue2 = it }
+                    )
+                    Text("Option B", modifier = Modifier.padding(start = 8.dp))
+                }
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                Text(
+                    strings.radioButtonsTitle,
+                    style = LiteverTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                Column {
+                    options.forEach { option ->
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            LiteverRadioButton(
+                                selected = radioSelected == option,
+                                onClick = { radioSelected = option }
+                            )
+                            Text(option, modifier = Modifier.padding(start = 8.dp))
+                        }
+                    }
                 }
             }
         }

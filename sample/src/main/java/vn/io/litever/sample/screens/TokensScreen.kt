@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -173,7 +174,7 @@ fun DemoColorSwatch(name: String, color: Color, onColor: Color) {
         ) {
             Text(text = name, style = LiteverTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
             Text(
-                text = String.format("#%08X", color.value.toLong()),
+                text = String.format("#%08X", color.toArgb()),
                 style = LiteverTheme.typography.bodyMedium,
                 color = onColor.copy(alpha = 0.8f)
             )

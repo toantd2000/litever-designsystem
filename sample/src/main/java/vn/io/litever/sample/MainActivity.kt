@@ -6,9 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.*
+import vn.io.litever.designsystem.theme.LiteverIcons
 import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.automirrored.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -46,11 +46,12 @@ class MainActivity : ComponentActivity() {
 }
 
 enum class DemoScreen(val getTitle: (AppStrings) -> String, val icon: androidx.compose.ui.graphics.vector.ImageVector) {
-    OVERVIEW({ it.overview }, Icons.Rounded.Home),
-    INPUTS({ it.inputs }, Icons.Rounded.Edit),
-    LISTS({ it.lists }, Icons.AutoMirrored.Rounded.List),
-    DIALOGS({ it.dialogs }, Icons.Rounded.Info),
-    TOKENS({ it.tokens }, Icons.Rounded.Palette)
+    OVERVIEW({ it.overview }, LiteverIcons.Rounded.Home),
+    INPUTS({ it.inputs }, LiteverIcons.Rounded.Edit),
+    LISTS({ it.lists }, LiteverIcons.Rounded.List),
+    DIALOGS({ it.dialogs }, LiteverIcons.Rounded.Info),
+    TOKENS({ it.tokens }, LiteverIcons.Rounded.Palette),
+    AUXILIARY({ it.auxiliary }, LiteverIcons.Rounded.Star)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -65,6 +66,7 @@ fun MainShowcaseScreen(
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val snackbarHostState = remember { SnackbarHostState() }
     var currentScreen by remember { mutableStateOf(DemoScreen.OVERVIEW) }
 
     var isFirstLaunch by remember { mutableStateOf(true) }
@@ -72,7 +74,9 @@ fun MainShowcaseScreen(
         if (isFirstLaunch) {
             isFirstLaunch = false
         } else {
-            Toast.makeText(context, strings.langChanged, Toast.LENGTH_SHORT).show()
+            scope.launch {
+                snackbarHostState.showSnackbar(strings.langChanged)
+            }
         }
     }
 
@@ -135,7 +139,7 @@ fun MainShowcaseScreen(
                     navigationIcon = {
                         IconButton(onClick = { scope.launch { drawerState.open() } }) {
                             Icon(
-                                imageVector = Icons.Rounded.Menu,
+                                imageVector = LiteverIcons.Rounded.Menu,
                                 contentDescription = "Open Drawer"
                             )
                         }
@@ -143,26 +147,31 @@ fun MainShowcaseScreen(
                     actions = {
                         IconButton(onClick = onLanguageToggle) {
                             Icon(
-                                imageVector = Icons.Rounded.Translate,
+                                imageVector = LiteverIcons.Rounded.Translate,
                                 contentDescription = "Switch Language"
                             )
                         }
                         IconButton(onClick = onThemeToggle) {
                             Icon(
-                                imageVector = if (darkTheme) Icons.Rounded.LightMode else Icons.Rounded.DarkMode,
+                                imageVector = if (darkTheme) LiteverIcons.Rounded.LightMode else LiteverIcons.Rounded.DarkMode,
                                 contentDescription = "Toggle Theme"
                             )
                         }
                     }
                 )
             },
+            snackbarHost = {
+                LiteverSnackbarHost(hostState = snackbarHostState)
+            },
             floatingActionButton = {
                 LiteverFloatingActionButton(
                     onClick = {
-                        Toast.makeText(context, strings.welcomeTitle + "!", Toast.LENGTH_SHORT).show()
+                        scope.launch {
+                            snackbarHostState.showSnackbar(strings.welcomeTitle + "!")
+                        }
                     }
                 ) {
-                    Icon(Icons.AutoMirrored.Rounded.Message, contentDescription = "Quick Message")
+                    Icon(LiteverIcons.Rounded.Message, contentDescription = "Quick Message")
                 }
             }
         ) { paddingValues ->
@@ -178,6 +187,7 @@ fun MainShowcaseScreen(
                     DemoScreen.LISTS -> ListsScreen()
                     DemoScreen.DIALOGS -> DialogsScreen()
                     DemoScreen.TOKENS -> TokensScreen()
+                    DemoScreen.AUXILIARY -> AuxiliaryScreen()
                 }
             }
         }

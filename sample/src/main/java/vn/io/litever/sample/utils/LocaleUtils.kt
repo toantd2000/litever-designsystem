@@ -9,6 +9,7 @@ data class AppStrings(
     val lists: String,
     val dialogs: String,
     val tokens: String,
+    val auxiliary: String,
     val drawerHeader: String,
     val drawerSubtitle: String,
     val themeChanged: String,
@@ -38,6 +39,7 @@ data class AppStrings(
     val placeholderText: String,
     val errorState: String,
     val invalidInput: String,
+    val iconButtonsTitle: String,
     val selectionTitle: String,
     val segmentedRow: String,
     val daily: String,
@@ -47,6 +49,8 @@ data class AppStrings(
     val currentStatus: String,
     val statusOn: String,
     val statusOff: String,
+    val checkboxesTitle: String,
+    val radioButtonsTitle: String,
     // Lists Screen
     val listHeader: String,
     val standardListItem: String,
@@ -71,6 +75,10 @@ data class AppStrings(
     val showLoading: String,
     val showSuccess: String,
     val showWarning: String,
+    val snackbarTitle: String,
+    val bottomSheetTitle: String,
+    val openSnackbar: String,
+    val openBottomSheet: String,
     val dialogsHeader: String,
     val openAlertDialog: String,
     val openTimePickerDialog: String,
@@ -89,7 +97,11 @@ data class AppStrings(
     val tailwindColorsDesc: String,
     val spacingHeader: String,
     val shapesHeader: String,
-    val defaultText: String
+    val defaultText: String,
+    // Auxiliary Screen
+    val chipsTitle: String,
+    val badgesTitle: String,
+    val dividersTitle: String
 )
 
 val EnglishStrings = AppStrings(
@@ -99,6 +111,7 @@ val EnglishStrings = AppStrings(
     lists = "Lists & Settings",
     dialogs = "Dialogs & Progress",
     tokens = "Color Tokens",
+    auxiliary = "Auxiliary Components",
     drawerHeader = "Litever Design",
     drawerSubtitle = "Premium UI Components",
     themeChanged = "Theme toggled",
@@ -128,6 +141,7 @@ val EnglishStrings = AppStrings(
     placeholderText = "Type something here...",
     errorState = "Error State",
     invalidInput = "Invalid input detected!",
+    iconButtonsTitle = "Icon Buttons",
     selectionTitle = "Selection Controls",
     segmentedRow = "Segmented Button Row",
     daily = "Daily",
@@ -137,6 +151,8 @@ val EnglishStrings = AppStrings(
     currentStatus = "Current status",
     statusOn = "ON",
     statusOff = "OFF",
+    checkboxesTitle = "Checkboxes",
+    radioButtonsTitle = "Radio Buttons",
     // Lists Screen
     listHeader = "List Items (Phần tử)",
     standardListItem = "Standard List Item",
@@ -161,6 +177,10 @@ val EnglishStrings = AppStrings(
     showLoading = "Show Loading Spinner",
     showSuccess = "Show Success Dialogue",
     showWarning = "Show Warning Popup",
+    snackbarTitle = "Snackbar Notification",
+    bottomSheetTitle = "Bottom Sheet Modal",
+    openSnackbar = "Show Snackbar",
+    openBottomSheet = "Open Bottom Sheet",
     dialogsHeader = "Modals & Dialogs",
     openAlertDialog = "Open Alert Dialog",
     openTimePickerDialog = "Open Time Picker Dialog",
@@ -179,7 +199,11 @@ val EnglishStrings = AppStrings(
     tailwindColorsDesc = "Perfect integration with OKLCH dynamic color scales for dark and light contrast adaptation.",
     spacingHeader = "Spacing & Margin Tokens",
     shapesHeader = "Geometric Border Shapes",
-    defaultText = "Default"
+    defaultText = "Default",
+    // Auxiliary Screen
+    chipsTitle = "Chips & Tags",
+    badgesTitle = "Badges & Counts",
+    dividersTitle = "Dividers"
 )
 
 val VietnameseStrings = AppStrings(
@@ -189,6 +213,7 @@ val VietnameseStrings = AppStrings(
     lists = "Cài đặt & Danh sách",
     dialogs = "Hộp thoại & Tiến trình",
     tokens = "Hệ màu & Tokens",
+    auxiliary = "Linh kiện Bổ trợ",
     drawerHeader = "Thiết kế Litever",
     drawerSubtitle = "Linh kiện giao diện cao cấp",
     themeChanged = "Đã chuyển đổi giao diện",
@@ -218,6 +243,7 @@ val VietnameseStrings = AppStrings(
     placeholderText = "Nhập gì đó vào đây...",
     errorState = "Trạng thái lỗi (Error state)",
     invalidInput = "Thông tin nhập vào không hợp lệ!",
+    iconButtonsTitle = "Nút biểu tượng (Icon Buttons)",
     selectionTitle = "Thanh lựa chọn (Selection Controls)",
     segmentedRow = "Segmented Button Row",
     daily = "Hàng ngày",
@@ -227,6 +253,8 @@ val VietnameseStrings = AppStrings(
     currentStatus = "Trạng thái hiện tại",
     statusOn = "BẬT",
     statusOff = "TẮT",
+    checkboxesTitle = "Hộp kiểm (Checkboxes)",
+    radioButtonsTitle = "Nút chọn (Radio Buttons)",
     // Lists Screen
     listHeader = "Phần tử Danh sách (List Items)",
     standardListItem = "Mục danh sách tiêu chuẩn",
@@ -251,6 +279,10 @@ val VietnameseStrings = AppStrings(
     showLoading = "Hiển thị Tải dữ liệu (Loading)",
     showSuccess = "Hiển thị Thành công (Success)",
     showWarning = "Hiển thị Cảnh báo (Warning)",
+    snackbarTitle = "Thông báo Snackbar",
+    bottomSheetTitle = "Khung nội dung (Bottom Sheet)",
+    openSnackbar = "Hiển thị Snackbar",
+    openBottomSheet = "Mở Bottom Sheet",
     dialogsHeader = "Hộp thoại & Thông báo (Dialogs)",
     openAlertDialog = "Mở Hộp thoại Cảnh báo",
     openTimePickerDialog = "Mở Hộp thoại Chọn giờ",
@@ -269,7 +301,11 @@ val VietnameseStrings = AppStrings(
     tailwindColorsDesc = "Chuyển đổi hoàn hảo sang hệ màu OKLCH thích hợp cấu hình tùy chỉnh.",
     spacingHeader = "Lề & Khoảng cách (Spacing Tokens)",
     shapesHeader = "Bo góc hình học (Shapes Tokens)",
-    defaultText = "Mặc định"
+    defaultText = "Mặc định",
+    // Auxiliary Screen
+    chipsTitle = "Thẻ tùy chọn (Chips)",
+    badgesTitle = "Phù hiệu thông báo (Badges)",
+    dividersTitle = "Đường kẻ phân cách (Dividers)"
 )
 
 val LocalAppStrings = staticCompositionLocalOf { EnglishStrings }

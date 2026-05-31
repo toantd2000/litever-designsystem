@@ -3,9 +3,9 @@ package vn.io.litever.sample.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.AccessTime
-import androidx.compose.material.icons.rounded.Warning
+import vn.io.litever.designsystem.theme.LiteverIcons
+import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.automirrored.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import vn.io.litever.designsystem.components.*
 import vn.io.litever.designsystem.theme.LiteverTheme
 import vn.io.litever.sample.utils.LocalAppStrings
@@ -24,6 +25,9 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
     val strings = LocalAppStrings.current
     var showAlertDialog by remember { mutableStateOf(false) }
     var showTimePickerDialog by remember { mutableStateOf(false) }
+    var showBottomSheet by remember { mutableStateOf(false) }
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
     var selectedTimeText by remember { mutableStateOf("") }
     val displaySelectedTime = if (selectedTimeText.isEmpty()) strings.notSelected else selectedTimeText
     val timePickerState = rememberTimePickerState()
@@ -60,7 +64,7 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(Icons.Rounded.Warning, contentDescription = null)
+                        Icon(LiteverIcons.Rounded.Warning, contentDescription = null)
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(strings.openAlertDialog)
                     }
@@ -73,7 +77,7 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(Icons.Rounded.AccessTime, contentDescription = null)
+                        Icon(LiteverIcons.Rounded.AccessTime, contentDescription = null)
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(strings.openTimePickerDialog)
                     }
@@ -90,6 +94,32 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
                         .padding(top = 8.dp),
                     color = LiteverTheme.colors.onSurfaceVariant
                 )
+            }
+        }
+        
+        Spacer(modifier = Modifier.height(16.dp))
+
+        LiteverCard(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                LiteverButton(
+                    onClick = { showBottomSheet = true },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(strings.openBottomSheet)
+                }
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                LiteverOutlinedButton(
+                    onClick = {
+                        scope.launch {
+                            snackbarHostState.showSnackbar(strings.snackbarTitle)
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(strings.openSnackbar)
+                }
             }
         }
 
@@ -184,6 +214,41 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
         ) {
             TimePicker(state = timePickerState)
         }
+    }
+    
+    if (showBottomSheet) {
+        LiteverModalBottomSheet(
+            onDismissRequest = { showBottomSheet = false }
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = strings.bottomSheetTitle,
+                    style = LiteverTheme.typography.titleLarge
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "This is the content of the bottom sheet.",
+                    style = LiteverTheme.typography.bodyLarge
+                )
+                Spacer(modifier = Modifier.height(32.dp))
+                LiteverButton(onClick = { showBottomSheet = false }) {
+                    Text("Close")
+                }
+            }
+        }
+    }
+    
+    // Local SnackbarHost
+    Box(modifier = Modifier.fillMaxSize()) {
+        LiteverSnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
     }
 }
 

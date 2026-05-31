@@ -4,9 +4,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.rounded.MoreVert
+import vn.io.litever.designsystem.theme.LiteverIcons
+import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.automirrored.rounded.*
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -61,7 +61,7 @@ fun LiteverTopAppBar(
             } else if (onBackClick != null) {
                 IconButton(onClick = onBackClick) {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                        imageVector = LiteverIcons.Rounded.ArrowBack,
                         contentDescription = stringResource(R.string.action_back)
                     )
                 }
@@ -82,7 +82,7 @@ fun LiteverTopAppBarPreview() {
                 onBackClick = {},
                 actions = {
                     IconButton(onClick = {}) {
-                        Icon(Icons.Rounded.MoreVert, contentDescription = null)
+                        Icon(LiteverIcons.Rounded.MoreVert, contentDescription = null)
                     }
                 }
             )

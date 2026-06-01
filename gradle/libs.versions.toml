@@ -29,6 +29,7 @@ firebaseBom = "34.12.0"
 retrofit = "3.0.0"
 okhttp = "5.3.2"
 coil = "2.7.0"
+lint = "31.4.0"
 
 
 [libraries]
@@ -85,6 +86,11 @@ okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor",
 
 # Coil
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+
+# Lint
+lint-api = { group = "com.android.tools.lint", name = "lint-api", version.ref = "lint" }
+lint-checks = { group = "com.android.tools.lint", name = "lint-checks", version.ref = "lint" }
+lint-tests = { group = "com.android.tools.lint", name = "lint-tests", version.ref = "lint" }
 
 
 

@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.components.*
 import vn.io.litever.designsystem.theme.LiteverTheme
 import vn.io.litever.sample.utils.LocalAppStrings
+import vn.io.litever.designsystem.components.LiteverCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

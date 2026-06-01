@@ -1,17 +1,25 @@
 package vn.io.litever.designsystem.components
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -69,10 +77,6 @@ fun LiteverDrawerSheet(
     )
 }
 
-/**
- * A standard navigation drawer item for the Litever application.
- * Wraps Material 3 NavigationDrawerItem with the app's design tokens.
- */
 @Composable
 fun LiteverNavigationDrawerItem(
     label: @Composable () -> Unit,
@@ -81,26 +85,82 @@ fun LiteverNavigationDrawerItem(
     modifier: Modifier = Modifier,
     icon: @Composable (() -> Unit)? = null,
     badge: @Composable (() -> Unit)? = null,
-    shape: Shape = LiteverShapes.large,
     colors: NavigationDrawerItemColors = NavigationDrawerItemDefaults.colors(
-        selectedContainerColor = LiteverTheme.colors.primaryContainer,
+        selectedContainerColor = LiteverTheme.colors.primary.copy(alpha = 0.12f),
         unselectedContainerColor = Color.Transparent,
-        selectedIconColor = LiteverTheme.colors.onPrimaryContainer,
+        selectedIconColor = LiteverTheme.colors.primary,
         unselectedIconColor = LiteverTheme.colors.onSurfaceVariant,
-        selectedTextColor = LiteverTheme.colors.onPrimaryContainer,
+        selectedTextColor = LiteverTheme.colors.primary,
         unselectedTextColor = LiteverTheme.colors.onSurfaceVariant
     )
 ) {
-    NavigationDrawerItem(
-        label = label,
-        selected = selected,
+    val containerColor = colors.containerColor(selected).value
+    val iconColor = colors.iconColor(selected).value
+    val textColor = colors.textColor(selected).value
+
+    Surface(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(56.dp),
+        color = containerColor,
         onClick = onClick,
-        modifier = modifier.padding(NavigationDrawerItemDefaults.ItemPadding),
-        icon = icon,
-        badge = badge,
-        shape = shape,
-        colors = colors
-    )
+        shape = androidx.compose.ui.graphics.RectangleShape
+    ) {
+        Box(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = 16.dp, end = 16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                if (icon != null) {
+                    androidx.compose.runtime.CompositionLocalProvider(
+                        LocalContentColor provides iconColor
+                    ) {
+                        Box(
+                            modifier = Modifier.size(24.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            icon()
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(12.dp))
+                }
+
+                androidx.compose.runtime.CompositionLocalProvider(
+                    LocalContentColor provides textColor,
+                    LocalTextStyle provides LiteverTheme.typography.bodyLarge
+                ) {
+                    Box(modifier = Modifier.weight(1f)) {
+                        label()
+                    }
+                }
+
+                if (badge != null) {
+                    Spacer(modifier = Modifier.width(12.dp))
+                    badge()
+                }
+            }
+
+            if (selected) {
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.CenterEnd)
+                        .width(4.dp)
+                        .fillMaxHeight()
+                        .background(
+                            color = LiteverTheme.colors.primary,
+                            shape = RoundedCornerShape(
+                                topStart = 2.dp,
+                                bottomStart = 2.dp
+                            )
+                        )
+                )
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)

@@ -6,9 +6,13 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.window.DialogProperties
@@ -86,14 +90,28 @@ fun LiteverDialog(
     tonalElevation: Dp = AlertDialogDefaults.TonalElevation,
     properties: DialogProperties = DialogProperties()
 ) {
+    val context = LocalContext.current
+    val configuration = LocalConfiguration.current
+    val layoutDirection = LocalLayoutDirection.current
+
+    val provideLocals: @Composable (@Composable () -> Unit) -> Unit = { content ->
+        CompositionLocalProvider(
+            LocalContext provides context,
+            LocalConfiguration provides configuration,
+            LocalLayoutDirection provides layoutDirection
+        ) {
+            content()
+        }
+    }
+
     AlertDialog(
         onDismissRequest = onDismissRequest,
-        confirmButton = confirmButton,
+        confirmButton = { provideLocals { confirmButton() } },
         modifier = modifier,
-        dismissButton = dismissButton,
-        icon = icon,
-        title = title,
-        text = text,
+        dismissButton = dismissButton?.let { { provideLocals { it() } } },
+        icon = icon?.let { { provideLocals { it() } } },
+        title = title?.let { { provideLocals { it() } } },
+        text = text?.let { { provideLocals { it() } } },
         shape = shape,
         containerColor = containerColor,
         iconContentColor = iconContentColor,

@@ -203,6 +203,7 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
 
     if (showTimePickerDialog) {
         LiteverTimePickerDialog(
+            title = strings.selectedTime,
             onDismissRequest = { showTimePickerDialog = false },
             confirmButtonText = strings.alertConfirm,
             onConfirmClick = {

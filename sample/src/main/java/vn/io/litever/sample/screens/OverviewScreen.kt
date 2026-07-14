@@ -16,7 +16,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import vn.io.litever.designsystem.components.*
 import vn.io.litever.designsystem.theme.LiteverTheme
-import vn.io.litever.designsystem.theme.TailwindColors
 import vn.io.litever.sample.utils.LocalAppStrings
 
 @Composable
@@ -31,9 +30,6 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
         // Hero Section
         LiteverCard(
             modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(
-                containerColor = LiteverTheme.colors.primaryContainer
-            )
         ) {
             Column(modifier = Modifier.padding(20.dp)) {
                 LiteverLogo(fontSize = 40.sp)
@@ -41,14 +37,12 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
                 Text(
                     text = strings.welcomeTitle,
                     style = LiteverTheme.typography.titleLarge,
-                    color = LiteverTheme.colors.onPrimaryContainer,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = strings.welcomeDesc,
                     style = LiteverTheme.typography.bodyMedium,
-                    color = LiteverTheme.colors.onPrimaryContainer.copy(alpha = 0.85f)
                 )
             }
         }
@@ -185,7 +179,6 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
                 Icon(
                     Icons.Rounded.Lightbulb,
                     contentDescription = null,
-                    tint = TailwindColors.Yellow.c500,
                     modifier = Modifier.size(32.dp)
                 )
                 Spacer(modifier = Modifier.width(16.dp))

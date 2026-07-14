@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import vn.io.litever.designsystem.components.*
 import vn.io.litever.designsystem.theme.LiteverTheme
-import vn.io.litever.designsystem.theme.TailwindColors
 import vn.io.litever.sample.utils.LocalAppStrings
 
 @Composable
@@ -49,13 +48,13 @@ fun ListsScreen(modifier: Modifier = Modifier) {
                 LiteverListItem(
                     headlineContent = { Text(strings.standardListItem, fontWeight = FontWeight.Bold) },
                     supportingContent = { Text(strings.standardListDesc) },
-                    leadingContent = { Icon(Icons.Rounded.Star, contentDescription = null, tint = TailwindColors.Amber.c500) },
+                    leadingContent = { Icon(Icons.Rounded.Star, contentDescription = null) },
                     trailingContent = { Icon(Icons.Rounded.ChevronRight, contentDescription = null) },
                     onClick = {
                         Toast.makeText(context, strings.standardListItem + "!", Toast.LENGTH_SHORT).show()
                     }
                 )
-                HorizontalDivider(color = LiteverTheme.colors.outlineVariant.copy(alpha = 0.5f), thickness = 0.5.dp)
+                LiteverHorizontalDivider(color = LiteverTheme.colors.outlineVariant.copy(alpha = 0.5f), thickness = 0.5.dp)
 
                 LiteverListItem(
                     headlineContent = { Text(strings.badgeListItem) },
@@ -101,7 +100,6 @@ fun ListsScreen(modifier: Modifier = Modifier) {
                 subtitle = strings.passwordDesc,
                 icon = Icons.Rounded.Lock,
                 statusText = strings.securityLevel,
-                statusColor = TailwindColors.Emerald.c600,
                 onClick = {}
             )
         }

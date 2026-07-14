@@ -7,23 +7,29 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverTheme
-import vn.io.litever.designsystem.theme.LiteverShapes
 
 @Composable
 fun LiteverCard(
     modifier: Modifier = Modifier,
-    shape: Shape = LiteverShapes.medium,
+    shape: Shape = LiteverTheme.shapes.medium,
     colors: CardColors = CardDefaults.cardColors(),
     elevation: CardElevation = CardDefaults.cardElevation(),
     border: BorderStroke? = null,
-    content: @Composable ColumnScope.() -> Unit
+    content: @Composable ColumnScope.() -> Unit,
 ) {
     Card(
         modifier = modifier,
@@ -35,37 +41,13 @@ fun LiteverCard(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun LiteverCard(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    shape: Shape = LiteverShapes.medium,
-    colors: CardColors = CardDefaults.cardColors(),
-    elevation: CardElevation = CardDefaults.cardElevation(),
-    border: BorderStroke? = null,
-    content: @Composable ColumnScope.() -> Unit
-) {
-    Card(
-        onClick = onClick,
-        modifier = modifier,
-        enabled = enabled,
-        shape = shape,
-        colors = colors,
-        elevation = elevation,
-        border = border,
-        content = content
-    )
-}
-
 @Composable
 fun LiteverElevatedCard(
     modifier: Modifier = Modifier,
-    shape: Shape = LiteverShapes.medium,
+    shape: Shape = LiteverTheme.shapes.medium,
     colors: CardColors = CardDefaults.elevatedCardColors(),
     elevation: CardElevation = CardDefaults.elevatedCardElevation(),
-    content: @Composable ColumnScope.() -> Unit
+    content: @Composable ColumnScope.() -> Unit,
 ) {
     ElevatedCard(
         modifier = modifier,
@@ -76,63 +58,17 @@ fun LiteverElevatedCard(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun LiteverElevatedCard(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    shape: Shape = LiteverShapes.medium,
-    colors: CardColors = CardDefaults.elevatedCardColors(),
-    elevation: CardElevation = CardDefaults.elevatedCardElevation(),
-    content: @Composable ColumnScope.() -> Unit
-) {
-    ElevatedCard(
-        onClick = onClick,
-        modifier = modifier,
-        enabled = enabled,
-        shape = shape,
-        colors = colors,
-        elevation = elevation,
-        content = content
-    )
-}
-
 @Composable
 fun LiteverOutlinedCard(
     modifier: Modifier = Modifier,
-    shape: Shape = LiteverShapes.medium,
+    shape: Shape = LiteverTheme.shapes.medium,
     colors: CardColors = CardDefaults.outlinedCardColors(),
     elevation: CardElevation = CardDefaults.outlinedCardElevation(),
     border: BorderStroke = CardDefaults.outlinedCardBorder(),
-    content: @Composable ColumnScope.() -> Unit
+    content: @Composable ColumnScope.() -> Unit,
 ) {
     OutlinedCard(
         modifier = modifier,
-        shape = shape,
-        colors = colors,
-        elevation = elevation,
-        border = border,
-        content = content
-    )
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun LiteverOutlinedCard(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    shape: Shape = LiteverShapes.medium,
-    colors: CardColors = CardDefaults.outlinedCardColors(),
-    elevation: CardElevation = CardDefaults.outlinedCardElevation(),
-    border: BorderStroke = CardDefaults.outlinedCardBorder(),
-    content: @Composable ColumnScope.() -> Unit
-) {
-    OutlinedCard(
-        onClick = onClick,
-        modifier = modifier,
-        enabled = enabled,
         shape = shape,
         colors = colors,
         elevation = elevation,

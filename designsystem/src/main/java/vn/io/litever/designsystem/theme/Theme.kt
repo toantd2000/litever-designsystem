@@ -209,6 +209,14 @@ private fun ColorScheme.asLiteverColors(isLight: Boolean): LiteverColors = Litev
     onError = onError,
     errorContainer = errorContainer,
     onErrorContainer = onErrorContainer,
+    warning = if (isLight) warningLight else warningDark,
+    onWarning = if (isLight) onWarningLight else onWarningDark,
+    warningContainer = if (isLight) warningContainerLight else warningContainerDark,
+    onWarningContainer = if (isLight) onWarningContainerLight else onWarningContainerDark,
+    success = if (isLight) successLight else successDark,
+    onSuccess = if (isLight) onSuccessLight else onSuccessDark,
+    successContainer = if (isLight) successContainerLight else successContainerDark,
+    onSuccessContainer = if (isLight) onSuccessContainerLight else onSuccessContainerDark,
     outline = outline,
     outlineVariant = outlineVariant,
     scrim = scrim,
@@ -262,6 +270,10 @@ fun LightColorPalettePreview() {
             ColorItem("Surface Variant", LiteverTheme.colors.surfaceVariant, LiteverTheme.colors.onSurfaceVariant)
             ColorItem("Error", LiteverTheme.colors.error, LiteverTheme.colors.onError)
             ColorItem("Error Container", LiteverTheme.colors.errorContainer, LiteverTheme.colors.onErrorContainer)
+            ColorItem("Warning", LiteverTheme.colors.warning, LiteverTheme.colors.onWarning)
+            ColorItem("Warning Container", LiteverTheme.colors.warningContainer, LiteverTheme.colors.onWarningContainer)
+            ColorItem("Success", LiteverTheme.colors.success, LiteverTheme.colors.onSuccess)
+            ColorItem("Success Container", LiteverTheme.colors.successContainer, LiteverTheme.colors.onSuccessContainer)
         }
     }
 }
@@ -286,6 +298,10 @@ fun DarkColorPalettePreview() {
             ColorItem("Surface Variant", LiteverTheme.colors.surfaceVariant, LiteverTheme.colors.onSurfaceVariant)
             ColorItem("Error", LiteverTheme.colors.error, LiteverTheme.colors.onError)
             ColorItem("Error Container", LiteverTheme.colors.errorContainer, LiteverTheme.colors.onErrorContainer)
+            ColorItem("Warning", LiteverTheme.colors.warning, LiteverTheme.colors.onWarning)
+            ColorItem("Warning Container", LiteverTheme.colors.warningContainer, LiteverTheme.colors.onWarningContainer)
+            ColorItem("Success", LiteverTheme.colors.success, LiteverTheme.colors.onSuccess)
+            ColorItem("Success Container", LiteverTheme.colors.successContainer, LiteverTheme.colors.onSuccessContainer)
         }
     }
 }

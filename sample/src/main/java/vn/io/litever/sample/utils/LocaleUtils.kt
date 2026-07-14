@@ -93,8 +93,6 @@ data class AppStrings(
     val runningProgress: String,
     // Tokens Screen
     val m3ColorsHeader: String,
-    val tailwindColorsHeader: String,
-    val tailwindColorsDesc: String,
     val spacingHeader: String,
     val shapesHeader: String,
     val defaultText: String,
@@ -118,10 +116,10 @@ val EnglishStrings = AppStrings(
     langChanged = "Language changed to English",
     // Overview Screen
     welcomeTitle = "Welcome to Litever Design System",
-    welcomeDesc = "A standardized, premium UI library based on Jetpack Compose and Material 3. Includes dynamic, adaptive colors and advanced Tailwind CSS v4 OKLCH palettes.",
+    welcomeDesc = "A standardized, premium UI library based on Jetpack Compose and Material 3. Includes dynamic, adaptive colors.",
     featuresTitle = "Design Pillars",
-    colorsTitle = "Colors (M3 & Tailwind)",
-    colorsDesc = "36 adaptive M3 tokens supporting seamless Light/Dark modes and rich Tailwind palettes.",
+    colorsTitle = "Colors (M3)",
+    colorsDesc = "36 adaptive M3 tokens supporting seamless Light/Dark modes.",
     typeTitle = "Typography (Type)",
     typeDesc = "Unified typographic styles inherited directly from pre-configured Google Fonts.",
     spacingTitle = "Spacing (Margins)",
@@ -195,8 +193,6 @@ val EnglishStrings = AppStrings(
     runningProgress = "Running",
     // Tokens Screen
     m3ColorsHeader = "M3 Theme Color Swatches",
-    tailwindColorsHeader = "Tailwind CSS v4 Extended Colors",
-    tailwindColorsDesc = "Perfect integration with OKLCH dynamic color scales for dark and light contrast adaptation.",
     spacingHeader = "Spacing & Margin Tokens",
     shapesHeader = "Geometric Border Shapes",
     defaultText = "Default",
@@ -220,10 +216,10 @@ val VietnameseStrings = AppStrings(
     langChanged = "Đã chuyển sang Tiếng Việt",
     // Overview Screen
     welcomeTitle = "Chào mừng tới Litever Design System",
-    welcomeDesc = "Thư viện giao diện chuẩn hóa dựa trên nền tảng Jetpack Compose và Material 3. Thư viện tích hợp hệ màu thích ứng thông minh và bảng màu Tailwind CSS v4 OKLCH nâng cao.",
+    welcomeDesc = "Thư viện giao diện chuẩn hóa dựa trên nền tảng Jetpack Compose và Material 3. Thư viện tích hợp hệ màu thích ứng thông minh.",
     featuresTitle = "Trụ cột Thiết kế",
     colorsTitle = "Màu sắc (Colors)",
-    colorsDesc = "36 token M3 thích ứng tự động Light/Dark và bảng màu Tailwind CSS v4 tuyệt đẹp.",
+    colorsDesc = "36 token M3 thích ứng tự động Light/Dark.",
     typeTitle = "Kiểu chữ (Type)",
     typeDesc = "Typography đồng nhất kế thừa trực tiếp từ các font chữ Google được cấu hình sẵn.",
     spacingTitle = "Cự ly (Spacing)",
@@ -297,8 +293,6 @@ val VietnameseStrings = AppStrings(
     runningProgress = "Đang chạy tự động",
     // Tokens Screen
     m3ColorsHeader = "Hệ màu Theme M3",
-    tailwindColorsHeader = "Bảng màu mở rộng Tailwind CSS v4",
-    tailwindColorsDesc = "Chuyển đổi hoàn hảo sang hệ màu OKLCH thích hợp cấu hình tùy chỉnh.",
     spacingHeader = "Lề & Khoảng cách (Spacing Tokens)",
     shapesHeader = "Bo góc hình học (Shapes Tokens)",
     defaultText = "Mặc định",

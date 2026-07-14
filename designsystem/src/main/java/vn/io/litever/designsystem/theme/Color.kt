@@ -6,6 +6,121 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
+// ==========================================
+// CHẾ ĐỘ SÁNG (LIGHT THEME) - Tối ưu tương phản
+// ==========================================
+val primaryLight = Color(0xFF000000)
+val onPrimaryLight = Color(0xFFFFFFFF)
+val primaryContainerLight = Color(0xFF1F1F1F)
+val onPrimaryContainerLight = Color(0xFFFFFFFF)
+
+val secondaryLight = Color(0xFF555555)
+val onSecondaryLight = Color(0xFFFFFFFF)
+val secondaryContainerLight = Color(0xFFF2F2F7)
+val onSecondaryContainerLight = Color(0xFF1C1C1E)
+
+val tertiaryLight = Color(0xFFE1306C)
+val onTertiaryLight = Color(0xFFFFFFFF)
+val tertiaryContainerLight = Color(0xFFFFEBF0)
+val onTertiaryContainerLight = Color(0xFF3F0015)
+
+val errorLight = Color(0xFFBA1A1A)
+val onErrorLight = Color(0xFFFFFFFF)
+val errorContainerLight = Color(0xFFFFDAD6)
+val onErrorContainerLight = Color(0xFF410002)
+
+val warningLight = Color(0xFF8B5000)
+val onWarningLight = Color(0xFFFFFFFF)
+val warningContainerLight = Color(0xFFFFDCBE)
+val onWarningContainerLight = Color(0xFF2D1600)
+
+val successLight = Color(0xFF006D32)
+val onSuccessLight = Color(0xFFFFFFFF)
+val successContainerLight = Color(0xFF98F9AB)
+val onSuccessContainerLight = Color(0xFF00210B)
+
+val backgroundLight = Color(0xFFFFFFFF)
+val onBackgroundLight = Color(0xFF000000)
+val surfaceLight = Color(0xFFFFFFFF)
+val onSurfaceLight = Color(0xFF000000)
+
+val surfaceVariantLight = Color(0xFFF2F2F7)   // Nền Card: Xám nhạt tách biệt rõ với nền trắng
+val onSurfaceVariantLight = Color(0xFF636366) // Text trên card: đủ tiêu chuẩn tương phản
+val outlineLight = Color(0xFFC7C7CC)          // Viền rõ ràng hơn cho Button/Card
+val outlineVariantLight = Color(0xFFE5E5EA)   // Đường kẻ Divider thanh mảnh
+val scrimLight = Color(0xFF000000)
+
+val inverseSurfaceLight = Color(0xFF1C1C1E)
+val inverseOnSurfaceLight = Color(0xFFF2F2F7)
+val inversePrimaryLight = Color(0xFFFFFFFF)
+
+// Dải màu Surface mới cho Light Theme
+val surfaceDimLight = Color(0xFFE5E5EA)
+val surfaceBrightLight = Color(0xFFFFFFFF)
+val surfaceContainerLowestLight = Color(0xFFFFFFFF)
+val surfaceContainerLowLight = Color(0xFFF8F9FA)
+val surfaceContainerLight = Color(0xFFF2F2F7)
+val surfaceContainerHighLight = Color(0xFFE5E5EA)
+val surfaceContainerHighestLight = Color(0xFFD1D1D6)
+
+// ==========================================
+// CHẾ ĐỘ TỐI (DARK THEME) - Đã tối ưu chống dính thành phần
+// ==========================================
+val primaryDark = Color(0xFFFFFFFF)
+val onPrimaryDark = Color(0xFF000000)
+val primaryContainerDark = Color(0xFF2C2C2E)
+val onPrimaryContainerDark = Color(0xFFFFFFFF)
+
+val secondaryDark = Color(0xFFAEAED2)
+val onSecondaryDark = Color(0xFF1C1C1E)
+val secondaryContainerDark = Color(0xFF2C2C2E)
+val onSecondaryContainerDark = Color(0xFFE5E5EA)
+
+val tertiaryDark = Color(0xFFF06292)
+val onTertiaryDark = Color(0xFF5F0022)
+val tertiaryContainerDark = Color(0xFF3F0015)
+val onTertiaryContainerDark = Color(0xFFFFEBF0)
+
+val errorDark = Color(0xFFFFB4AB)
+val onErrorDark = Color(0xFF690005)
+val errorContainerDark = Color(0xFF93000A)
+val onErrorContainerDark = Color(0xFFFFDAD6)
+
+val warningDark = Color(0xFFFFB870)
+val onWarningDark = Color(0xFF4B2800)
+val warningContainerDark = Color(0xFF6A3C00)
+val onWarningContainerDark = Color(0xFFFFDCBE)
+
+val successDark = Color(0xFF7DDA91)
+val onSuccessDark = Color(0xFF003917)
+val successContainerDark = Color(0xFF005224)
+val onSuccessContainerDark = Color(0xFF98F9AB)
+
+val backgroundDark = Color(0xFF000000)
+val onBackgroundDark = Color(0xFFF3F5F7)
+val surfaceDark = Color(0xFF000000)
+val onSurfaceDark = Color(0xFFF3F5F7)
+
+// Sửa lại các token xám để Card tách rõ khỏi nền đen #000000
+val surfaceVariantDark = Color(0xFF1C1C1E)     // Nền Card chính (Nâng lên 1C để rõ khối hơn)
+val onSurfaceVariantDark = Color(0xFFA0A0A0)
+val outlineDark = Color(0xFF48484A)            // Viền Button: Sáng rõ hơn một chút
+val outlineVariantDark = Color(0xFF2C2C2E)     // Đường Divider: Đủ sáng để phân cách hàng/cột
+val scrimDark = Color(0xFF000000)
+
+val inverseSurfaceDark = Color(0xFFF2F2F7)
+val inverseOnSurfaceDark = Color(0xFF1C1C1E)
+val inversePrimaryDark = Color(0xFF000000)
+
+// Dải màu Surface mới cho Dark Theme - Phân cấp khoảng cách xa nhau để chống bết màu
+val surfaceDimDark = Color(0xFF0A0A0A)
+val surfaceBrightDark = Color(0xFF1C1C1E)
+val surfaceContainerLowestDark = Color(0xFF000000) // Đáy dưới cùng
+val surfaceContainerLowDark = Color(0xFF121212)    // Thành phần phụ nhẹ
+val surfaceContainerDark = Color(0xFF1C1C1E)       // Nền Card tiêu chuẩn trên background đen
+val surfaceContainerHighDark = Color(0xFF2C2C2E)   // Nền Dialog / Bottom Sheet nổi lên trên Card
+val surfaceContainerHighestDark = Color(0xFF3A3A3C) // Thành phần ưu tiên cao nhất hoặc trạng thái Hover/Pressed
+
 class LiteverColors(
     primary: Color,
     onPrimary: Color,
@@ -33,6 +148,14 @@ class LiteverColors(
     onError: Color,
     errorContainer: Color,
     onErrorContainer: Color,
+    warning: Color,
+    onWarning: Color,
+    warningContainer: Color,
+    onWarningContainer: Color,
+    success: Color,
+    onSuccess: Color,
+    successContainer: Color,
+    onSuccessContainer: Color,
     outline: Color,
     outlineVariant: Color,
     scrim: Color,
@@ -97,6 +220,22 @@ class LiteverColors(
         private set
     var onErrorContainer by mutableStateOf(onErrorContainer)
         private set
+    var warning by mutableStateOf(warning)
+        private set
+    var onWarning by mutableStateOf(onWarning)
+        private set
+    var warningContainer by mutableStateOf(warningContainer)
+        private set
+    var onWarningContainer by mutableStateOf(onWarningContainer)
+        private set
+    var success by mutableStateOf(success)
+        private set
+    var onSuccess by mutableStateOf(onSuccess)
+        private set
+    var successContainer by mutableStateOf(successContainer)
+        private set
+    var onSuccessContainer by mutableStateOf(onSuccessContainer)
+        private set
     var outline by mutableStateOf(outline)
         private set
     var outlineVariant by mutableStateOf(outlineVariant)
@@ -147,6 +286,14 @@ class LiteverColors(
         onError = other.onError
         errorContainer = other.errorContainer
         onErrorContainer = other.onErrorContainer
+        warning = other.warning
+        onWarning = other.onWarning
+        warningContainer = other.warningContainer
+        onWarningContainer = other.onWarningContainer
+        success = other.success
+        onSuccess = other.onSuccess
+        successContainer = other.successContainer
+        onSuccessContainer = other.onSuccessContainer
         outline = other.outline
         outlineVariant = other.outlineVariant
         scrim = other.scrim
@@ -187,6 +334,14 @@ class LiteverColors(
         onError = onError,
         errorContainer = errorContainer,
         onErrorContainer = onErrorContainer,
+        warning = warning,
+        onWarning = onWarning,
+        warningContainer = warningContainer,
+        onWarningContainer = onWarningContainer,
+        success = success,
+        onSuccess = onSuccess,
+        successContainer = successContainer,
+        onSuccessContainer = onSuccessContainer,
         outline = outline,
         outlineVariant = outlineVariant,
         scrim = scrim,
@@ -201,102 +356,107 @@ class LiteverColors(
     )
 
     val brandLite: Color
-        get() = if (isLight) TailwindColors.Gray.c500 else TailwindColors.Gray.c300
+        get() = if (isLight) Color(0xFF000000) else Color(0xFFFFFFFF)
+
     val brandVer: Color
-        get() = if (isLight) TailwindColors.Blue.c600 else TailwindColors.Blue.c400
+        get() = if (isLight) Color(0xFF1C1C1E) else Color(0xFFE5E5EA)
 }
 
-// Default Light Palette (Blue, Cyan, Gray, Slate)
+// Default Light Palette
 val liteverLightColors = LiteverColors(
-    primary = TailwindColors.Blue.c600,
-    onPrimary = TailwindColors.White,
-    primaryContainer = TailwindColors.Blue.c100,
-    onPrimaryContainer = TailwindColors.Blue.c900,
-    inversePrimary = TailwindColors.Blue.c400,
-
-    secondary = TailwindColors.Cyan.c600,
-    onSecondary = TailwindColors.White,
-    secondaryContainer = TailwindColors.Cyan.c100,
-    onSecondaryContainer = TailwindColors.Cyan.c900,
-
-    tertiary = TailwindColors.Gray.c500,
-    onTertiary = TailwindColors.White,
-    tertiaryContainer = TailwindColors.Gray.c100,
-    onTertiaryContainer = TailwindColors.Gray.c900,
-
-    background = TailwindColors.Slate.c50,
-    onBackground = TailwindColors.Slate.c900,
-    surface = TailwindColors.Slate.c50,
-    onSurface = TailwindColors.Slate.c900,
-    surfaceVariant = TailwindColors.Slate.c200,
-    onSurfaceVariant = TailwindColors.Slate.c700,
-    surfaceTint = TailwindColors.Blue.c600,
-    inverseSurface = TailwindColors.Slate.c800,
-    inverseOnSurface = TailwindColors.Slate.c50,
-
-    error = TailwindColors.Red.c600,
-    onError = TailwindColors.White,
-    errorContainer = TailwindColors.Red.c100,
-    onErrorContainer = TailwindColors.Red.c900,
-
-    outline = TailwindColors.Slate.c400,
-    outlineVariant = TailwindColors.Slate.c300,
-    scrim = TailwindColors.Black,
-
-    surfaceBright = TailwindColors.Slate.c50,
-    surfaceDim = TailwindColors.Slate.c200,
-    surfaceContainerLowest = TailwindColors.White,
-    surfaceContainerLow = TailwindColors.Slate.c50,
-    surfaceContainer = TailwindColors.Slate.c100,
-    surfaceContainerHigh = TailwindColors.Slate.c200,
-    surfaceContainerHighest = TailwindColors.Slate.c300,
+    primary = primaryLight,
+    onPrimary = onPrimaryLight,
+    primaryContainer = primaryContainerLight,
+    onPrimaryContainer = onPrimaryContainerLight,
+    inversePrimary = inversePrimaryLight,
+    secondary = secondaryLight,
+    onSecondary = onSecondaryLight,
+    secondaryContainer = secondaryContainerLight,
+    onSecondaryContainer = onSecondaryContainerLight,
+    tertiary = tertiaryLight,
+    onTertiary = onTertiaryLight,
+    tertiaryContainer = tertiaryContainerLight,
+    onTertiaryContainer = onTertiaryContainerLight,
+    background = backgroundLight,
+    onBackground = onBackgroundLight,
+    surface = surfaceLight,
+    onSurface = onSurfaceLight,
+    surfaceVariant = surfaceVariantLight,
+    onSurfaceVariant = onSurfaceVariantLight,
+    surfaceTint = primaryLight,
+    inverseSurface = inverseSurfaceLight,
+    inverseOnSurface = inverseOnSurfaceLight,
+    error = errorLight,
+    onError = onErrorLight,
+    errorContainer = errorContainerLight,
+    onErrorContainer = onErrorContainerLight,
+    warning = warningLight,
+    onWarning = onWarningLight,
+    warningContainer = warningContainerLight,
+    onWarningContainer = onWarningContainerLight,
+    success = successLight,
+    onSuccess = onSuccessLight,
+    successContainer = successContainerLight,
+    onSuccessContainer = onSuccessContainerLight,
+    outline = outlineLight,
+    outlineVariant = outlineVariantLight,
+    scrim = scrimLight,
+    surfaceBright = surfaceBrightLight,
+    surfaceDim = surfaceDimLight,
+    surfaceContainerLowest = surfaceContainerLowestLight,
+    surfaceContainerLow = surfaceContainerLowLight,
+    surfaceContainer = surfaceContainerLight,
+    surfaceContainerHigh = surfaceContainerHighLight,
+    surfaceContainerHighest = surfaceContainerHighestLight,
     isLight = true
 )
 
-// Default Dark Palette (Blue, Cyan, Gray, Slate)
+// Default Dark Palette
 val liteverDarkColors = LiteverColors(
-    primary = TailwindColors.Blue.c400,
-    onPrimary = TailwindColors.Blue.c900,
-    primaryContainer = TailwindColors.Blue.c800,
-    onPrimaryContainer = TailwindColors.Blue.c100,
-    inversePrimary = TailwindColors.Blue.c600,
-
-    secondary = TailwindColors.Cyan.c400,
-    onSecondary = TailwindColors.Cyan.c900,
-    secondaryContainer = TailwindColors.Cyan.c800,
-    onSecondaryContainer = TailwindColors.Cyan.c100,
-
-    tertiary = TailwindColors.Gray.c400,
-    onTertiary = TailwindColors.Gray.c900,
-    tertiaryContainer = TailwindColors.Gray.c800,
-    onTertiaryContainer = TailwindColors.Gray.c100,
-
-    background = TailwindColors.Slate.c900,
-    onBackground = TailwindColors.Slate.c50,
-    surface = TailwindColors.Slate.c900,
-    onSurface = TailwindColors.Slate.c50,
-    surfaceVariant = TailwindColors.Slate.c700,
-    onSurfaceVariant = TailwindColors.Slate.c300,
-    surfaceTint = TailwindColors.Blue.c400,
-    inverseSurface = TailwindColors.Slate.c200,
-    inverseOnSurface = TailwindColors.Slate.c900,
-
-    error = TailwindColors.Red.c400,
-    onError = TailwindColors.Red.c900,
-    errorContainer = TailwindColors.Red.c800,
-    onErrorContainer = TailwindColors.Red.c100,
-
-    outline = TailwindColors.Slate.c500,
-    outlineVariant = TailwindColors.Slate.c600,
-    scrim = TailwindColors.Black,
-
-    surfaceBright = TailwindColors.Slate.c800,
-    surfaceDim = TailwindColors.Slate.c900,
-    surfaceContainerLowest = TailwindColors.Black,
-    surfaceContainerLow = TailwindColors.Slate.c900,
-    surfaceContainer = TailwindColors.Slate.c800,
-    surfaceContainerHigh = TailwindColors.Slate.c700,
-    surfaceContainerHighest = TailwindColors.Slate.c600,
+    primary = primaryDark,
+    onPrimary = onPrimaryDark,
+    primaryContainer = primaryContainerDark,
+    onPrimaryContainer = onPrimaryContainerDark,
+    inversePrimary = inversePrimaryDark,
+    secondary = secondaryDark,
+    onSecondary = onSecondaryDark,
+    secondaryContainer = secondaryContainerDark,
+    onSecondaryContainer = onSecondaryContainerDark,
+    tertiary = tertiaryDark,
+    onTertiary = onTertiaryDark,
+    tertiaryContainer = tertiaryContainerDark,
+    onTertiaryContainer = onTertiaryContainerDark,
+    background = backgroundDark,
+    onBackground = onBackgroundDark,
+    surface = surfaceDark,
+    onSurface = onSurfaceDark,
+    surfaceVariant = surfaceVariantDark,
+    onSurfaceVariant = onSurfaceVariantDark,
+    surfaceTint = primaryDark,
+    inverseSurface = inverseSurfaceDark,
+    inverseOnSurface = inverseOnSurfaceDark,
+    error = errorDark,
+    onError = onErrorDark,
+    errorContainer = errorContainerDark,
+    onErrorContainer = onErrorContainerDark,
+    warning = warningDark,
+    onWarning = onWarningDark,
+    warningContainer = warningContainerDark,
+    onWarningContainer = onWarningContainerDark,
+    success = successDark,
+    onSuccess = onSuccessDark,
+    successContainer = successContainerDark,
+    onSuccessContainer = onSuccessContainerDark,
+    outline = outlineDark,
+    outlineVariant = outlineVariantDark,
+    scrim = scrimDark,
+    surfaceBright = surfaceBrightDark,
+    surfaceDim = surfaceDimDark,
+    surfaceContainerLowest = surfaceContainerLowestDark,
+    surfaceContainerLow = surfaceContainerLowDark,
+    surfaceContainer = surfaceContainerDark,
+    surfaceContainerHigh = surfaceContainerHighDark,
+    surfaceContainerHighest = surfaceContainerHighestDark,
     isLight = false
 )
 

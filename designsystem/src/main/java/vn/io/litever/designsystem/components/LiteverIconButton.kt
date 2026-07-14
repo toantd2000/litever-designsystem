@@ -1,14 +1,16 @@
 package vn.io.litever.designsystem.components
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
@@ -23,62 +25,48 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverIcons
-import androidx.compose.material.icons.rounded.*
-import androidx.compose.material.icons.automirrored.rounded.*
 import vn.io.litever.designsystem.theme.LiteverTheme
-
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.runtime.remember
 
 @Composable
 fun LiteverIconButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    colors: IconButtonColors = IconButtonDefaults.iconButtonColors(
-        contentColor = LiteverTheme.colors.onSurfaceVariant
-    ),
+    colors: IconButtonColors = IconButtonDefaults.iconButtonColors(),
+    interactionSource: MutableInteractionSource? = null,
     shape: Shape = LiteverTheme.shapes.medium,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
-    Surface(
+    IconButton(
         onClick = onClick,
-        modifier = modifier.size(40.dp),
+        modifier = modifier,
         enabled = enabled,
+        colors = colors,
+        interactionSource = interactionSource,
         shape = shape,
-        color = colors.containerColor,
-        contentColor = colors.contentColor
-    ) {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = androidx.compose.ui.Alignment.Center
-        ) {
-            content()
-        }
-    }
+        content = content
+    )
 }
 
+@JvmOverloads
 @Composable
 fun LiteverFilledIconButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    colors: IconButtonColors = IconButtonDefaults.filledIconButtonColors(
-        containerColor = LiteverTheme.colors.primary,
-        contentColor = LiteverTheme.colors.onPrimary
-    ),
     shape: Shape = LiteverTheme.shapes.medium,
-    content: @Composable () -> Unit
+    colors: IconButtonColors = IconButtonDefaults.filledIconButtonColors(),
+    interactionSource: MutableInteractionSource? = null,
+    content: @Composable () -> Unit,
 ) {
     FilledIconButton(
         onClick = onClick,
         modifier = modifier,
         enabled = enabled,
-        colors = colors,
         shape = shape,
-        content = content
+        colors = colors,
+        interactionSource = interactionSource,
+        content = content,
     )
 }
 
@@ -87,19 +75,18 @@ fun LiteverFilledTonalIconButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    colors: IconButtonColors = IconButtonDefaults.filledTonalIconButtonColors(
-        containerColor = LiteverTheme.colors.secondaryContainer,
-        contentColor = LiteverTheme.colors.onSecondaryContainer
-    ),
     shape: Shape = LiteverTheme.shapes.medium,
-    content: @Composable () -> Unit
+    colors: IconButtonColors = IconButtonDefaults.filledTonalIconButtonColors(),
+    interactionSource: MutableInteractionSource? = null,
+    content: @Composable () -> Unit,
 ) {
     FilledTonalIconButton(
         onClick = onClick,
         modifier = modifier,
         enabled = enabled,
-        colors = colors,
         shape = shape,
+        colors = colors,
+        interactionSource = interactionSource,
         content = content
     )
 }
@@ -109,18 +96,20 @@ fun LiteverOutlinedIconButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    colors: IconButtonColors = IconButtonDefaults.outlinedIconButtonColors(
-        contentColor = LiteverTheme.colors.onSurfaceVariant
-    ),
     shape: Shape = LiteverTheme.shapes.medium,
-    content: @Composable () -> Unit
+    colors: IconButtonColors = IconButtonDefaults.outlinedIconButtonColors(),
+    border: BorderStroke? = IconButtonDefaults.outlinedIconButtonBorder(enabled),
+    interactionSource: MutableInteractionSource? = null,
+    content: @Composable () -> Unit,
 ) {
     OutlinedIconButton(
         onClick = onClick,
         modifier = modifier,
         enabled = enabled,
-        colors = colors,
         shape = shape,
+        colors = colors,
+        border = border,
+        interactionSource = interactionSource,
         content = content
     )
 }

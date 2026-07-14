@@ -3,9 +3,18 @@ package vn.io.litever.sample.screens
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -14,15 +23,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import vn.io.litever.designsystem.components.LiteverCard
 import vn.io.litever.designsystem.theme.LiteverTheme
-import vn.io.litever.designsystem.theme.TailwindColors
 import vn.io.litever.sample.utils.LocalAppStrings
 
 @Composable
@@ -60,58 +66,6 @@ fun TokensScreen(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Section: Tailwind CSS v4 Colors
-        Text(
-            text = strings.tailwindColorsHeader,
-            style = LiteverTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold,
-            color = LiteverTheme.colors.primary,
-            modifier = Modifier.padding(bottom = 4.dp)
-        )
-        Text(
-            text = strings.tailwindColorsDesc,
-            style = LiteverTheme.typography.bodySmall,
-            color = LiteverTheme.colors.onSurfaceVariant,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-
-        LiteverCard(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.padding(8.dp)) {
-                TailwindColorRow("Teal", listOf(
-                    TailwindColors.Teal.c50, TailwindColors.Teal.c100, TailwindColors.Teal.c200,
-                    TailwindColors.Teal.c300, TailwindColors.Teal.c400, TailwindColors.Teal.c500,
-                    TailwindColors.Teal.c600, TailwindColors.Teal.c700, TailwindColors.Teal.c800,
-                    TailwindColors.Teal.c900, TailwindColors.Teal.c950
-                ))
-                TailwindColorRow("Blue", listOf(
-                    TailwindColors.Blue.c50, TailwindColors.Blue.c100, TailwindColors.Blue.c200,
-                    TailwindColors.Blue.c300, TailwindColors.Blue.c400, TailwindColors.Blue.c500,
-                    TailwindColors.Blue.c600, TailwindColors.Blue.c700, TailwindColors.Blue.c800,
-                    TailwindColors.Blue.c900, TailwindColors.Blue.c950
-                ))
-                TailwindColorRow("Amber", listOf(
-                    TailwindColors.Amber.c50, TailwindColors.Amber.c100, TailwindColors.Amber.c200,
-                    TailwindColors.Amber.c300, TailwindColors.Amber.c400, TailwindColors.Amber.c500,
-                    TailwindColors.Amber.c600, TailwindColors.Amber.c700, TailwindColors.Amber.c800,
-                    TailwindColors.Amber.c900, TailwindColors.Amber.c950
-                ))
-                TailwindColorRow("Red", listOf(
-                    TailwindColors.Red.c50, TailwindColors.Red.c100, TailwindColors.Red.c200,
-                    TailwindColors.Red.c300, TailwindColors.Red.c400, TailwindColors.Red.c500,
-                    TailwindColors.Red.c600, TailwindColors.Red.c700, TailwindColors.Red.c800,
-                    TailwindColors.Red.c900, TailwindColors.Red.c950
-                ))
-                TailwindColorRow("Gray", listOf(
-                    TailwindColors.Gray.c50, TailwindColors.Gray.c100, TailwindColors.Gray.c200,
-                    TailwindColors.Gray.c300, TailwindColors.Gray.c400, TailwindColors.Gray.c500,
-                    TailwindColors.Gray.c600, TailwindColors.Gray.c700, TailwindColors.Gray.c800,
-                    TailwindColors.Gray.c900, TailwindColors.Gray.c950
-                ))
-            }
-        }
-
-        Spacer(modifier = Modifier.height(20.dp))
-
         // Section: Spacing, Shapes, Typography Info
         Text(
             text = strings.spacingHeader,
@@ -123,10 +77,10 @@ fun TokensScreen(modifier: Modifier = Modifier) {
 
         LiteverCard(modifier = Modifier.fillMaxWidth()) {
             Column(modifier = Modifier.padding(16.dp)) {
-                SpacingItemRow("extraSmall", "4.dp", LiteverTheme.spacing.extraSmall)
-                SpacingItemRow("small", "8.dp", LiteverTheme.spacing.small)
-                SpacingItemRow("medium", "16.dp (${strings.defaultText})", LiteverTheme.spacing.medium)
-                SpacingItemRow("large", "24.dp", LiteverTheme.spacing.large)
+                SpacingItemRow("extraSmall", "${LiteverTheme.spacing.extraSmall}", LiteverTheme.spacing.extraSmall)
+                SpacingItemRow("small", "${LiteverTheme.spacing.small}", LiteverTheme.spacing.small)
+                SpacingItemRow("medium", "${LiteverTheme.spacing.medium} (${strings.defaultText})", LiteverTheme.spacing.medium)
+                SpacingItemRow("large", "${LiteverTheme.spacing.large}", LiteverTheme.spacing.large)
             }
         }
 
@@ -143,9 +97,9 @@ fun TokensScreen(modifier: Modifier = Modifier) {
         LiteverCard(modifier = Modifier.fillMaxWidth()) {
             Column(modifier = Modifier.padding(16.dp)) {
                 ShapeItemRow("small", "4.dp", LiteverTheme.shapes.small)
-                ShapeItemRow("medium", "8.dp", LiteverTheme.shapes.medium)
-                ShapeItemRow("large", "16.dp", LiteverTheme.shapes.large)
-                ShapeItemRow("extraLarge", "28.dp", LiteverTheme.shapes.extraLarge)
+                ShapeItemRow("medium", "6.dp", LiteverTheme.shapes.medium)
+                ShapeItemRow("large", "8.dp", LiteverTheme.shapes.large)
+                ShapeItemRow("extraLarge", "10.dp", LiteverTheme.shapes.extraLarge)
             }
         }
 
@@ -178,55 +132,6 @@ fun DemoColorSwatch(name: String, color: Color, onColor: Color) {
                 style = LiteverTheme.typography.bodyMedium,
                 color = onColor.copy(alpha = 0.8f)
             )
-        }
-    }
-}
-
-@Composable
-fun TailwindColorRow(name: String, colors: List<Color>) {
-    Column(modifier = Modifier.padding(vertical = 4.dp)) {
-        Text(
-            text = name,
-            style = LiteverTheme.typography.bodyMedium,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(start = 4.dp, bottom = 4.dp)
-        )
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(2.dp)
-        ) {
-            colors.forEachIndexed { index, color ->
-                val label = when (index) {
-                    0 -> "50"
-                    1 -> "100"
-                    2 -> "200"
-                    3 -> "300"
-                    4 -> "400"
-                    5 -> "500"
-                    6 -> "600"
-                    7 -> "700"
-                    8 -> "800"
-                    9 -> "900"
-                    10 -> "950"
-                    else -> ""
-                }
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(36.dp)
-                        .background(color)
-                        .clip(RoundedCornerShape(2.dp)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    val textColor = if (color.luminance() > 0.5f) Color.Black else Color.White
-                    Text(
-                        text = label,
-                        color = textColor,
-                        fontSize = 8.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-            }
         }
     }
 }

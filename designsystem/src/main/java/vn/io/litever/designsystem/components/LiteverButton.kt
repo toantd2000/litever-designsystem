@@ -1,28 +1,40 @@
 package vn.io.litever.designsystem.components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ButtonElevation
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverTheme
-import vn.io.litever.designsystem.theme.LiteverShapes
 
 @Composable
 fun LiteverButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    shape: Shape = LiteverShapes.medium,
+    shape: Shape = LiteverTheme.shapes.medium,
     colors: ButtonColors = ButtonDefaults.buttonColors(),
     elevation: ButtonElevation? = ButtonDefaults.buttonElevation(),
-    content: @Composable () -> Unit
+    border: BorderStroke? = null,
+    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
+    interactionSource: MutableInteractionSource? = null,
+    content: @Composable RowScope.() -> Unit,
 ) {
     Button(
         onClick = onClick,
@@ -31,6 +43,9 @@ fun LiteverButton(
         shape = shape,
         colors = colors,
         elevation = elevation,
+        border = border,
+        contentPadding = contentPadding,
+        interactionSource = interactionSource,
         content = { content() }
     )
 }
@@ -40,16 +55,14 @@ fun LiteverOutlinedButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    shape: Shape = LiteverShapes.medium,
+    shape: Shape = LiteverTheme.shapes.medium,
     colors: ButtonColors = ButtonDefaults.outlinedButtonColors(),
     elevation: ButtonElevation? = null,
-    border: BorderStroke? = null,
-    content: @Composable () -> Unit
+    border: BorderStroke? = ButtonDefaults.outlinedButtonBorder(enabled),
+    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
+    interactionSource: MutableInteractionSource? = null,
+    content: @Composable RowScope.() -> Unit,
 ) {
-    val finalBorder = border ?: BorderStroke(
-        width = 1.dp,
-        color = if (enabled) colors.contentColor else colors.disabledContentColor
-    )
     OutlinedButton(
         onClick = onClick,
         modifier = modifier,
@@ -57,8 +70,10 @@ fun LiteverOutlinedButton(
         shape = shape,
         colors = colors,
         elevation = elevation,
-        border = finalBorder,
-        content = { content() }
+        border = border,
+        contentPadding = contentPadding,
+        interactionSource = interactionSource,
+        content = content,
     )
 }
 
@@ -67,9 +82,13 @@ fun LiteverTextButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    shape: Shape = LiteverShapes.medium,
+    shape: Shape = LiteverTheme.shapes.medium,
     colors: ButtonColors = ButtonDefaults.textButtonColors(),
-    content: @Composable () -> Unit
+    elevation: ButtonElevation? = null,
+    border: BorderStroke? = null,
+    contentPadding: PaddingValues = ButtonDefaults.TextButtonContentPadding,
+    interactionSource: MutableInteractionSource? = null,
+    content: @Composable RowScope.() -> Unit,
 ) {
     TextButton(
         onClick = onClick,
@@ -77,7 +96,11 @@ fun LiteverTextButton(
         enabled = enabled,
         shape = shape,
         colors = colors,
-        content = { content() }
+        elevation = elevation,
+        border = border,
+        contentPadding = contentPadding,
+        interactionSource = interactionSource,
+        content = content,
     )
 }
 

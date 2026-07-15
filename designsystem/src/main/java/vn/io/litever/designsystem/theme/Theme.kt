@@ -1,6 +1,8 @@
 package vn.io.litever.designsystem.theme
 
 import android.app.Activity
+import android.app.UiModeManager
+import android.content.Context
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -64,7 +66,15 @@ fun LiteverTheme(
     content: @Composable () -> Unit
 ) {
     val context = LocalContext.current
-    
+    val uiModeManager = context.getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
+
+    // Detect contrast level
+    val contrast = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        uiModeManager.contrast
+    } else {
+        0f
+    }
+
     // Choose which color system to use
     val targetColors = when {
         colors != null -> colors
@@ -72,7 +82,21 @@ fun LiteverTheme(
             val dynamicColorScheme = if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
             dynamicColorScheme.asLiteverColors(darkTheme)
         }
-        else -> if (darkTheme) liteverDarkColors else liteverLightColors
+        else -> {
+            if (darkTheme) {
+                when {
+                    contrast >= 1.0f -> liteverDarkHighContrastColors
+                    contrast >= 0.5f -> liteverDarkMediumContrastColors
+                    else -> liteverDarkColors
+                }
+            } else {
+                when {
+                    contrast >= 1.0f -> liteverLightHighContrastColors
+                    contrast >= 0.5f -> liteverLightMediumContrastColors
+                    else -> liteverLightColors
+                }
+            }
+        }
     }
 
     // Also update MaterialTheme so standard M3 components look right

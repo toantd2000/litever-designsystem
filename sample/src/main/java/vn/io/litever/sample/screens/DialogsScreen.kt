@@ -25,12 +25,17 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
     val strings = LocalAppStrings.current
     var showAlertDialog by remember { mutableStateOf(false) }
     var showTimePickerDialog by remember { mutableStateOf(false) }
+    var showDatePickerDialog by remember { mutableStateOf(false) }
     var showBottomSheet by remember { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     var selectedTimeText by remember { mutableStateOf("") }
     val displaySelectedTime = if (selectedTimeText.isEmpty()) strings.notSelected else selectedTimeText
     val timePickerState = rememberTimePickerState()
+
+    var selectedDateText by remember { mutableStateOf("") }
+    val displaySelectedDate = if (selectedDateText.isEmpty()) strings.notSelected else selectedDateText
+    val datePickerState = rememberDatePickerState()
 
     // Automatic progress animation state
     var progressVal by remember { mutableStateOf(0f) }
@@ -83,10 +88,33 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
                     }
                 }
 
+                Spacer(modifier = Modifier.height(12.dp))
+
+                LiteverOutlinedButton(
+                    onClick = { showDatePickerDialog = true },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(LiteverIcons.Rounded.DateRange, contentDescription = null)
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text("Open Date Picker Dialog")
+                    }
+                }
+
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
                     text = "${strings.selectedTime}: $displaySelectedTime",
+                    style = LiteverTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp),
+                    color = LiteverTheme.colors.onSurfaceVariant
+                )
+
+                Text(
+                    text = "Selected Date: $displaySelectedDate",
                     style = LiteverTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier
@@ -214,6 +242,28 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
             onDismissClick = { showTimePickerDialog = false }
         ) {
             TimePicker(state = timePickerState)
+        }
+    }
+
+    if (showDatePickerDialog) {
+        LiteverDatePickerDialog(
+            onDismissRequest = { showDatePickerDialog = false },
+            confirmButtonText = strings.alertConfirm,
+            onConfirmClick = {
+                val selectedMillis = datePickerState.selectedDateMillis
+                selectedDateText = if (selectedMillis != null) {
+                    val date = java.util.Date(selectedMillis)
+                    val format = java.text.SimpleDateFormat("MMM dd, yyyy", java.util.Locale.getDefault())
+                    format.format(date)
+                } else {
+                    ""
+                }
+                showDatePickerDialog = false
+            },
+            dismissButtonText = strings.alertDismiss,
+            onDismissClick = { showDatePickerDialog = false }
+        ) {
+            DatePicker(state = datePickerState)
         }
     }
     

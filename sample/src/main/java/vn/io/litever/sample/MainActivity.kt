@@ -13,6 +13,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,8 +32,16 @@ class MainActivity : ComponentActivity() {
 
             val appStrings = if (isEnglish) EnglishStrings else VietnameseStrings
 
+            val locale = if (isEnglish) java.util.Locale("en") else java.util.Locale("vi")
+            val configuration = android.content.res.Configuration(LocalConfiguration.current).apply {
+                setLocale(locale)
+            }
+
             LiteverTheme(darkTheme = darkTheme) {
-                CompositionLocalProvider(LocalAppStrings provides appStrings) {
+                CompositionLocalProvider(
+                    LocalAppStrings provides appStrings,
+                    LocalConfiguration provides configuration
+                ) {
                     MainShowcaseScreen(
                         darkTheme = darkTheme,
                         onThemeToggle = { darkTheme = !darkTheme },

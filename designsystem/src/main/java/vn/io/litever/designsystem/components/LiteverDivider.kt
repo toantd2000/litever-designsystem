@@ -1,19 +1,18 @@
 package vn.io.litever.designsystem.components
 
+import androidx.compose.material3.DividerDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
-import vn.io.litever.designsystem.theme.LiteverTheme
 
 @Composable
 fun LiteverHorizontalDivider(
     modifier: Modifier = Modifier,
-    thickness: Dp = 1.dp,
-    color: Color = LiteverTheme.colors.outline
+    thickness: Dp = DividerDefaults.Thickness,
+    color: Color = DividerDefaults.color,
 ) {
     HorizontalDivider(
         modifier = modifier,
@@ -25,8 +24,8 @@ fun LiteverHorizontalDivider(
 @Composable
 fun LiteverVerticalDivider(
     modifier: Modifier = Modifier,
-    thickness: Dp = 1.dp,
-    color: Color = LiteverTheme.colors.outline
+    thickness: Dp = DividerDefaults.Thickness,
+    color: Color = DividerDefaults.color,
 ) {
     VerticalDivider(
         modifier = modifier,

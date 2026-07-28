@@ -66,6 +66,26 @@ fun TokensScreen(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        // Section: Custom Colors
+        Text(
+            text = strings.customColorsHeader,
+            style = LiteverTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = LiteverTheme.colors.primary,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+
+        LiteverCard(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier.padding(8.dp)) {
+                DemoColorSwatch("Success", LiteverTheme.colors.success, LiteverTheme.colors.onSuccess)
+                DemoColorSwatch("Success Container", LiteverTheme.colors.successContainer, LiteverTheme.colors.onSuccessContainer)
+                DemoColorSwatch("Warning", LiteverTheme.colors.warning, LiteverTheme.colors.onWarning)
+                DemoColorSwatch("Warning Container", LiteverTheme.colors.warningContainer, LiteverTheme.colors.onWarningContainer)
+            }
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         // Section: Spacing, Shapes, Typography Info
         Text(
             text = strings.spacingHeader,

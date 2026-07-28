@@ -93,6 +93,7 @@ data class AppStrings(
     val runningProgress: String,
     // Tokens Screen
     val m3ColorsHeader: String,
+    val customColorsHeader: String,
     val spacingHeader: String,
     val shapesHeader: String,
     val defaultText: String,
@@ -193,6 +194,7 @@ val EnglishStrings = AppStrings(
     runningProgress = "Running",
     // Tokens Screen
     m3ColorsHeader = "M3 Theme Color Swatches",
+    customColorsHeader = "Custom Color Swatches",
     spacingHeader = "Spacing & Margin Tokens",
     shapesHeader = "Geometric Border Shapes",
     defaultText = "Default",
@@ -293,6 +295,7 @@ val VietnameseStrings = AppStrings(
     runningProgress = "Đang chạy tự động",
     // Tokens Screen
     m3ColorsHeader = "Hệ màu Theme M3",
+    customColorsHeader = "Hệ màu Tùy chỉnh",
     spacingHeader = "Lề & Khoảng cách (Spacing Tokens)",
     shapesHeader = "Bo góc hình học (Shapes Tokens)",
     defaultText = "Mặc định",

@@ -517,10 +517,10 @@ class LiteverColors(
     )
 
     val brandLite: Color
-        get() = if (isLight) Color(0xFF000000) else Color(0xFFFFFFFF)
+        get() = if (isLight) onSurfaceVariantLight else onSurfaceVariantDark
 
     val brandVer: Color
-        get() = if (isLight) Color(0xFF1C1C1E) else Color(0xFFE5E5EA)
+        get() = if (isLight) primaryLight else primaryDark
 }
 
 // Helper to create LiteverColors from individual constants

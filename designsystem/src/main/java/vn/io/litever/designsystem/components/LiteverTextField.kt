@@ -23,6 +23,9 @@ import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverShapes
 import vn.io.litever.designsystem.theme.LiteverTheme
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.ui.text.TextStyle
+
 /**
  * A custom TextField wrapper for the Litever application.
  * Follows Material 3 design and includes a built-in clear button.
@@ -32,47 +35,51 @@ fun LiteverTextField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    label: String? = null,
-    placeholder: String? = null,
+    enabled: Boolean = true,
+    readOnly: Boolean = false,
+    textStyle: TextStyle = LocalTextStyle.current,
+    label: @Composable (() -> Unit)? = null,
+    placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
-    singleLine: Boolean = false,
-    minLines: Int = 1,
-    maxLines: Int = Int.MAX_VALUE,
-    onClearClick: (() -> Unit)? = null,
-    isError: Boolean = false,
+    trailingIcon: @Composable (() -> Unit)? = null,
+    prefix: @Composable (() -> Unit)? = null,
+    suffix: @Composable (() -> Unit)? = null,
     supportingText: @Composable (() -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
-    visualTransformation: VisualTransformation = VisualTransformation.None,
+    singleLine: Boolean = false,
+    maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE,
+    minLines: Int = 1,
+    interactionSource: MutableInteractionSource? = null,
     shape: Shape = LiteverShapes.large,
+    colors: TextFieldColors = OutlinedTextFieldDefaults.colors()
 ) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         modifier = modifier,
-        label = label?.let { { Text(it) } },
-        placeholder = placeholder?.let { { Text(it) } },
+        enabled = enabled,
+        readOnly = readOnly,
+        textStyle = textStyle,
+        label = label,
+        placeholder = placeholder,
         leadingIcon = leadingIcon,
-        trailingIcon = if (onClearClick != null && value.isNotEmpty()) {
-            {
-                IconButton(onClick = onClearClick) {
-                    Icon(
-                        imageVector = LiteverIcons.Rounded.Clear,
-                        contentDescription = "Clear"
-                    )
-                }
-            }
-        } else null,
-        isError = isError,
+        trailingIcon = trailingIcon,
+        prefix = prefix,
+        suffix = suffix,
         supportingText = supportingText,
+        isError = isError,
+        visualTransformation = visualTransformation,
         keyboardOptions = keyboardOptions,
         keyboardActions = keyboardActions,
         singleLine = singleLine,
-        minLines = minLines,
         maxLines = maxLines,
-        visualTransformation = visualTransformation,
+        minLines = minLines,
+        interactionSource = interactionSource,
         shape = shape,
-        colors = OutlinedTextFieldDefaults.colors()
+        colors = colors
     )
 }
 
@@ -86,16 +93,22 @@ fun LiteverTextFieldPreview() {
                 LiteverTextField(
                     value = text,
                     onValueChange = { text = it },
-                    label = "Label",
-                    placeholder = "Placeholder",
+                    label = { Text("Label") },
+                    placeholder = { Text("Placeholder") },
                     leadingIcon = { Icon(LiteverIcons.Rounded.Email, contentDescription = null) },
-                    onClearClick = { text = "" }
+                    trailingIcon = {
+                        if (text.isNotEmpty()) {
+                            IconButton(onClick = { text = "" }) {
+                                Icon(LiteverIcons.Rounded.Clear, contentDescription = "Clear")
+                            }
+                        }
+                    }
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 LiteverTextField(
                     value = "",
                     onValueChange = {},
-                    label = "Error State",
+                    label = { Text("Error State") },
                     isError = true,
                     supportingText = { Text("Error message") }
                 )

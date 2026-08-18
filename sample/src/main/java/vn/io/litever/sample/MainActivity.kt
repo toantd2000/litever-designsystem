@@ -22,6 +22,7 @@ import vn.io.litever.designsystem.components.*
 import vn.io.litever.designsystem.theme.LiteverTheme
 import vn.io.litever.sample.screens.*
 import vn.io.litever.sample.utils.*
+import vn.io.litever.designsystem.components.LiteverHorizontalDivider
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -108,7 +109,7 @@ fun MainShowcaseScreen(
                         )
                     }
                 }
-                HorizontalDivider(color = LiteverTheme.colors.outlineVariant, thickness = 0.5.dp)
+                LiteverHorizontalDivider(color = LiteverTheme.colors.outlineVariant, thickness = 0.5.dp)
                 Spacer(modifier = Modifier.height(16.dp))
 
                 DemoScreen.entries.forEach { screen ->

@@ -17,6 +17,7 @@ import vn.io.litever.designsystem.components.*
 import vn.io.litever.designsystem.theme.LiteverTheme
 import vn.io.litever.sample.utils.LocalAppStrings
 import vn.io.litever.designsystem.components.LiteverCard
+import vn.io.litever.designsystem.components.LiteverIconButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -159,10 +160,16 @@ fun InputsScreen(modifier: Modifier = Modifier) {
                 LiteverTextField(
                     value = textValue,
                     onValueChange = { textValue = it },
-                    label = strings.enterText,
-                    placeholder = strings.placeholderText,
+                    label = { Text(strings.enterText) },
+                    placeholder = { Text(strings.placeholderText) },
                     leadingIcon = { Icon(LiteverIcons.Rounded.Create, contentDescription = null) },
-                    onClearClick = { textValue = "" },
+                    trailingIcon = {
+                        if (textValue.isNotEmpty()) {
+                            LiteverIconButton(onClick = { textValue = "" }) {
+                                Icon(LiteverIcons.Rounded.Clear, contentDescription = "Clear")
+                            }
+                        }
+                    },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -172,7 +179,7 @@ fun InputsScreen(modifier: Modifier = Modifier) {
                 LiteverTextField(
                     value = "",
                     onValueChange = {},
-                    label = strings.errorState,
+                    label = { Text(strings.errorState) },
                     isError = true,
                     supportingText = {
                         Text(strings.invalidInput)

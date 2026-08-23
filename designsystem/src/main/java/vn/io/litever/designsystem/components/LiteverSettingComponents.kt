@@ -17,7 +17,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverTheme
-import vn.io.litever.designsystem.theme.LiteverShapes
 
 @Composable
 fun LiteverSettingsCategory(
@@ -31,7 +30,7 @@ fun LiteverSettingsCategory(
         fontWeight = FontWeight.Bold,
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp)
+            .padding(vertical = LiteverTheme.spacing.small)
     )
 }
 
@@ -205,16 +204,17 @@ fun LiteverSettingsGroup(
     title: String? = null,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Column(modifier = modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+    val spacing = LiteverTheme.spacing
+    Column(modifier = modifier.padding(horizontal = spacing.medium, vertical = spacing.small)) {
         if (title != null) {
             LiteverSettingsCategory(
                 title = title,
-                modifier = Modifier.padding(horizontal = 4.dp)
+                modifier = Modifier.padding(horizontal = spacing.extraSmall)
             )
         }
         Card(
             modifier = Modifier.fillMaxWidth(),
-            shape = LiteverShapes.medium,
+            shape = LiteverTheme.shapes.medium,
             colors = CardDefaults.cardColors(
                 containerColor = LiteverTheme.colors.surfaceVariant.copy(alpha = 0.3f)
             ),

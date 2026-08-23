@@ -16,7 +16,6 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.window.DialogProperties
-import vn.io.litever.designsystem.theme.LiteverShapes
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 /**
@@ -82,7 +81,7 @@ fun LiteverDialog(
     icon: @Composable (() -> Unit)? = null,
     title: @Composable (() -> Unit)? = null,
     text: @Composable (() -> Unit)? = null,
-    shape: Shape = LiteverShapes.extraLarge,
+    shape: Shape = LiteverTheme.shapes.extraLarge,
     containerColor: Color = LiteverTheme.colors.surface,
     iconContentColor: Color = LiteverTheme.colors.primary,
     titleContentColor: Color = LiteverTheme.colors.onSurface,

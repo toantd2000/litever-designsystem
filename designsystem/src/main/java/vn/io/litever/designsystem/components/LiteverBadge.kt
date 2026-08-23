@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverIcons
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material.icons.automirrored.rounded.*
@@ -54,8 +53,8 @@ fun LiteverBadgedBox(
 @Composable
 fun LiteverBadgePreview() {
     LiteverTheme(darkTheme = false) {
-        Surface(modifier = Modifier.padding(16.dp)) {
-            androidx.compose.foundation.layout.Row(horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(16.dp)) {
+        Surface(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
+            androidx.compose.foundation.layout.Row(horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(LiteverTheme.spacing.medium)) {
                 LiteverBadgedBox(
                     badge = {
                         LiteverBadge()

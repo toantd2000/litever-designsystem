@@ -13,7 +13,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import vn.io.litever.designsystem.theme.LiteverTheme
 
@@ -59,7 +58,7 @@ fun LiteverLogo(
 fun LiteverLogoPreview() {
     LiteverTheme(darkTheme = false) {
         Surface {
-            LiteverLogo(modifier = Modifier.padding(16.dp))
+            LiteverLogo(modifier = Modifier.padding(LiteverTheme.spacing.medium))
         }
     }
 }
@@ -69,7 +68,7 @@ fun LiteverLogoPreview() {
 fun LiteverLogoDarkPreview() {
     LiteverTheme(darkTheme = true) {
         Surface {
-            LiteverLogo(modifier = Modifier.padding(16.dp))
+            LiteverLogo(modifier = Modifier.padding(LiteverTheme.spacing.medium))
         }
     }
 }

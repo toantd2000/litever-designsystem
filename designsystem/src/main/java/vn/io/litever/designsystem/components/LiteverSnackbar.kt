@@ -10,8 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.unit.dp
-import vn.io.litever.designsystem.theme.LiteverShapes
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 @Composable
@@ -19,7 +17,7 @@ fun LiteverSnackbar(
     snackbarData: SnackbarData,
     modifier: Modifier = Modifier,
     actionOnNewLine: Boolean = false,
-    shape: Shape = LiteverShapes.medium,
+    shape: Shape = LiteverTheme.shapes.medium,
     containerColor: Color = LiteverTheme.colors.inverseSurface,
     contentColor: Color = LiteverTheme.colors.inverseOnSurface,
     actionColor: Color = LiteverTheme.colors.inversePrimary,
@@ -27,7 +25,7 @@ fun LiteverSnackbar(
 ) {
     Snackbar(
         snackbarData = snackbarData,
-        modifier = modifier.padding(12.dp),
+        modifier = modifier.padding(LiteverTheme.spacing.smallMedium),
         actionOnNewLine = actionOnNewLine,
         shape = shape,
         containerColor = containerColor,

@@ -15,7 +15,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 @Composable
@@ -44,19 +43,19 @@ fun LiteverRadioButton(
 @Composable
 fun LiteverRadioButtonPreview() {
     LiteverTheme(darkTheme = false) {
-        Surface(modifier = Modifier.padding(16.dp)) {
+        Surface(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             var selectedOption by remember { mutableStateOf("Option 1") }
             Column {
                 LiteverRadioButton(
                     selected = selectedOption == "Option 1",
                     onClick = { selectedOption = "Option 1" }
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverRadioButton(
                     selected = selectedOption == "Option 2",
                     onClick = { selectedOption = "Option 2" }
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverRadioButton(
                     selected = true,
                     onClick = null,

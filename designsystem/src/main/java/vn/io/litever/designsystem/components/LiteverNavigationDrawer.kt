@@ -26,7 +26,6 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import vn.io.litever.designsystem.theme.LiteverShapes
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 /**
@@ -59,7 +58,7 @@ fun LiteverNavigationDrawer(
 @Composable
 fun LiteverDrawerSheet(
     modifier: Modifier = Modifier,
-    drawerShape: Shape = LiteverShapes.large,
+    drawerShape: Shape = LiteverTheme.shapes.large,
     drawerContainerColor: Color = LiteverTheme.colors.surface,
     drawerContentColor: Color = LiteverTheme.colors.onSurface,
     drawerTonalElevation: Dp = DrawerDefaults.ModalDrawerElevation,
@@ -98,6 +97,7 @@ fun LiteverNavigationDrawerItem(
     val iconColor = colors.iconColor(selected).value
     val textColor = colors.textColor(selected).value
 
+    val spacing = LiteverTheme.spacing
     Surface(
         modifier = modifier
             .fillMaxWidth()
@@ -112,7 +112,7 @@ fun LiteverNavigationDrawerItem(
             Row(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = 16.dp, end = 16.dp),
+                    .padding(start = spacing.medium, end = spacing.medium),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (icon != null) {
@@ -126,7 +126,7 @@ fun LiteverNavigationDrawerItem(
                             icon()
                         }
                     }
-                    Spacer(modifier = Modifier.width(12.dp))
+                    Spacer(modifier = Modifier.width(spacing.smallMedium))
                 }
 
                 androidx.compose.runtime.CompositionLocalProvider(
@@ -139,7 +139,7 @@ fun LiteverNavigationDrawerItem(
                 }
 
                 if (badge != null) {
-                    Spacer(modifier = Modifier.width(12.dp))
+                    Spacer(modifier = Modifier.width(spacing.smallMedium))
                     badge()
                 }
             }
@@ -148,13 +148,13 @@ fun LiteverNavigationDrawerItem(
                 Box(
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
-                        .width(4.dp)
+                        .width(spacing.extraSmall)
                         .fillMaxHeight()
                         .background(
                             color = LiteverTheme.colors.primary,
                             shape = RoundedCornerShape(
-                                topStart = 2.dp,
-                                bottomStart = 2.dp
+                                topStart = spacing.tiny,
+                                bottomStart = spacing.tiny
                             )
                         )
                 )
@@ -168,7 +168,7 @@ fun LiteverNavigationDrawerItem(
 fun LiteverDrawerPreview() {
     LiteverTheme {
         LiteverDrawerSheet {
-            Spacer(Modifier.height(12.dp))
+            Spacer(Modifier.height(LiteverTheme.spacing.smallMedium))
             LiteverNavigationDrawerItem(
                 label = { Text("Home") },
                 selected = true,

@@ -15,7 +15,6 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.Dp
-import vn.io.litever.designsystem.theme.LiteverShapes
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -24,7 +23,7 @@ fun LiteverModalBottomSheet(
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
     sheetState: SheetState = rememberModalBottomSheetState(),
-    shape: Shape = LiteverShapes.large,
+    shape: Shape = LiteverTheme.shapes.large,
     containerColor: Color = LiteverTheme.colors.surfaceContainerLow,
     contentColor: Color = LiteverTheme.colors.onSurface,
     tonalElevation: Dp = BottomSheetDefaults.Elevation,

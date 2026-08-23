@@ -15,7 +15,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 @Composable
@@ -46,14 +45,14 @@ fun LiteverCheckbox(
 @Composable
 fun LiteverCheckboxPreview() {
     LiteverTheme(darkTheme = false) {
-        Surface(modifier = Modifier.padding(16.dp)) {
+        Surface(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             var checked1 by remember { mutableStateOf(true) }
             var checked2 by remember { mutableStateOf(false) }
             Column {
                 LiteverCheckbox(checked = checked1, onCheckedChange = { checked1 = it })
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverCheckbox(checked = checked2, onCheckedChange = { checked2 = it })
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverCheckbox(checked = true, onCheckedChange = null, enabled = false)
             }
         }

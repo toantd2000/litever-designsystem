@@ -90,7 +90,7 @@ fun SingleChoiceSegmentedButtonRowScope.LiteverSegmentedButton(
 @Composable
 fun LiteverSegmentedButtonPreview() {
     LiteverTheme {
-        Surface(modifier = Modifier.padding(16.dp)) {
+        Surface(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             var selectedIndex by remember { mutableIntStateOf(0) }
             val options = listOf("Day", "Month", "Year")
             LiteverSingleChoiceSegmentedButtonRow {

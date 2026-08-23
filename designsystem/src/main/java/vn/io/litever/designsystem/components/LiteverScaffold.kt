@@ -2,28 +2,36 @@ package vn.io.litever.designsystem.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.FabPosition
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import vn.io.litever.designsystem.theme.LiteverTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.ScaffoldDefaults
+import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import vn.io.litever.designsystem.theme.LiteverTheme
 
+/**
+ * Standard Material 3 Scaffold with Litever defaults.
+ * Automatically handles IME padding for better keyboard support.
+ */
 @Composable
 fun LiteverScaffold(
     modifier: Modifier = Modifier,
@@ -32,6 +40,9 @@ fun LiteverScaffold(
     snackbarHost: @Composable () -> Unit = {},
     floatingActionButton: @Composable () -> Unit = {},
     floatingActionButtonPosition: FabPosition = FabPosition.End,
+    containerColor: Color = MaterialTheme.colorScheme.background,
+    contentColor: Color = contentColorFor(containerColor),
+    contentWindowInsets: WindowInsets = ScaffoldDefaults.contentWindowInsets,
     content: @Composable (PaddingValues) -> Unit
 ) {
     Scaffold(
@@ -41,6 +52,9 @@ fun LiteverScaffold(
         snackbarHost = snackbarHost,
         floatingActionButton = floatingActionButton,
         floatingActionButtonPosition = floatingActionButtonPosition,
+        containerColor = containerColor,
+        contentColor = contentColor,
+        contentWindowInsets = contentWindowInsets,
         content = content
     )
 }
@@ -49,9 +63,10 @@ fun LiteverScaffold(
 @Composable
 fun LiteverScaffoldPreview() {
     LiteverTheme(darkTheme = false) {
+        val spacing = LiteverTheme.spacing
         LiteverScaffold(
-            topBar = { Text("Top Bar", modifier = Modifier.padding(16.dp)) },
-            bottomBar = { Text("Bottom Bar", modifier = Modifier.padding(16.dp)) }
+            topBar = { Text("Top Bar", modifier = Modifier.padding(spacing.medium)) },
+            bottomBar = { Text("Bottom Bar", modifier = Modifier.padding(spacing.medium)) }
         ) { padding ->
             Box(
                 modifier = Modifier
@@ -69,8 +84,9 @@ fun LiteverScaffoldPreview() {
 @Composable
 fun LiteverScaffoldFabCenterPreview() {
     LiteverTheme(darkTheme = false) {
+        val spacing = LiteverTheme.spacing
         LiteverScaffold(
-            topBar = { Text("Top Bar", modifier = Modifier.padding(16.dp)) },
+            topBar = { Text("Top Bar", modifier = Modifier.padding(spacing.medium)) },
             bottomBar = {
                 NavigationBar {
                     NavigationBarItem(selected = true, onClick = {}, icon = { Icon(Icons.Default.Home, contentDescription = null) }, label = { Text("Home") })
@@ -100,8 +116,9 @@ fun LiteverScaffoldFabCenterPreview() {
 @Composable
 fun LiteverScaffoldFabEndPreview() {
     LiteverTheme(darkTheme = false) {
+        val spacing = LiteverTheme.spacing
         LiteverScaffold(
-            topBar = { Text("Top Bar", modifier = Modifier.padding(16.dp)) },
+            topBar = { Text("Top Bar", modifier = Modifier.padding(spacing.medium)) },
             bottomBar = {
                 NavigationBar {
                     NavigationBarItem(selected = true, onClick = {}, icon = { Icon(Icons.Default.Home, contentDescription = null) }, label = { Text("Home") })
@@ -131,12 +148,12 @@ fun LiteverScaffoldFabEndPreview() {
 @Composable
 fun LiteverScaffoldFabDockedPreview() {
     LiteverTheme(darkTheme = false) {
+        val spacing = LiteverTheme.spacing
         LiteverScaffold(
-            topBar = { Text("Top Bar", modifier = Modifier.padding(16.dp)) },
+            topBar = { Text("Top Bar", modifier = Modifier.padding(spacing.medium)) },
             bottomBar = {
                 BottomAppBar(
                     actions = {
-                        // Sử dụng Weight cho Row để NavigationBarItem chiếm đều không gian bên trái FAB
                         androidx.compose.foundation.layout.Row(modifier = Modifier.weight(1f)) {
                             NavigationBarItem(selected = true, onClick = {}, icon = { Icon(Icons.Default.Home, contentDescription = "Home") }, label = { Text("Home") })
                             NavigationBarItem(selected = false, onClick = {}, icon = { Icon(Icons.Default.Settings, contentDescription = "Settings") }, label = { Text("Settings") })
@@ -149,8 +166,6 @@ fun LiteverScaffoldFabDockedPreview() {
                     }
                 )
             },
-            // Note: When using BottomAppBar's built-in FAB slot, 
-            // we DO NOT pass the FAB to Scaffold's floatingActionButton parameter.
             floatingActionButton = {}, 
         ) { padding ->
             Box(

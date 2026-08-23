@@ -23,7 +23,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverIcons
 import vn.io.litever.designsystem.theme.LiteverTheme
 
@@ -118,21 +117,21 @@ fun LiteverOutlinedIconButton(
 @Composable
 fun LiteverIconButtonPreview() {
     LiteverTheme(darkTheme = false) {
-        Surface(modifier = Modifier.padding(16.dp)) {
+        Surface(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             Column {
                 Row {
                     LiteverIconButton(onClick = {}) {
                         Icon(LiteverIcons.Rounded.Home, contentDescription = null)
                     }
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(LiteverTheme.spacing.small))
                     LiteverFilledIconButton(onClick = {}) {
                         Icon(LiteverIcons.Rounded.Add, contentDescription = null)
                     }
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(LiteverTheme.spacing.small))
                     LiteverFilledTonalIconButton(onClick = {}) {
                         Icon(LiteverIcons.Rounded.Settings, contentDescription = null)
                     }
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(LiteverTheme.spacing.small))
                     LiteverOutlinedIconButton(onClick = {}) {
                         Icon(LiteverIcons.Rounded.Person, contentDescription = null)
                     }

@@ -20,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 @Composable
@@ -108,16 +107,16 @@ fun LiteverTextButton(
 @Composable
 fun LiteverButtonPreview() {
     LiteverTheme(darkTheme = false) {
-        Surface(modifier = Modifier.padding(16.dp)) {
+        Surface(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             Column {
                 LiteverButton(onClick = {}) {
                     Text("Primary Button")
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverOutlinedButton(onClick = {}) {
                     Text("Outlined Button")
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverTextButton(onClick = {}) {
                     Text("Text Button")
                 }
@@ -130,16 +129,16 @@ fun LiteverButtonPreview() {
 @Composable
 fun LiteverButtonDarkPreview() {
     LiteverTheme(darkTheme = true) {
-        Surface(modifier = Modifier.padding(16.dp)) {
+        Surface(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             Column {
                 LiteverButton(onClick = {}) {
                     Text("Primary Button")
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverOutlinedButton(onClick = {}) {
                     Text("Outlined Button")
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverTextButton(onClick = {}) {
                     Text("Text Button")
                 }

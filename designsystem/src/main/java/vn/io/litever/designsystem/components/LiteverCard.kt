@@ -19,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 @Composable
@@ -81,18 +80,18 @@ fun LiteverOutlinedCard(
 @Composable
 fun LiteverCardPreview() {
     LiteverTheme(darkTheme = false) {
-        Surface(modifier = Modifier.padding(16.dp)) {
+        Surface(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             Column {
                 LiteverCard(modifier = Modifier.fillMaxWidth()) {
-                    Text(text = "Standard Card", modifier = Modifier.padding(16.dp))
+                    Text(text = "Standard Card", modifier = Modifier.padding(LiteverTheme.spacing.medium))
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverElevatedCard(modifier = Modifier.fillMaxWidth()) {
-                    Text(text = "Elevated Card", modifier = Modifier.padding(16.dp))
+                    Text(text = "Elevated Card", modifier = Modifier.padding(LiteverTheme.spacing.medium))
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverOutlinedCard(modifier = Modifier.fillMaxWidth()) {
-                    Text(text = "Outlined Card", modifier = Modifier.padding(16.dp))
+                    Text(text = "Outlined Card", modifier = Modifier.padding(LiteverTheme.spacing.medium))
                 }
             }
         }
@@ -103,18 +102,18 @@ fun LiteverCardPreview() {
 @Composable
 fun LiteverCardDarkPreview() {
     LiteverTheme(darkTheme = true) {
-        Surface(modifier = Modifier.padding(16.dp)) {
+        Surface(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             Column {
                 LiteverCard(modifier = Modifier.fillMaxWidth()) {
-                    Text(text = "Standard Card", modifier = Modifier.padding(16.dp))
+                    Text(text = "Standard Card", modifier = Modifier.padding(LiteverTheme.spacing.medium))
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverElevatedCard(modifier = Modifier.fillMaxWidth()) {
-                    Text(text = "Elevated Card", modifier = Modifier.padding(16.dp))
+                    Text(text = "Elevated Card", modifier = Modifier.padding(LiteverTheme.spacing.medium))
                 }
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 LiteverOutlinedCard(modifier = Modifier.fillMaxWidth()) {
-                    Text(text = "Outlined Card", modifier = Modifier.padding(16.dp))
+                    Text(text = "Outlined Card", modifier = Modifier.padding(LiteverTheme.spacing.medium))
                 }
             }
         }

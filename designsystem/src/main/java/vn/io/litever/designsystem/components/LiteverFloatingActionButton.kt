@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier.Companion
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 @Composable
@@ -46,7 +45,7 @@ fun LiteverFloatingActionButton(
 @Composable
 fun LiteverFloatingActionButtonPreview() {
     LiteverTheme {
-        Surface(modifier = Modifier.padding(16.dp)) {
+        Surface(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             LiteverFloatingActionButton(onClick = {}) {
                 Icon(Icons.Rounded.Add, contentDescription = null)
             }

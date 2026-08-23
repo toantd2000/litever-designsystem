@@ -23,9 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import vn.io.litever.designsystem.theme.LiteverIcons
-import vn.io.litever.designsystem.theme.LiteverShapes
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 @Composable
@@ -36,7 +34,7 @@ fun LiteverAssistChip(
     enabled: Boolean = true,
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
-    shape: Shape = LiteverShapes.small
+    shape: Shape = LiteverTheme.shapes.small
 ) {
     AssistChip(
         onClick = onClick,
@@ -59,7 +57,7 @@ fun LiteverFilterChip(
     enabled: Boolean = true,
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
-    shape: Shape = LiteverShapes.small,
+    shape: Shape = LiteverTheme.shapes.small,
     colors: androidx.compose.material3.SelectableChipColors = FilterChipDefaults.filterChipColors(
         containerColor = Color.Transparent,
         selectedContainerColor = LiteverTheme.colors.secondaryContainer,
@@ -91,9 +89,9 @@ fun LiteverFilterChip(
 @Composable
 fun LiteverChipPreview() {
     LiteverTheme(darkTheme = false) {
-        Surface(modifier = Modifier.padding(16.dp)) {
+        Surface(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             var selected by remember { mutableStateOf(false) }
-            androidx.compose.foundation.layout.Row(horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(8.dp)) {
+            androidx.compose.foundation.layout.Row(horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(LiteverTheme.spacing.small)) {
                 LiteverAssistChip(
                     onClick = {},
                     label = { Text("Assist Chip") }

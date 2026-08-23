@@ -20,7 +20,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.foundation.layout.ColumnScope
-import vn.io.litever.designsystem.theme.LiteverShapes
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 /**
@@ -34,7 +33,7 @@ fun LiteverDatePickerDialog(
     confirmButton: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     dismissButton: @Composable (() -> Unit)? = null,
-    shape: Shape = LiteverShapes.extraLarge,
+    shape: Shape = LiteverTheme.shapes.extraLarge,
     containerColor: Color = LiteverTheme.colors.surface,
     tonalElevation: Dp = DatePickerDefaults.TonalElevation,
     properties: DialogProperties = DialogProperties(usePlatformDefaultWidth = false),
@@ -84,7 +83,7 @@ fun LiteverDatePickerDialog(
     modifier: Modifier = Modifier,
     dismissButtonText: String? = null,
     onDismissClick: (() -> Unit)? = null,
-    shape: Shape = LiteverShapes.extraLarge,
+    shape: Shape = LiteverTheme.shapes.extraLarge,
     containerColor: Color = LiteverTheme.colors.surface,
     tonalElevation: Dp = DatePickerDefaults.TonalElevation,
     properties: DialogProperties = DialogProperties(usePlatformDefaultWidth = false),

@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import vn.io.litever.designsystem.R
-import vn.io.litever.designsystem.theme.LiteverShapes
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 @Composable
@@ -46,7 +45,7 @@ fun LiteverTimePickerDialog(
             LocalLayoutDirection provides layoutDirection
         ) {
             Surface(
-                shape = LiteverShapes.extraLarge,
+                shape = LiteverTheme.shapes.extraLarge,
                 tonalElevation = tonalElevation,
                 modifier = modifier
                     .width(IntrinsicSize.Max)
@@ -54,22 +53,22 @@ fun LiteverTimePickerDialog(
                 color = containerColor
             ) {
                 Column(
-                    modifier = Modifier.padding(24.dp),
+                    modifier = Modifier.padding(LiteverTheme.spacing.large),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(bottom = 20.dp),
+                            .padding(bottom = LiteverTheme.spacing.mediumLarge),
                         text = title,
                         style = MaterialTheme.typography.headlineSmall
                     )
                     content()
                     Row(
                         modifier = Modifier
-                            .padding(top = 20.dp)
+                            .padding(top = LiteverTheme.spacing.mediumLarge)
                             .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
+                        horizontalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.small, Alignment.End),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         dismissButton?.invoke()

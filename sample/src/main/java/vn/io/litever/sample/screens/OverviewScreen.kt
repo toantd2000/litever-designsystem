@@ -25,21 +25,21 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(16.dp)
+            .padding(LiteverTheme.spacing.medium)
     ) {
         // Hero Section
         LiteverCard(
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Column(modifier = Modifier.padding(20.dp)) {
+            Column(modifier = Modifier.padding(LiteverTheme.spacing.mediumLarge)) {
                 LiteverLogo(fontSize = 40.sp)
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                 Text(
                     text = strings.welcomeTitle,
                     style = LiteverTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold
                 )
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.extraSmall))
                 Text(
                     text = strings.welcomeDesc,
                     style = LiteverTheme.typography.bodyMedium,
@@ -47,30 +47,30 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(LiteverTheme.spacing.medium))
 
         Text(
             text = strings.featuresTitle,
             style = LiteverTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = LiteverTheme.colors.onBackground,
-            modifier = Modifier.padding(vertical = 8.dp)
+            modifier = Modifier.padding(vertical = LiteverTheme.spacing.small)
         )
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
+            horizontalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.smallMedium)
         ) {
             LiteverElevatedCard(
                 modifier = Modifier.weight(1f)
             ) {
-                Column(modifier = Modifier.padding(12.dp)) {
+                Column(modifier = Modifier.padding(LiteverTheme.spacing.smallMedium)) {
                     Icon(
                         Icons.Rounded.Palette,
                         contentDescription = null,
                         tint = LiteverTheme.colors.primary
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                     Text(
                         strings.colorsTitle,
                         style = LiteverTheme.typography.titleSmall,
@@ -87,13 +87,13 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
             LiteverOutlinedCard(
                 modifier = Modifier.weight(1f)
             ) {
-                Column(modifier = Modifier.padding(12.dp)) {
+                Column(modifier = Modifier.padding(LiteverTheme.spacing.smallMedium)) {
                     Icon(
                         Icons.Rounded.TextFormat,
                         contentDescription = null,
                         tint = LiteverTheme.colors.primary
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                     Text(
                         strings.typeTitle,
                         style = LiteverTheme.typography.titleSmall,
@@ -108,22 +108,22 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
             }
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(LiteverTheme.spacing.smallMedium))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
+            horizontalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.smallMedium)
         ) {
             LiteverCard(
                 modifier = Modifier.weight(1f)
             ) {
-                Column(modifier = Modifier.padding(12.dp)) {
+                Column(modifier = Modifier.padding(LiteverTheme.spacing.smallMedium)) {
                     Icon(
                         Icons.Rounded.SpaceBar,
                         contentDescription = null,
                         tint = LiteverTheme.colors.primary
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                     Text(
                         strings.spacingTitle,
                         style = LiteverTheme.typography.titleSmall,
@@ -144,13 +144,13 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
                     containerColor = LiteverTheme.colors.secondaryContainer.copy(alpha = 0.4f)
                 )
             ) {
-                Column(modifier = Modifier.padding(12.dp)) {
+                Column(modifier = Modifier.padding(LiteverTheme.spacing.smallMedium)) {
                     Icon(
                         Icons.Rounded.RoundedCorner,
                         contentDescription = null,
                         tint = LiteverTheme.colors.secondary
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                     Text(
                         strings.shapesTitle,
                         style = LiteverTheme.typography.titleSmall,
@@ -165,7 +165,7 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(LiteverTheme.spacing.medium))
 
         // Quick Tip
         LiteverCard(
@@ -173,15 +173,15 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
             border = BorderStroke(1.dp, LiteverTheme.colors.outlineVariant)
         ) {
             Row(
-                modifier = Modifier.padding(16.dp),
+                modifier = Modifier.padding(LiteverTheme.spacing.medium),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
                     Icons.Rounded.Lightbulb,
                     contentDescription = null,
-                    modifier = Modifier.size(32.dp)
+                    modifier = Modifier.size(LiteverTheme.spacing.extraLarge)
                 )
-                Spacer(modifier = Modifier.width(16.dp))
+                Spacer(modifier = Modifier.width(LiteverTheme.spacing.medium))
                 Column {
                     Text(
                         strings.tipTitle,
@@ -197,7 +197,7 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
             }
         }
 
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(LiteverTheme.spacing.tripleLarge + LiteverTheme.spacing.medium))
     }
 }
 

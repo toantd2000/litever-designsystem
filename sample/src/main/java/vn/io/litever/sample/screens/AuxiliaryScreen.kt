@@ -23,11 +23,11 @@ fun AuxiliaryScreen() {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(24.dp),
-        verticalArrangement = Arrangement.spacedBy(32.dp)
+            .padding(LiteverTheme.spacing.large),
+        verticalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.extraLarge)
     ) {
         // Chips Section
-        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.medium)) {
             Text(
                 text = strings.chipsTitle,
                 style = LiteverTheme.typography.titleLarge,
@@ -36,7 +36,7 @@ fun AuxiliaryScreen() {
             
             var filterSelected by remember { mutableStateOf(false) }
             
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.smallMedium)) {
                 LiteverAssistChip(
                     onClick = { },
                     label = { Text("Assist Action") },
@@ -52,14 +52,14 @@ fun AuxiliaryScreen() {
         }
         
         // Badges Section
-        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.medium)) {
             Text(
                 text = strings.badgesTitle,
                 style = LiteverTheme.typography.titleLarge,
                 color = LiteverTheme.colors.onBackground
             )
             
-            Row(horizontalArrangement = Arrangement.spacedBy(32.dp)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.extraLarge)) {
                 LiteverBadgedBox(
                     badge = { LiteverBadge() }
                 ) {
@@ -85,7 +85,7 @@ fun AuxiliaryScreen() {
         }
         
         // Dividers Section
-        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.medium)) {
             Text(
                 text = strings.dividersTitle,
                 style = LiteverTheme.typography.titleLarge,
@@ -93,23 +93,23 @@ fun AuxiliaryScreen() {
             )
             
             LiteverCard {
-                Column(modifier = Modifier.padding(16.dp)) {
+                Column(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
                     Text("Item 1")
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                     LiteverHorizontalDivider()
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                     Text("Item 2")
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                     LiteverHorizontalDivider()
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
                     Text("Item 3")
                 }
             }
             
             LiteverCard {
                 Row(
-                    modifier = Modifier.padding(16.dp).height(50.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    modifier = Modifier.padding(LiteverTheme.spacing.medium).height(50.dp),
+                    horizontalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.medium)
                 ) {
                     Text("Left")
                     LiteverVerticalDivider()

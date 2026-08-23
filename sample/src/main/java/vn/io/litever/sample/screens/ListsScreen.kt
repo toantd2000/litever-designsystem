@@ -32,7 +32,7 @@ fun ListsScreen(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(16.dp)
+            .padding(LiteverTheme.spacing.medium)
     ) {
         // Section: LiteverListItem
         Text(
@@ -40,7 +40,7 @@ fun ListsScreen(modifier: Modifier = Modifier) {
             style = LiteverTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = LiteverTheme.colors.secondary,
-            modifier = Modifier.padding(bottom = 8.dp)
+            modifier = Modifier.padding(bottom = LiteverTheme.spacing.small)
         )
 
         LiteverCard(modifier = Modifier.fillMaxWidth()) {
@@ -65,7 +65,7 @@ fun ListsScreen(modifier: Modifier = Modifier) {
                             modifier = Modifier
                                 .clip(LiteverTheme.shapes.extraSmall)
                                 .background(LiteverTheme.colors.error)
-                                .padding(horizontal = 6.dp, vertical = 2.dp)
+                                .padding(horizontal = 6.dp, vertical = LiteverTheme.spacing.tiny)
                         ) {
                             Text("NEW", color = LiteverTheme.colors.onError, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                         }
@@ -75,7 +75,7 @@ fun ListsScreen(modifier: Modifier = Modifier) {
             }
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(LiteverTheme.spacing.mediumLarge))
 
         // Section: LiteverSettingsGroup
         Text(
@@ -83,7 +83,7 @@ fun ListsScreen(modifier: Modifier = Modifier) {
             style = LiteverTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = LiteverTheme.colors.secondary,
-            modifier = Modifier.padding(bottom = 8.dp)
+            modifier = Modifier.padding(bottom = LiteverTheme.spacing.small)
         )
 
         LiteverSettingsGroup(title = strings.accountGroup) {
@@ -104,7 +104,7 @@ fun ListsScreen(modifier: Modifier = Modifier) {
             )
         }
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
 
         LiteverSettingsGroup(title = strings.generalGroup) {
             LiteverSettingsSwitchItem(
@@ -123,7 +123,7 @@ fun ListsScreen(modifier: Modifier = Modifier) {
             )
         }
 
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(LiteverTheme.spacing.tripleLarge + LiteverTheme.spacing.medium))
     }
 }
 

@@ -51,7 +51,7 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(16.dp)
+            .padding(LiteverTheme.spacing.medium)
     ) {
         // Section: Dialogs
         Text(
@@ -59,23 +59,23 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
             style = LiteverTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = LiteverTheme.colors.tertiary,
-            modifier = Modifier.padding(bottom = 8.dp)
+            modifier = Modifier.padding(bottom = LiteverTheme.spacing.small)
         )
 
         LiteverCard(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.padding(16.dp)) {
+            Column(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
                 LiteverButton(
                     onClick = { showAlertDialog = true },
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(LiteverIcons.Rounded.Warning, contentDescription = null)
-                        Spacer(modifier = Modifier.width(8.dp))
+                        Spacer(modifier = Modifier.width(LiteverTheme.spacing.small))
                         Text(strings.openAlertDialog)
                     }
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.smallMedium))
 
                 LiteverOutlinedButton(
                     onClick = { showTimePickerDialog = true },
@@ -83,12 +83,12 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(LiteverIcons.Rounded.AccessTime, contentDescription = null)
-                        Spacer(modifier = Modifier.width(8.dp))
+                        Spacer(modifier = Modifier.width(LiteverTheme.spacing.small))
                         Text(strings.openTimePickerDialog)
                     }
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.smallMedium))
 
                 LiteverOutlinedButton(
                     onClick = { showDatePickerDialog = true },
@@ -96,12 +96,12 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(LiteverIcons.Rounded.DateRange, contentDescription = null)
-                        Spacer(modifier = Modifier.width(8.dp))
+                        Spacer(modifier = Modifier.width(LiteverTheme.spacing.small))
                         Text("Open Date Picker Dialog")
                     }
                 }
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.small))
 
                 Text(
                     text = "${strings.selectedTime}: $displaySelectedTime",
@@ -109,7 +109,7 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 8.dp),
+                        .padding(top = LiteverTheme.spacing.small),
                     color = LiteverTheme.colors.onSurfaceVariant
                 )
 
@@ -119,16 +119,16 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 8.dp),
+                        .padding(top = LiteverTheme.spacing.small),
                     color = LiteverTheme.colors.onSurfaceVariant
                 )
             }
         }
         
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(LiteverTheme.spacing.medium))
 
         LiteverCard(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.padding(16.dp)) {
+            Column(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
                 LiteverButton(
                     onClick = { showBottomSheet = true },
                     modifier = Modifier.fillMaxWidth()
@@ -136,7 +136,7 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
                     Text(strings.openBottomSheet)
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.smallMedium))
 
                 LiteverOutlinedButton(
                     onClick = {
@@ -151,7 +151,7 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
             }
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(LiteverTheme.spacing.mediumLarge))
 
         // Section: Progress Indicators
         Text(
@@ -159,17 +159,17 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
             style = LiteverTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = LiteverTheme.colors.tertiary,
-            modifier = Modifier.padding(bottom = 8.dp)
+            modifier = Modifier.padding(bottom = LiteverTheme.spacing.small)
         )
 
         LiteverCard(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.padding(16.dp)) {
+            Column(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
                 // Indeterminate Progress
                 Text(
                     strings.indeterminateProgress,
                     style = LiteverTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(bottom = 8.dp)
+                    modifier = Modifier.padding(bottom = LiteverTheme.spacing.small)
                 )
 
                 Row(
@@ -177,24 +177,24 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     LiteverCircularProgressIndicator()
-                    Spacer(modifier = Modifier.width(16.dp))
+                    Spacer(modifier = Modifier.width(LiteverTheme.spacing.medium))
                     LiteverLinearProgressIndicator(modifier = Modifier.weight(1f))
                 }
 
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.mediumLarge))
 
                 // Determinate Progress (Animated loop)
                 Text(
                     strings.determinateProgress,
                     style = LiteverTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(bottom = 4.dp)
+                    modifier = Modifier.padding(bottom = LiteverTheme.spacing.extraSmall)
                 )
                 Text(
                     "${strings.runningProgress}: ${(progressVal * 100).toInt()}%",
                     style = LiteverTheme.typography.bodyMedium,
                     color = LiteverTheme.colors.onSurfaceVariant,
-                    modifier = Modifier.padding(bottom = 12.dp)
+                    modifier = Modifier.padding(bottom = LiteverTheme.spacing.smallMedium)
                 )
 
                 Row(
@@ -204,7 +204,7 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
                     LiteverCircularProgressIndicator(
                         progress = { progressVal }
                     )
-                    Spacer(modifier = Modifier.width(16.dp))
+                    Spacer(modifier = Modifier.width(LiteverTheme.spacing.medium))
                     LiteverLinearProgressIndicator(
                         progress = { progressVal },
                         modifier = Modifier.weight(1f)
@@ -213,7 +213,7 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
             }
         }
 
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(LiteverTheme.spacing.tripleLarge + LiteverTheme.spacing.medium))
     }
 
     // Dialog Rendering
@@ -274,19 +274,19 @@ fun DialogsScreen(modifier: Modifier = Modifier) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(24.dp),
+                    .padding(LiteverTheme.spacing.large),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
                     text = strings.bottomSheetTitle,
                     style = LiteverTheme.typography.titleLarge
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.medium))
                 Text(
                     text = "This is the content of the bottom sheet.",
                     style = LiteverTheme.typography.bodyLarge
                 )
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(LiteverTheme.spacing.extraLarge))
                 LiteverButton(onClick = { showBottomSheet = false }) {
                     Text("Close")
                 }

@@ -2,7 +2,9 @@ package vn.io.litever.sample
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -39,7 +41,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
@@ -70,6 +71,16 @@ import vn.io.litever.sample.utils.VietnameseStrings
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(
+                android.graphics.Color.TRANSPARENT,
+                android.graphics.Color.TRANSPARENT
+            ),
+            navigationBarStyle = SystemBarStyle.auto(
+                android.graphics.Color.TRANSPARENT,
+                android.graphics.Color.TRANSPARENT
+            )
+        )
         setContent {
             var darkTheme by remember { mutableStateOf(false) }
             var isEnglish by remember { mutableStateOf(true) } // English by default
@@ -116,7 +127,7 @@ fun MainShowcaseScreen(
     onLanguageToggle: () -> Unit
 ) {
     val strings = LocalAppStrings.current
-    val context = LocalContext.current
+    val spacing = LiteverTheme.spacing
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val snackbarHostState = remember { SnackbarHostState() }
@@ -140,7 +151,7 @@ fun MainShowcaseScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 24.dp, horizontal = 20.dp),
+                        .padding(vertical = spacing.large, horizontal = spacing.mediumLarge),
                     contentAlignment = Alignment.CenterStart
                 ) {
                     Column {
@@ -153,7 +164,7 @@ fun MainShowcaseScreen(
                     }
                 }
                 LiteverHorizontalDivider(color = LiteverTheme.colors.outlineVariant, thickness = 0.5.dp)
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(spacing.medium))
 
                 DemoScreen.entries.forEach { screen ->
                     LiteverNavigationDrawerItem(
@@ -174,7 +185,7 @@ fun MainShowcaseScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp)
+                        .padding(spacing.medium)
                 ) {
                     Text(
                         text = "Version: 1.0.5\nLitever Team © 2026",

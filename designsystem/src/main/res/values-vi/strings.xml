@@ -1,5 +1,7 @@
 <resources>
     <string name="action_back">Quay lại</string>
+    <string name="action_close">Đóng</string>
+    <string name="action_menu">Menu</string>
     <string name="action_ok">OK</string>
     <string name="action_cancel">Hủy</string>
     <string name="select_time">Chọn thời gian</string>

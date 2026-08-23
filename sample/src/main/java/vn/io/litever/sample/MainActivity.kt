@@ -1,16 +1,41 @@
 package vn.io.litever.sample
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import vn.io.litever.designsystem.theme.LiteverIcons
-import androidx.compose.material.icons.rounded.*
-import androidx.compose.material.icons.automirrored.rounded.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.List
+import androidx.compose.material.icons.automirrored.rounded.Message
+import androidx.compose.material.icons.rounded.DarkMode
+import androidx.compose.material.icons.rounded.Edit
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.LightMode
+import androidx.compose.material.icons.rounded.Palette
+import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.Translate
+import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
+import androidx.compose.material3.rememberDrawerState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -18,11 +43,29 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
-import vn.io.litever.designsystem.components.*
-import vn.io.litever.designsystem.theme.LiteverTheme
-import vn.io.litever.sample.screens.*
-import vn.io.litever.sample.utils.*
+import vn.io.litever.designsystem.components.LiteverDrawerSheet
+import vn.io.litever.designsystem.components.LiteverFloatingActionButton
 import vn.io.litever.designsystem.components.LiteverHorizontalDivider
+import vn.io.litever.designsystem.components.LiteverIconButton
+import vn.io.litever.designsystem.components.LiteverLogo
+import vn.io.litever.designsystem.components.LiteverNavigationDrawer
+import vn.io.litever.designsystem.components.LiteverNavigationDrawerItem
+import vn.io.litever.designsystem.components.LiteverNavigationIconType
+import vn.io.litever.designsystem.components.LiteverScaffold
+import vn.io.litever.designsystem.components.LiteverSnackbarHost
+import vn.io.litever.designsystem.components.LiteverTopAppBar
+import vn.io.litever.designsystem.theme.LiteverIcons
+import vn.io.litever.designsystem.theme.LiteverTheme
+import vn.io.litever.sample.screens.AuxiliaryScreen
+import vn.io.litever.sample.screens.DialogsScreen
+import vn.io.litever.sample.screens.InputsScreen
+import vn.io.litever.sample.screens.ListsScreen
+import vn.io.litever.sample.screens.OverviewScreen
+import vn.io.litever.sample.screens.TokensScreen
+import vn.io.litever.sample.utils.AppStrings
+import vn.io.litever.sample.utils.EnglishStrings
+import vn.io.litever.sample.utils.LocalAppStrings
+import vn.io.litever.sample.utils.VietnameseStrings
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +101,7 @@ class MainActivity : ComponentActivity() {
 enum class DemoScreen(val getTitle: (AppStrings) -> String, val icon: androidx.compose.ui.graphics.vector.ImageVector) {
     OVERVIEW({ it.overview }, LiteverIcons.Rounded.Home),
     INPUTS({ it.inputs }, LiteverIcons.Rounded.Edit),
-    LISTS({ it.lists }, LiteverIcons.Rounded.List),
+    LISTS({ it.lists }, Icons.AutoMirrored.Rounded.List),
     DIALOGS({ it.dialogs }, LiteverIcons.Rounded.Info),
     TOKENS({ it.tokens }, LiteverIcons.Rounded.Palette),
     AUXILIARY({ it.auxiliary }, LiteverIcons.Rounded.Star)
@@ -125,7 +168,7 @@ fun MainShowcaseScreen(
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
-                HorizontalDivider(color = LiteverTheme.colors.outlineVariant, thickness = 0.5.dp)
+                LiteverHorizontalDivider(color = LiteverTheme.colors.outlineVariant, thickness = 0.5.dp)
 
                 // Quick details at the bottom of the drawer
                 Box(
@@ -146,22 +189,16 @@ fun MainShowcaseScreen(
             topBar = {
                 LiteverTopAppBar(
                     title = currentScreen.getTitle(strings),
-                    navigationIcon = {
-                        IconButton(onClick = { scope.launch { drawerState.open() } }) {
-                            Icon(
-                                imageVector = LiteverIcons.Rounded.Menu,
-                                contentDescription = "Open Drawer"
-                            )
-                        }
-                    },
+                    navigationIconType = LiteverNavigationIconType.Menu,
+                    onNavigationClick = { scope.launch { drawerState.open() } },
                     actions = {
-                        IconButton(onClick = onLanguageToggle) {
+                        LiteverIconButton(onClick = onLanguageToggle) {
                             Icon(
                                 imageVector = LiteverIcons.Rounded.Translate,
                                 contentDescription = "Switch Language"
                             )
                         }
-                        IconButton(onClick = onThemeToggle) {
+                        LiteverIconButton(onClick = onThemeToggle) {
                             Icon(
                                 imageVector = if (darkTheme) LiteverIcons.Rounded.LightMode else LiteverIcons.Rounded.DarkMode,
                                 contentDescription = "Toggle Theme"
@@ -181,7 +218,7 @@ fun MainShowcaseScreen(
                         }
                     }
                 ) {
-                    Icon(LiteverIcons.Rounded.Message, contentDescription = "Quick Message")
+                    Icon(Icons.AutoMirrored.Rounded.Message, contentDescription = "Quick Message")
                 }
             }
         ) { paddingValues ->

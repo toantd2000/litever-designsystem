@@ -86,7 +86,12 @@ class LiteverComponentDetector : Detector(), Detector.UastScanner {
             "LinearProgressIndicator" to "LiteverLinearProgressIndicator",
             "Scaffold" to "LiteverScaffold",
             "SingleChoiceSegmentedButtonRow" to "LiteverSingleChoiceSegmentedButtonRow",
-            "Switch" to "LiteverSwitch"
+            "SegmentedButton" to "LiteverSegmentedButton",
+            "Switch" to "LiteverSwitch",
+            "BottomAppBar" to "LiteverBottomBar",
+            "NavigationBar" to "LiteverBottomBar",
+            "OutlinedTextField" to "LiteverOutlinedTextField",
+            "TimePickerDialog" to "LiteverTimePickerDialog"
         )
 
         val ISSUE = Issue.create(

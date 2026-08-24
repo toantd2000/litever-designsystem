@@ -31,6 +31,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import vn.io.litever.designsystem.components.LiteverActionButtonBar
+import vn.io.litever.designsystem.components.LiteverBottomBar
 import vn.io.litever.designsystem.components.LiteverButton
 import vn.io.litever.designsystem.components.LiteverCard
 import vn.io.litever.designsystem.components.LiteverCheckbox
@@ -354,6 +356,46 @@ fun InputsScreen(modifier: Modifier = Modifier) {
                             )
                             Text(option, modifier = Modifier.padding(start = spacing.small))
                         }
+                    }
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(spacing.mediumLarge))
+
+        // Section: Bottom Bars
+        Text(
+            text = "Bottom Bars",
+            style = LiteverTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = LiteverTheme.colors.primary,
+            modifier = Modifier.padding(bottom = spacing.small)
+        )
+
+        Column(verticalArrangement = Arrangement.spacedBy(spacing.medium)) {
+            Text("Action Button Bar", style = LiteverTheme.typography.labelMedium)
+            LiteverActionButtonBar(
+                primaryText = "Save Changes",
+                onPrimaryClick = {},
+                secondaryText = "Cancel",
+                onSecondaryClick = {}
+            )
+
+            Text("Generic Bottom Bar with Row", style = LiteverTheme.typography.labelMedium)
+            LiteverBottomBar {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    LiteverIconButton(onClick = {}) {
+                        Icon(LiteverIcons.Rounded.Home, contentDescription = null)
+                    }
+                    LiteverButton(onClick = {}, modifier = Modifier.weight(1f).padding(horizontal = spacing.medium)) {
+                        Text("Center Action")
+                    }
+                    LiteverIconButton(onClick = {}) {
+                        Icon(LiteverIcons.Rounded.Settings, contentDescription = null)
                     }
                 }
             }

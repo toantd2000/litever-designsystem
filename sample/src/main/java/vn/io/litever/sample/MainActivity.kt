@@ -44,6 +44,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
+import vn.io.litever.designsystem.components.LiteverActionButtonBar
 import vn.io.litever.designsystem.components.LiteverDrawerSheet
 import vn.io.litever.designsystem.components.LiteverFloatingActionButton
 import vn.io.litever.designsystem.components.LiteverHorizontalDivider
@@ -76,7 +77,7 @@ class MainActivity : ComponentActivity() {
                 android.graphics.Color.TRANSPARENT,
                 android.graphics.Color.TRANSPARENT
             ),
-            navigationBarStyle = SystemBarStyle.auto(
+            navigationBarStyle = SystemBarStyle.light(
                 android.graphics.Color.TRANSPARENT,
                 android.graphics.Color.TRANSPARENT
             )
@@ -217,6 +218,24 @@ fun MainShowcaseScreen(
                         }
                     }
                 )
+            },
+            bottomBar = {
+                if (currentScreen == DemoScreen.INPUTS) {
+                    LiteverActionButtonBar(
+                        primaryText = strings.alertConfirm,
+                        onPrimaryClick = {
+                            scope.launch {
+                                snackbarHostState.showSnackbar(strings.alertConfirm + " successful!")
+                            }
+                        },
+                        secondaryText = strings.alertDismiss,
+                        onSecondaryClick = {
+                            scope.launch {
+                                snackbarHostState.showSnackbar(strings.alertDismiss + " clicked")
+                            }
+                        }
+                    )
+                }
             },
             snackbarHost = {
                 LiteverSnackbarHost(hostState = snackbarHostState)

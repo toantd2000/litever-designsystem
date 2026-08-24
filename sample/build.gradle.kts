@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "vn.io.litever.sample"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "vn.io.litever.sample"
@@ -21,8 +21,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {

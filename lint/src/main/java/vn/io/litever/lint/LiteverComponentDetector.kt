@@ -88,8 +88,7 @@ class LiteverComponentDetector : Detector(), Detector.UastScanner {
             "SingleChoiceSegmentedButtonRow" to "LiteverSingleChoiceSegmentedButtonRow",
             "SegmentedButton" to "LiteverSegmentedButton",
             "Switch" to "LiteverSwitch",
-            "BottomAppBar" to "LiteverBottomBar",
-            "NavigationBar" to "LiteverBottomBar",
+
             "OutlinedTextField" to "LiteverOutlinedTextField",
             "TimePickerDialog" to "LiteverTimePickerDialog"
         )

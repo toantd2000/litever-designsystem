@@ -1,8 +1,6 @@
 package vn.io.litever.designsystem.theme
 
 import android.app.Activity
-import android.app.UiModeManager
-import android.content.Context
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -15,12 +13,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Shapes
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
@@ -34,6 +31,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 
+/**
+ * Accessor object for Litever design tokens within composition.
+ */
 object LiteverTheme {
     val colors: LiteverColors
         @Composable
@@ -50,227 +50,101 @@ object LiteverTheme {
         @ReadOnlyComposable
         get() = LocalLiteverSpacing.current
 
-    val shapes: androidx.compose.material3.Shapes
+    val shapes: Shapes
         @Composable
         @ReadOnlyComposable
-        get() = LiteverShapes
+        get() = MaterialTheme.shapes
 }
 
+/**
+ * Main theme composable for Litever applications.
+ *
+ * Supports dynamic [ColorScheme] injection from consumer applications (e.g., FinLog, ReMind),
+ * falling back to default Litever color schemes when none is provided.
+ *
+ * Synchronizes Material 3 [MaterialTheme] and [LocalLiteverColors] composition locals.
+ *
+ * @param colorScheme Optional Material 3 [ColorScheme] provided by consumer apps.
+ * @param colors Optional custom [LiteverColors] container.
+ * @param typography Typography specifications, defaulting to [defaultLiteverTypography].
+ * @param spacing Spacing scale tokens, defaulting to [LiteverSpacing].
+ * @param shapes Corner shape definitions, defaulting to [LiteverShapes].
+ * @param darkTheme Whether dark theme should be applied.
+ * @param dynamicColor Whether dynamic system coloring (Android 12+) should be used when available.
+ * @param content Composable child hierarchy.
+ */
 @Composable
 fun LiteverTheme(
+    colorScheme: ColorScheme? = null,
     colors: LiteverColors? = null,
     typography: LiteverTypography = defaultLiteverTypography,
     spacing: LiteverSpacing = LiteverSpacing(),
+    shapes: Shapes = LiteverShapes,
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val context = LocalContext.current
-    val uiModeManager = context.getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
 
-    // Detect contrast level
-    val contrast = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-        uiModeManager.contrast
-    } else {
-        0f
-    }
-
-    // Choose which color system to use
-    val targetColors = when {
-        colors != null -> colors
+    // 1. Determine effective ColorScheme
+    val effectiveColorScheme: ColorScheme = when {
+        colorScheme != null -> colorScheme
+        colors != null -> colors.asMaterial3()
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val dynamicColorScheme = if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-            dynamicColorScheme.asLiteverColors(darkTheme)
+            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
-        else -> {
-            if (darkTheme) {
-                when {
-                    contrast >= 1.0f -> liteverDarkHighContrastColors
-                    contrast >= 0.5f -> liteverDarkMediumContrastColors
-                    else -> liteverDarkColors
-                }
-            } else {
-                when {
-                    contrast >= 1.0f -> liteverLightHighContrastColors
-                    contrast >= 0.5f -> liteverLightMediumContrastColors
-                    else -> liteverLightColors
-                }
-            }
-        }
+        darkTheme -> defaultLiteverDarkColorScheme
+        else -> defaultLiteverLightColorScheme
     }
 
-    // Also update MaterialTheme so standard M3 components look right
-    val materialColorScheme = targetColors.asMaterial3()
+    // 2. Determine effective LiteverColors
+    val effectiveLiteverColors: LiteverColors = when {
+        colors != null -> colors
+        else -> effectiveColorScheme.asLiteverColors(isLight = !darkTheme)
+    }
 
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
-            val window = (view.context as Activity).window
-            window.navigationBarColor = android.graphics.Color.TRANSPARENT
-            window.statusBarColor = android.graphics.Color.TRANSPARENT
-            
-            val insetsController = WindowCompat.getInsetsController(window, view)
-            insetsController.isAppearanceLightStatusBars = !darkTheme
-            insetsController.isAppearanceLightNavigationBars = !darkTheme
+            val window = (view.context as? Activity)?.window
+            if (window != null) {
+                window.navigationBarColor = android.graphics.Color.TRANSPARENT
+                window.statusBarColor = android.graphics.Color.TRANSPARENT
+
+                val insetsController = WindowCompat.getInsetsController(window, view)
+                insetsController.isAppearanceLightStatusBars = !darkTheme
+                insetsController.isAppearanceLightNavigationBars = !darkTheme
+            }
         }
     }
 
     CompositionLocalProvider(
-        LocalLiteverColors provides targetColors,
+        LocalLiteverColors provides effectiveLiteverColors,
         LocalLiteverTypography provides typography,
         LocalLiteverSpacing provides spacing
     ) {
         MaterialTheme(
-            colorScheme = materialColorScheme,
+            colorScheme = effectiveColorScheme,
             typography = typography.asMaterial3(),
-            shapes = LiteverShapes,
+            shapes = shapes,
             content = content
         )
     }
 }
-
-// Helpers to convert between systems
-private fun LiteverColors.asMaterial3(): ColorScheme = if (isLight) {
-    lightColorScheme(
-        primary = primary,
-        onPrimary = onPrimary,
-        primaryContainer = primaryContainer,
-        onPrimaryContainer = onPrimaryContainer,
-        inversePrimary = inversePrimary,
-        secondary = secondary,
-        onSecondary = onSecondary,
-        secondaryContainer = secondaryContainer,
-        onSecondaryContainer = onSecondaryContainer,
-        tertiary = tertiary,
-        onTertiary = onTertiary,
-        tertiaryContainer = tertiaryContainer,
-        onTertiaryContainer = onTertiaryContainer,
-        background = background,
-        onBackground = onBackground,
-        surface = surface,
-        onSurface = onSurface,
-        surfaceVariant = surfaceVariant,
-        onSurfaceVariant = onSurfaceVariant,
-        surfaceTint = surfaceTint,
-        inverseSurface = inverseSurface,
-        inverseOnSurface = inverseOnSurface,
-        error = error,
-        onError = onError,
-        errorContainer = errorContainer,
-        onErrorContainer = onErrorContainer,
-        outline = outline,
-        outlineVariant = outlineVariant,
-        scrim = scrim,
-        surfaceBright = surfaceBright,
-        surfaceDim = surfaceDim,
-        surfaceContainerLowest = surfaceContainerLowest,
-        surfaceContainerLow = surfaceContainerLow,
-        surfaceContainer = surfaceContainer,
-        surfaceContainerHigh = surfaceContainerHigh,
-        surfaceContainerHighest = surfaceContainerHighest
-    )
-} else {
-    darkColorScheme(
-        primary = primary,
-        onPrimary = onPrimary,
-        primaryContainer = primaryContainer,
-        onPrimaryContainer = onPrimaryContainer,
-        inversePrimary = inversePrimary,
-        secondary = secondary,
-        onSecondary = onSecondary,
-        secondaryContainer = secondaryContainer,
-        onSecondaryContainer = onSecondaryContainer,
-        tertiary = tertiary,
-        onTertiary = onTertiary,
-        tertiaryContainer = tertiaryContainer,
-        onTertiaryContainer = onTertiaryContainer,
-        background = background,
-        onBackground = onBackground,
-        surface = surface,
-        onSurface = onSurface,
-        surfaceVariant = surfaceVariant,
-        onSurfaceVariant = onSurfaceVariant,
-        surfaceTint = surfaceTint,
-        inverseSurface = inverseSurface,
-        inverseOnSurface = inverseOnSurface,
-        error = error,
-        onError = onError,
-        errorContainer = errorContainer,
-        onErrorContainer = onErrorContainer,
-        outline = outline,
-        outlineVariant = outlineVariant,
-        scrim = scrim,
-        surfaceBright = surfaceBright,
-        surfaceDim = surfaceDim,
-        surfaceContainerLowest = surfaceContainerLowest,
-        surfaceContainerLow = surfaceContainerLow,
-        surfaceContainer = surfaceContainer,
-        surfaceContainerHigh = surfaceContainerHigh,
-        surfaceContainerHighest = surfaceContainerHighest
-    )
-}
-
-private fun ColorScheme.asLiteverColors(isLight: Boolean): LiteverColors = LiteverColors(
-    primary = primary,
-    onPrimary = onPrimary,
-    primaryContainer = primaryContainer,
-    onPrimaryContainer = onPrimaryContainer,
-    inversePrimary = inversePrimary,
-    secondary = secondary,
-    onSecondary = onSecondary,
-    secondaryContainer = secondaryContainer,
-    onSecondaryContainer = onSecondaryContainer,
-    tertiary = tertiary,
-    onTertiary = onTertiary,
-    tertiaryContainer = tertiaryContainer,
-    onTertiaryContainer = onTertiaryContainer,
-    background = background,
-    onBackground = onBackground,
-    surface = surface,
-    onSurface = onSurface,
-    surfaceVariant = surfaceVariant,
-    onSurfaceVariant = onSurfaceVariant,
-    surfaceTint = surfaceTint,
-    inverseSurface = inverseSurface,
-    inverseOnSurface = inverseOnSurface,
-    error = error,
-    onError = onError,
-    errorContainer = errorContainer,
-    onErrorContainer = onErrorContainer,
-    warning = if (isLight) warningLight else warningDark,
-    onWarning = if (isLight) onWarningLight else onWarningDark,
-    warningContainer = if (isLight) warningContainerLight else warningContainerDark,
-    onWarningContainer = if (isLight) onWarningContainerLight else onWarningContainerDark,
-    success = if (isLight) successLight else successDark,
-    onSuccess = if (isLight) onSuccessLight else onSuccessDark,
-    successContainer = if (isLight) successContainerLight else successContainerDark,
-    onSuccessContainer = if (isLight) onSuccessContainerLight else onSuccessContainerDark,
-    outline = outline,
-    outlineVariant = outlineVariant,
-    scrim = scrim,
-    surfaceBright = surfaceBright,
-    surfaceDim = surfaceDim,
-    surfaceContainerLowest = surfaceContainerLowest,
-    surfaceContainerLow = surfaceContainerLow,
-    surfaceContainer = surfaceContainer,
-    surfaceContainerHigh = surfaceContainerHigh,
-    surfaceContainerHighest = surfaceContainerHighest,
-    isLight = isLight
-)
 
 @Composable
 fun ColorItem(name: String, color: Color, onColor: Color) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .height(48.dp),
+            .height(LiteverTheme.spacing.doubleLarge),
         color = color,
         contentColor = onColor
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = LiteverTheme.spacing.medium),
             contentAlignment = Alignment.CenterStart
         ) {
             Text(text = name, style = MaterialTheme.typography.bodySmall)

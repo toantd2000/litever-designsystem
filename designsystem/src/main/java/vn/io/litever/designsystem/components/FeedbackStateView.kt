@@ -1,0 +1,304 @@
+package vn.io.litever.designsystem.components
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.ErrorOutline
+import androidx.compose.material.icons.rounded.Inbox
+import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import vn.io.litever.designsystem.theme.LiteverSpacing
+import vn.io.litever.designsystem.theme.LiteverTheme
+
+/**
+ * Type of feedback to communicate through [FeedbackStateView].
+ */
+enum class FeedbackStateType {
+    EMPTY,
+    SUCCESS,
+    ERROR,
+    INFO
+}
+
+/**
+ * Universal feedback and status screen/view for Litever applications.
+ * Unifies empty states, success confirmations, error alerts, and informational prompts.
+ *
+ * @param title The primary headline describing the condition.
+ * @param modifier The modifier to apply to this composable.
+ * @param description Optional supporting text with explanation or instructions.
+ * @param type The semantic feedback type ([FeedbackStateType.EMPTY], [FeedbackStateType.SUCCESS], [FeedbackStateType.ERROR], [FeedbackStateType.INFO]).
+ * @param icon Optional vector icon override (defaults based on [type]).
+ * @param iconSize Size of the icon.
+ * @param badgeColor Color for the optional circular badge background.
+ * @param iconTint Color for the icon tint.
+ * @param illustration Custom illustration composable slot (takes precedence over [icon]).
+ * @param action Optional action button slot (e.g. M3 Button).
+ */
+@Composable
+fun FeedbackStateView(
+    title: String,
+    modifier: Modifier = Modifier,
+    description: String? = null,
+    type: FeedbackStateType = FeedbackStateType.EMPTY,
+    icon: ImageVector? = null,
+    iconSize: Dp = if (type == FeedbackStateType.EMPTY) LiteverSpacing().tripleLarge else (LiteverSpacing().extraLarge + LiteverSpacing().extraSmall),
+    badgeColor: Color? = when (type) {
+        FeedbackStateType.SUCCESS -> LiteverTheme.colors.successContainer
+        FeedbackStateType.ERROR -> MaterialTheme.colorScheme.errorContainer
+        FeedbackStateType.INFO -> MaterialTheme.colorScheme.secondaryContainer
+        FeedbackStateType.EMPTY -> null
+    },
+    iconTint: Color = when (type) {
+        FeedbackStateType.SUCCESS -> LiteverTheme.colors.onSuccessContainer
+        FeedbackStateType.ERROR -> MaterialTheme.colorScheme.onErrorContainer
+        FeedbackStateType.INFO -> MaterialTheme.colorScheme.onSecondaryContainer
+        FeedbackStateType.EMPTY -> MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
+    },
+    illustration: @Composable (() -> Unit)? = null,
+    action: @Composable (() -> Unit)? = null,
+) {
+    val spacing = LiteverTheme.spacing
+
+    val defaultIcon = when (type) {
+        FeedbackStateType.EMPTY -> Icons.Rounded.Inbox
+        FeedbackStateType.SUCCESS -> Icons.Rounded.Check
+        FeedbackStateType.ERROR -> Icons.Rounded.ErrorOutline
+        FeedbackStateType.INFO -> Icons.Rounded.Info
+    }
+    val effectiveIcon = icon ?: defaultIcon
+
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(spacing.large),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        when {
+            illustration != null -> {
+                illustration()
+                Spacer(modifier = Modifier.height(spacing.mediumLarge))
+            }
+            badgeColor != null -> {
+                Box(
+                    modifier = Modifier
+                        .size(spacing.tripleLarge + spacing.small)
+                        .clip(CircleShape)
+                        .background(badgeColor),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = effectiveIcon,
+                        contentDescription = null,
+                        modifier = Modifier.size(iconSize),
+                        tint = iconTint
+                    )
+                }
+                Spacer(modifier = Modifier.height(spacing.large))
+            }
+            else -> {
+                Icon(
+                    imageVector = effectiveIcon,
+                    contentDescription = null,
+                    modifier = Modifier.size(iconSize),
+                    tint = iconTint
+                )
+                Spacer(modifier = Modifier.height(spacing.mediumLarge))
+            }
+        }
+
+        Text(
+            text = title,
+            style = LiteverTheme.typography.titleMedium,
+            fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onSurface,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.widthIn(max = 360.dp)
+        )
+
+        if (!description.isNullOrBlank()) {
+            Spacer(modifier = Modifier.height(spacing.small))
+            Text(
+                text = description,
+                style = LiteverTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.widthIn(max = 360.dp)
+            )
+        }
+
+        if (action != null) {
+            Spacer(modifier = Modifier.height(spacing.large))
+            action()
+        }
+    }
+}
+
+// ==========================================
+// PREVIEWS
+// ==========================================
+
+@Preview(showBackground = true, name = "1. Empty State - Light")
+@Composable
+fun FeedbackStateViewEmptyLightPreview() {
+    LiteverTheme(darkTheme = false) {
+        Surface {
+            FeedbackStateView(
+                title = "No Transactions Found",
+                description = "You haven't recorded any expenses or income for this period. Start by adding one below.",
+                type = FeedbackStateType.EMPTY,
+                action = {
+                    Button(
+                        onClick = {},
+                        shape = LiteVerButtonDefaults.shape,
+                        colors = LiteVerButtonDefaults.primaryColors()
+                    ) {
+                        Text("Add Transaction")
+                    }
+                }
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "2. Success State - Light")
+@Composable
+fun FeedbackStateViewSuccessLightPreview() {
+    LiteverTheme(darkTheme = false) {
+        Surface {
+            FeedbackStateView(
+                title = "Payment Successful!",
+                description = "Your transaction #TX-98421 has been recorded and a receipt was sent to your email.",
+                type = FeedbackStateType.SUCCESS,
+                action = {
+                    Button(
+                        onClick = {},
+                        shape = LiteVerButtonDefaults.shape,
+                        colors = LiteVerButtonDefaults.successColors()
+                    ) {
+                        Text("Complete Flow")
+                    }
+                }
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "3. Error State - Light")
+@Composable
+fun FeedbackStateViewErrorLightPreview() {
+    LiteverTheme(darkTheme = false) {
+        Surface {
+            FeedbackStateView(
+                title = "Sync Failed",
+                description = "We couldn't connect to the server to update your budget. Please check your network and try again.",
+                type = FeedbackStateType.ERROR,
+                action = {
+                    Button(
+                        onClick = {},
+                        shape = LiteVerButtonDefaults.shape,
+                        colors = LiteVerButtonDefaults.destructiveColors()
+                    ) {
+                        Text("Retry Connection")
+                    }
+                }
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "4. Info State - Light")
+@Composable
+fun FeedbackStateViewInfoLightPreview() {
+    LiteverTheme(darkTheme = false) {
+        Surface {
+            FeedbackStateView(
+                title = "New Features Available",
+                description = "Update to the latest version to unlock multi-currency wallet support and automated analytics.",
+                type = FeedbackStateType.INFO,
+                action = {
+                    Button(
+                        onClick = {},
+                        shape = LiteVerButtonDefaults.shape,
+                        colors = LiteVerButtonDefaults.secondaryColors()
+                    ) {
+                        Text("Learn More")
+                    }
+                }
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "5. Success State - Dark Mode")
+@Composable
+fun FeedbackStateViewSuccessDarkPreview() {
+    LiteverTheme(darkTheme = true) {
+        Surface {
+            FeedbackStateView(
+                title = "Goal Achieved!",
+                description = "Congratulations! You've reached your monthly savings target in FinLog.",
+                type = FeedbackStateType.SUCCESS,
+                action = {
+                    Button(
+                        onClick = {},
+                        shape = LiteVerButtonDefaults.shape,
+                        colors = LiteVerButtonDefaults.successColors()
+                    ) {
+                        Text("View Summary")
+                    }
+                }
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "6. Error State - Dark Mode")
+@Composable
+fun FeedbackStateViewErrorDarkPreview() {
+    LiteverTheme(darkTheme = true) {
+        Surface {
+            FeedbackStateView(
+                title = "Unable to Load Data",
+                description = "Something went wrong while retrieving your reminders.",
+                type = FeedbackStateType.ERROR,
+                action = {
+                    Button(
+                        onClick = {},
+                        shape = LiteVerButtonDefaults.shape,
+                        colors = LiteVerButtonDefaults.destructiveColors()
+                    ) {
+                        Text("Try Again")
+                    }
+                }
+            )
+        }
+    }
+}
+

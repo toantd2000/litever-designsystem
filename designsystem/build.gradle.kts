@@ -45,9 +45,8 @@ dependencies {
 
     debugImplementation(libs.androidx.compose.ui.tooling)
     
-    lintPublish(project(":lint")) {
-        exclude(group = "org.jetbrains.kotlin")
-    }
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
 
 

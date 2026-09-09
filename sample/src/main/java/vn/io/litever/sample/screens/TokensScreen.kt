@@ -27,7 +27,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import vn.io.litever.designsystem.components.LiteverCard
+import androidx.compose.material3.Card
 import vn.io.litever.designsystem.theme.LiteverTheme
 import vn.io.litever.sample.utils.LocalAppStrings
 
@@ -49,7 +49,10 @@ fun TokensScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(bottom = LiteverTheme.spacing.small)
         )
 
-        LiteverCard(modifier = Modifier.fillMaxWidth()) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = LiteverTheme.shapes.medium
+        ) {
             Column(modifier = Modifier.padding(LiteverTheme.spacing.small)) {
                 DemoColorSwatch("Primary", LiteverTheme.colors.primary, LiteverTheme.colors.onPrimary)
                 DemoColorSwatch("Primary Container", LiteverTheme.colors.primaryContainer, LiteverTheme.colors.onPrimaryContainer)
@@ -75,7 +78,10 @@ fun TokensScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(bottom = LiteverTheme.spacing.small)
         )
 
-        LiteverCard(modifier = Modifier.fillMaxWidth()) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = LiteverTheme.shapes.medium
+        ) {
             Column(modifier = Modifier.padding(LiteverTheme.spacing.small)) {
                 DemoColorSwatch("Success", LiteverTheme.colors.success, LiteverTheme.colors.onSuccess)
                 DemoColorSwatch("Success Container", LiteverTheme.colors.successContainer, LiteverTheme.colors.onSuccessContainer)
@@ -95,7 +101,10 @@ fun TokensScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(bottom = LiteverTheme.spacing.small)
         )
 
-        LiteverCard(modifier = Modifier.fillMaxWidth()) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = LiteverTheme.shapes.medium
+        ) {
             Column(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
                 SpacingItemRow("extraSmall", "${LiteverTheme.spacing.extraSmall}", LiteverTheme.spacing.extraSmall)
                 SpacingItemRow("small", "${LiteverTheme.spacing.small}", LiteverTheme.spacing.small)
@@ -114,7 +123,10 @@ fun TokensScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(bottom = LiteverTheme.spacing.small)
         )
 
-        LiteverCard(modifier = Modifier.fillMaxWidth()) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = LiteverTheme.shapes.medium
+        ) {
             Column(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
                 ShapeItemRow("small", "4.dp", LiteverTheme.shapes.small)
                 ShapeItemRow("medium", "6.dp", LiteverTheme.shapes.medium)

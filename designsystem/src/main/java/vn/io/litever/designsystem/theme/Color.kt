@@ -1,5 +1,8 @@
 package vn.io.litever.designsystem.theme
 
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -45,78 +48,9 @@ val surfaceContainerLight = Color(0xFFEFEDF4)
 val surfaceContainerHighLight = Color(0xFFE9E7EF)
 val surfaceContainerHighestLight = Color(0xFFE3E1E9)
 
-val primaryLightMediumContrast = Color(0xFF243367)
-val onPrimaryLightMediumContrast = Color(0xFFFFFFFF)
-val primaryContainerLightMediumContrast = Color(0xFF5C6AA2)
-val onPrimaryContainerLightMediumContrast = Color(0xFFFFFFFF)
-val secondaryLightMediumContrast = Color(0xFF313548)
-val onSecondaryLightMediumContrast = Color(0xFFFFFFFF)
-val secondaryContainerLightMediumContrast = Color(0xFF686C81)
-val onSecondaryContainerLightMediumContrast = Color(0xFFFFFFFF)
-val tertiaryLightMediumContrast = Color(0xFF492C45)
-val onTertiaryLightMediumContrast = Color(0xFFFFFFFF)
-val tertiaryContainerLightMediumContrast = Color(0xFF85627E)
-val onTertiaryContainerLightMediumContrast = Color(0xFFFFFFFF)
-val errorLightMediumContrast = Color(0xFF740006)
-val onErrorLightMediumContrast = Color(0xFFFFFFFF)
-val errorContainerLightMediumContrast = Color(0xFFCF2C27)
-val onErrorContainerLightMediumContrast = Color(0xFFFFFFFF)
-val backgroundLightMediumContrast = Color(0xFFFAF8FF)
-val onBackgroundLightMediumContrast = Color(0xFF1A1B21)
-val surfaceLightMediumContrast = Color(0xFFFAF8FF)
-val onSurfaceLightMediumContrast = Color(0xFF101116)
-val surfaceVariantLightMediumContrast = Color(0xFFE2E1EC)
-val onSurfaceVariantLightMediumContrast = Color(0xFF34363E)
-val outlineLightMediumContrast = Color(0xFF51525B)
-val outlineVariantLightMediumContrast = Color(0xFF6C6C76)
-val scrimLightMediumContrast = Color(0xFF000000)
-val inverseSurfaceLightMediumContrast = Color(0xFF2F3036)
-val inverseOnSurfaceLightMediumContrast = Color(0xFFF1F0F7)
-val inversePrimaryLightMediumContrast = Color(0xFFB7C4FF)
-val surfaceDimLightMediumContrast = Color(0xFFC7C6CD)
-val surfaceBrightLightMediumContrast = Color(0xFFFAF8FF)
-val surfaceContainerLowestLightMediumContrast = Color(0xFFFFFFFF)
-val surfaceContainerLowLightMediumContrast = Color(0xFFF4F2FA)
-val surfaceContainerLightMediumContrast = Color(0xFFE9E7EF)
-val surfaceContainerHighLightMediumContrast = Color(0xFFDDDCE3)
-val surfaceContainerHighestLightMediumContrast = Color(0xFFD2D1D8)
-
-val primaryLightHighContrast = Color(0xFF19285C)
-val onPrimaryLightHighContrast = Color(0xFFFFFFFF)
-val primaryContainerLightHighContrast = Color(0xFF38467B)
-val onPrimaryContainerLightHighContrast = Color(0xFFFFFFFF)
-val secondaryLightHighContrast = Color(0xFF272B3D)
-val onSecondaryLightHighContrast = Color(0xFFFFFFFF)
-val secondaryContainerLightHighContrast = Color(0xFF44485C)
-val onSecondaryContainerLightHighContrast = Color(0xFFFFFFFF)
-val tertiaryLightHighContrast = Color(0xFF3E223B)
-val onTertiaryLightHighContrast = Color(0xFFFFFFFF)
-val tertiaryContainerLightHighContrast = Color(0xFF5E3F59)
-val onTertiaryContainerLightHighContrast = Color(0xFFFFFFFF)
-val errorLightHighContrast = Color(0xFF600004)
-val onErrorLightHighContrast = Color(0xFFFFFFFF)
-val errorContainerLightHighContrast = Color(0xFF98000A)
-val onErrorContainerLightHighContrast = Color(0xFFFFFFFF)
-val backgroundLightHighContrast = Color(0xFFFAF8FF)
-val onBackgroundLightHighContrast = Color(0xFF1A1B21)
-val surfaceLightHighContrast = Color(0xFFFAF8FF)
-val onSurfaceLightHighContrast = Color(0xFF000000)
-val surfaceVariantLightHighContrast = Color(0xFFE2E1EC)
-val onSurfaceVariantLightHighContrast = Color(0xFF000000)
-val outlineLightHighContrast = Color(0xFF2A2C34)
-val outlineVariantLightHighContrast = Color(0xFF484951)
-val scrimLightHighContrast = Color(0xFF000000)
-val inverseSurfaceLightHighContrast = Color(0xFF2F3036)
-val inverseOnSurfaceLightHighContrast = Color(0xFFFFFFFF)
-val inversePrimaryLightHighContrast = Color(0xFFB7C4FF)
-val surfaceDimLightHighContrast = Color(0xFFB9B8BF)
-val surfaceBrightLightHighContrast = Color(0xFFFAF8FF)
-val surfaceContainerLowestLightHighContrast = Color(0xFFFFFFFF)
-val surfaceContainerLowLightHighContrast = Color(0xFFF1F0F7)
-val surfaceContainerLightHighContrast = Color(0xFFE3E1E9)
-val surfaceContainerHighLightHighContrast = Color(0xFFD5D3DB)
-val surfaceContainerHighestLightHighContrast = Color(0xFFC7C6CD)
-
+// ==========================================
+// DARK THEME COLORS
+// ==========================================
 val primaryDark = Color(0xFFB7C4FF)
 val onPrimaryDark = Color(0xFF1E2D61)
 val primaryContainerDark = Color(0xFF354479)
@@ -153,80 +87,8 @@ val surfaceContainerDark = Color(0xFF1E1F25)
 val surfaceContainerHighDark = Color(0xFF292A2F)
 val surfaceContainerHighestDark = Color(0xFF34343A)
 
-val primaryDarkMediumContrast = Color(0xFFD4DBFF)
-val onPrimaryDarkMediumContrast = Color(0xFF112155)
-val primaryContainerDarkMediumContrast = Color(0xFF808EC8)
-val onPrimaryContainerDarkMediumContrast = Color(0xFF000000)
-val secondaryDarkMediumContrast = Color(0xFFD8DBF3)
-val onSecondaryDarkMediumContrast = Color(0xFF212536)
-val secondaryContainerDarkMediumContrast = Color(0xFF8C90A6)
-val onSecondaryContainerDarkMediumContrast = Color(0xFF000000)
-val tertiaryDarkMediumContrast = Color(0xFFFAD0F0)
-val onTertiaryDarkMediumContrast = Color(0xFF371C34)
-val tertiaryContainerDarkMediumContrast = Color(0xFFAB85A3)
-val onTertiaryContainerDarkMediumContrast = Color(0xFF000000)
-val errorDarkMediumContrast = Color(0xFFFFD2CC)
-val onErrorDarkMediumContrast = Color(0xFF540003)
-val errorContainerDarkMediumContrast = Color(0xFFFF5449)
-val onErrorContainerDarkMediumContrast = Color(0xFF000000)
-val backgroundDarkMediumContrast = Color(0xFF121318)
-val onBackgroundDarkMediumContrast = Color(0xFFE3E1E9)
-val surfaceDarkMediumContrast = Color(0xFF121318)
-val onSurfaceDarkMediumContrast = Color(0xFFFFFFFF)
-val surfaceVariantDarkMediumContrast = Color(0xFF45464F)
-val onSurfaceVariantDarkMediumContrast = Color(0xFFDCDBE6)
-val outlineDarkMediumContrast = Color(0xFFB1B1BB)
-val outlineVariantDarkMediumContrast = Color(0xFF8F8F99)
-val scrimDarkMediumContrast = Color(0xFF000000)
-val inverseSurfaceDarkMediumContrast = Color(0xFFE3E1E9)
-val inverseOnSurfaceDarkMediumContrast = Color(0xFF292A2F)
-val inversePrimaryDarkMediumContrast = Color(0xFF37457A)
-val surfaceDimDarkMediumContrast = Color(0xFF121318)
-val surfaceBrightDarkMediumContrast = Color(0xFF44444A)
-val surfaceContainerLowestDarkMediumContrast = Color(0xFF06070C)
-val surfaceContainerLowDarkMediumContrast = Color(0xFF1C1D23)
-val surfaceContainerDarkMediumContrast = Color(0xFF27272D)
-val surfaceContainerHighDarkMediumContrast = Color(0xFF323238)
-val surfaceContainerHighestDarkMediumContrast = Color(0xFF3D3D43)
-
-val primaryDarkHighContrast = Color(0xFFEEEFFF)
-val onPrimaryDarkHighContrast = Color(0xFF000000)
-val primaryContainerDarkHighContrast = Color(0xFFB2C0FD)
-val onPrimaryContainerDarkHighContrast = Color(0xFF00072B)
-val secondaryDarkHighContrast = Color(0xFFEEEFFF)
-val onSecondaryDarkHighContrast = Color(0xFF000000)
-val secondaryContainerDarkHighContrast = Color(0xFFBEC1D9)
-val onSecondaryContainerDarkHighContrast = Color(0xFF060A1B)
-val tertiaryDarkHighContrast = Color(0xFFFFEAF7)
-val onTertiaryDarkHighContrast = Color(0xFF000000)
-val tertiaryContainerDarkHighContrast = Color(0xFFDFB6D6)
-val onTertiaryContainerDarkHighContrast = Color(0xFF190318)
-val errorDarkHighContrast = Color(0xFFFFECE9)
-val onErrorDarkHighContrast = Color(0xFF000000)
-val errorContainerDarkHighContrast = Color(0xFFFFAEA4)
-val onErrorContainerDarkHighContrast = Color(0xFF220001)
-val backgroundDarkHighContrast = Color(0xFF121318)
-val onBackgroundDarkHighContrast = Color(0xFFE3E1E9)
-val surfaceDarkHighContrast = Color(0xFF121318)
-val onSurfaceDarkHighContrast = Color(0xFFFFFFFF)
-val surfaceVariantDarkHighContrast = Color(0xFF45464F)
-val onSurfaceVariantDarkHighContrast = Color(0xFFFFFFFF)
-val outlineDarkHighContrast = Color(0xFFF0EFFA)
-val outlineVariantDarkHighContrast = Color(0xFFC2C2CC)
-val scrimDarkHighContrast = Color(0xFF000000)
-val inverseSurfaceDarkHighContrast = Color(0xFFE3E1E9)
-val inverseOnSurfaceDarkHighContrast = Color(0xFF000000)
-val inversePrimaryDarkHighContrast = Color(0xFF37457A)
-val surfaceDimDarkHighContrast = Color(0xFF121318)
-val surfaceBrightDarkHighContrast = Color(0xFF4F5056)
-val surfaceContainerLowestDarkHighContrast = Color(0xFF000000)
-val surfaceContainerLowDarkHighContrast = Color(0xFF1E1F25)
-val surfaceContainerDarkHighContrast = Color(0xFF2F3036)
-val surfaceContainerHighDarkHighContrast = Color(0xFF3A3B41)
-val surfaceContainerHighestDarkHighContrast = Color(0xFF46464C)
-
 // ==========================================
-// SUCCESS & WARNING COLORS
+// SUCCESS & WARNING SEMANTIC COLORS
 // ==========================================
 val successLight = Color(0xFF4E6629)
 val onSuccessLight = Color(0xFFFFFFFF)
@@ -237,24 +99,6 @@ val onWarningLight = Color(0xFFFFFFFF)
 val warningContainerLight = Color(0xFFFFDCC5)
 val onWarningContainerLight = Color(0xFF6D390B)
 
-val successLightMediumContrast = Color(0xFF273C03)
-val onSuccessLightMediumContrast = Color(0xFFFFFFFF)
-val successContainerLightMediumContrast = Color(0xFF5C7537)
-val onSuccessContainerLightMediumContrast = Color(0xFFFFFFFF)
-val warningLightMediumContrast = Color(0xFF582A00)
-val onWarningLightMediumContrast = Color(0xFFFFFFFF)
-val warningContainerLightMediumContrast = Color(0xFF9B5E2F)
-val onWarningContainerLightMediumContrast = Color(0xFFFFFFFF)
-
-val successLightHighContrast = Color(0xFF1E3200)
-val onSuccessLightHighContrast = Color(0xFFFFFFFF)
-val successContainerLightHighContrast = Color(0xFF395016)
-val onSuccessContainerLightHighContrast = Color(0xFFFFFFFF)
-val warningLightHighContrast = Color(0xFF492100)
-val onWarningLightHighContrast = Color(0xFFFFFFFF)
-val warningContainerLightHighContrast = Color(0xFF703B0E)
-val onWarningContainerLightHighContrast = Color(0xFFFFFFFF)
-
 val successDark = Color(0xFFB4D088)
 val onSuccessDark = Color(0xFF213600)
 val successContainerDark = Color(0xFF374D14)
@@ -264,24 +108,90 @@ val onWarningDark = Color(0xFF4F2500)
 val warningContainerDark = Color(0xFF6D390B)
 val onWarningContainerDark = Color(0xFFFFDCC5)
 
-val successDarkMediumContrast = Color(0xFFC9E69C)
-val onSuccessDarkMediumContrast = Color(0xFF192A00)
-val successContainerDarkMediumContrast = Color(0xFF7F9957)
-val onSuccessContainerDarkMediumContrast = Color(0xFF000000)
-val warningDarkMediumContrast = Color(0xFFFFD4B8)
-val onWarningDarkMediumContrast = Color(0xFF3F1C00)
-val warningContainerDarkMediumContrast = Color(0xFFC5814E)
-val onWarningContainerDarkMediumContrast = Color(0xFF000000)
+// ==========================================
+// DEFAULT COLOR SCHEMES
+// ==========================================
+val defaultLiteverLightColorScheme: ColorScheme = lightColorScheme(
+    primary = primaryLight,
+    onPrimary = onPrimaryLight,
+    primaryContainer = primaryContainerLight,
+    onPrimaryContainer = onPrimaryContainerLight,
+    inversePrimary = inversePrimaryLight,
+    secondary = secondaryLight,
+    onSecondary = onSecondaryLight,
+    secondaryContainer = secondaryContainerLight,
+    onSecondaryContainer = onSecondaryContainerLight,
+    tertiary = tertiaryLight,
+    onTertiary = onTertiaryLight,
+    tertiaryContainer = tertiaryContainerLight,
+    onTertiaryContainer = onTertiaryContainerLight,
+    error = errorLight,
+    onError = onErrorLight,
+    errorContainer = errorContainerLight,
+    onErrorContainer = onErrorContainerLight,
+    background = backgroundLight,
+    onBackground = onBackgroundLight,
+    surface = surfaceLight,
+    onSurface = onSurfaceLight,
+    surfaceVariant = surfaceVariantLight,
+    onSurfaceVariant = onSurfaceVariantLight,
+    surfaceTint = primaryLight,
+    inverseSurface = inverseSurfaceLight,
+    inverseOnSurface = inverseOnSurfaceLight,
+    outline = outlineLight,
+    outlineVariant = outlineVariantLight,
+    scrim = scrimLight,
+    surfaceBright = surfaceBrightLight,
+    surfaceDim = surfaceDimLight,
+    surfaceContainerLowest = surfaceContainerLowestLight,
+    surfaceContainerLow = surfaceContainerLowLight,
+    surfaceContainer = surfaceContainerLight,
+    surfaceContainerHigh = surfaceContainerHighLight,
+    surfaceContainerHighest = surfaceContainerHighestLight
+)
 
-val successDarkHighContrast = Color(0xFFDDFAAE)
-val onSuccessDarkHighContrast = Color(0xFF000000)
-val successContainerDarkHighContrast = Color(0xFFB0CC84)
-val onSuccessContainerDarkHighContrast = Color(0xFF060E00)
-val warningDarkHighContrast = Color(0xFFFFECE2)
-val onWarningDarkHighContrast = Color(0xFF000000)
-val warningContainerDarkHighContrast = Color(0xFFFEB27A)
-val onWarningContainerDarkHighContrast = Color(0xFF180700)
+val defaultLiteverDarkColorScheme: ColorScheme = darkColorScheme(
+    primary = primaryDark,
+    onPrimary = onPrimaryDark,
+    primaryContainer = primaryContainerDark,
+    onPrimaryContainer = onPrimaryContainerDark,
+    inversePrimary = inversePrimaryDark,
+    secondary = secondaryDark,
+    onSecondary = onSecondaryDark,
+    secondaryContainer = secondaryContainerDark,
+    onSecondaryContainer = onSecondaryContainerDark,
+    tertiary = tertiaryDark,
+    onTertiary = onTertiaryDark,
+    tertiaryContainer = tertiaryContainerDark,
+    onTertiaryContainer = onTertiaryContainerDark,
+    error = errorDark,
+    onError = onErrorDark,
+    errorContainer = errorContainerDark,
+    onErrorContainer = onErrorContainerDark,
+    background = backgroundDark,
+    onBackground = onBackgroundDark,
+    surface = surfaceDark,
+    onSurface = onSurfaceDark,
+    surfaceVariant = surfaceVariantDark,
+    onSurfaceVariant = onSurfaceVariantDark,
+    surfaceTint = primaryDark,
+    inverseSurface = inverseSurfaceDark,
+    inverseOnSurface = inverseOnSurfaceDark,
+    outline = outlineDark,
+    outlineVariant = outlineVariantDark,
+    scrim = scrimDark,
+    surfaceBright = surfaceBrightDark,
+    surfaceDim = surfaceDimDark,
+    surfaceContainerLowest = surfaceContainerLowestDark,
+    surfaceContainerLow = surfaceContainerLowDark,
+    surfaceContainer = surfaceContainerDark,
+    surfaceContainerHigh = surfaceContainerHighDark,
+    surfaceContainerHighest = surfaceContainerHighestDark
+)
 
+// ==========================================
+// LITEVER COLORS CONTAINER
+// ==========================================
 class LiteverColors(
     primary: Color,
     onPrimary: Color,
@@ -420,6 +330,12 @@ class LiteverColors(
     var isLight by mutableStateOf(isLight)
         private set
 
+    val brandLite: Color
+        get() = onSurfaceVariant
+
+    val brandVer: Color
+        get() = primary
+
     fun updateColorsFrom(other: LiteverColors) {
         primary = other.primary
         onPrimary = other.onPrimary
@@ -515,12 +431,6 @@ class LiteverColors(
         surfaceContainerHighest = surfaceContainerHighest,
         isLight = isLight
     )
-
-    val brandLite: Color
-        get() = if (isLight) onSurfaceVariantLight else onSurfaceVariantDark
-
-    val brandVer: Color
-        get() = if (isLight) primaryLight else primaryDark
 }
 
 // Helper to create LiteverColors from individual constants
@@ -555,110 +465,12 @@ fun createLiteverColors(
     isLight = isLight
 )
 
-// Default Litever Color Instances
-val liteverLightColors = createLiteverColors(
-    primaryLight, onPrimaryLight, primaryContainerLight, onPrimaryContainerLight,
-    secondaryLight, onSecondaryLight, secondaryContainerLight, onSecondaryContainerLight,
-    tertiaryLight, onTertiaryLight, tertiaryContainerLight, onTertiaryContainerLight,
-    errorLight, onErrorLight, errorContainerLight, onErrorContainerLight,
-    backgroundLight, onBackgroundLight, surfaceLight, onSurfaceLight,
-    surfaceVariantLight, onSurfaceVariantLight, outlineLight, outlineVariantLight,
-    scrimLight, inverseSurfaceLight, inverseOnSurfaceLight, inversePrimaryLight,
-    surfaceDimLight, surfaceBrightLight, surfaceContainerLowestLight,
-    surfaceContainerLowLight, surfaceContainerLight, surfaceContainerHighLight,
-    surfaceContainerHighestLight,
-    warningLight, onWarningLight, warningContainerLight, onWarningContainerLight,
-    successLight, onSuccessLight, successContainerLight, onSuccessContainerLight,
-    isLight = true
-)
-
-val liteverLightMediumContrastColors = createLiteverColors(
-    primaryLightMediumContrast, onPrimaryLightMediumContrast, primaryContainerLightMediumContrast, onPrimaryContainerLightMediumContrast,
-    secondaryLightMediumContrast, onSecondaryLightMediumContrast, secondaryContainerLightMediumContrast, onSecondaryContainerLightMediumContrast,
-    tertiaryLightMediumContrast, onTertiaryLightMediumContrast, tertiaryContainerLightMediumContrast, onTertiaryContainerLightMediumContrast,
-    errorLightMediumContrast, onErrorLightMediumContrast, errorContainerLightMediumContrast, onErrorContainerLightMediumContrast,
-    backgroundLightMediumContrast, onBackgroundLightMediumContrast, surfaceLightMediumContrast, onSurfaceLightMediumContrast,
-    surfaceVariantLightMediumContrast, onSurfaceVariantLightMediumContrast, outlineLightMediumContrast, outlineVariantLightMediumContrast,
-    scrimLightMediumContrast, inverseSurfaceLightMediumContrast, inverseOnSurfaceLightMediumContrast, inversePrimaryLightMediumContrast,
-    surfaceDimLightMediumContrast, surfaceBrightLightMediumContrast, surfaceContainerLowestLightMediumContrast,
-    surfaceContainerLowLightMediumContrast, surfaceContainerLightMediumContrast, surfaceContainerHighLightMediumContrast,
-    surfaceContainerHighestLightMediumContrast,
-    warningLightMediumContrast, onWarningLightMediumContrast, warningContainerLightMediumContrast, onWarningContainerLightMediumContrast,
-    successLightMediumContrast, onSuccessLightMediumContrast, successContainerLightMediumContrast, onSuccessContainerLightMediumContrast,
-    isLight = true
-)
-
-val liteverLightHighContrastColors = createLiteverColors(
-    primaryLightHighContrast, onPrimaryLightHighContrast, primaryContainerLightHighContrast, onPrimaryContainerLightHighContrast,
-    secondaryLightHighContrast, onSecondaryLightHighContrast, secondaryContainerLightHighContrast, onSecondaryContainerLightHighContrast,
-    tertiaryLightHighContrast, onTertiaryLightHighContrast, tertiaryContainerLightHighContrast, onTertiaryContainerLightHighContrast,
-    errorLightHighContrast, onErrorLightHighContrast, errorContainerLightHighContrast, onErrorContainerLightHighContrast,
-    backgroundLightHighContrast, onBackgroundLightHighContrast, surfaceLightHighContrast, onSurfaceLightHighContrast,
-    surfaceVariantLightHighContrast, onSurfaceVariantLightHighContrast, outlineLightHighContrast, outlineVariantLightHighContrast,
-    scrimLightHighContrast, inverseSurfaceLightHighContrast, inverseOnSurfaceLightHighContrast, inversePrimaryLightHighContrast,
-    surfaceDimLightHighContrast, surfaceBrightLightHighContrast, surfaceContainerLowestLightHighContrast,
-    surfaceContainerLowLightHighContrast, surfaceContainerLightHighContrast, surfaceContainerHighLightHighContrast,
-    surfaceContainerHighestLightHighContrast,
-    warningLightHighContrast, onWarningLightHighContrast, warningContainerLightHighContrast, onWarningContainerLightHighContrast,
-    successLightHighContrast, onSuccessLightHighContrast, successContainerLightHighContrast, onSuccessContainerLightHighContrast,
-    isLight = true
-)
-
-val liteverDarkColors = createLiteverColors(
-    primaryDark, onPrimaryDark, primaryContainerDark, onPrimaryContainerDark,
-    secondaryDark, onSecondaryDark, secondaryContainerDark, onSecondaryContainerDark,
-    tertiaryDark, onTertiaryDark, tertiaryContainerDark, onTertiaryContainerDark,
-    errorDark, onErrorDark, errorContainerDark, onErrorContainerDark,
-    backgroundDark, onBackgroundDark, surfaceDark, onSurfaceDark,
-    surfaceVariantDark, onSurfaceVariantDark, outlineDark, outlineVariantDark,
-    scrimDark, inverseSurfaceDark, inverseOnSurfaceDark, inversePrimaryDark,
-    surfaceDimDark, surfaceBrightDark, surfaceContainerLowestDark,
-    surfaceContainerLowDark, surfaceContainerDark, surfaceContainerHighDark,
-    surfaceContainerHighestDark,
-    warningDark, onWarningDark, warningContainerDark, onWarningContainerDark,
-    successDark, onSuccessDark, successContainerDark, onSuccessContainerDark,
-    isLight = false
-)
-
-val liteverDarkMediumContrastColors = createLiteverColors(
-    primaryDarkMediumContrast, onPrimaryDarkMediumContrast, primaryContainerDarkMediumContrast, onPrimaryContainerDarkMediumContrast,
-    secondaryDarkMediumContrast, onSecondaryDarkMediumContrast, secondaryContainerDarkMediumContrast, onSecondaryContainerDarkMediumContrast,
-    tertiaryDarkMediumContrast, onTertiaryDarkMediumContrast, tertiaryContainerDarkMediumContrast, onTertiaryContainerDarkMediumContrast,
-    errorDarkMediumContrast, onErrorDarkMediumContrast, errorContainerDarkMediumContrast, onErrorContainerDarkMediumContrast,
-    backgroundDarkMediumContrast, onBackgroundDarkMediumContrast, surfaceDarkMediumContrast, onSurfaceDarkMediumContrast,
-    surfaceVariantDarkMediumContrast, onSurfaceVariantDarkMediumContrast, outlineDarkMediumContrast, outlineVariantDarkMediumContrast,
-    scrimDarkMediumContrast, inverseSurfaceDarkMediumContrast, inverseOnSurfaceDarkMediumContrast, inversePrimaryDarkMediumContrast,
-    surfaceDimDarkMediumContrast, surfaceBrightDarkMediumContrast, surfaceContainerLowestDarkMediumContrast,
-    surfaceContainerLowDarkMediumContrast, surfaceContainerDarkMediumContrast, surfaceContainerHighDarkMediumContrast,
-    surfaceContainerHighestDarkMediumContrast,
-    warningDarkMediumContrast, onWarningDarkMediumContrast, warningContainerDarkMediumContrast, onWarningContainerDarkMediumContrast,
-    successDarkMediumContrast, onSuccessDarkMediumContrast, successContainerDarkMediumContrast, onSuccessContainerDarkMediumContrast,
-    isLight = false
-)
-
-val liteverDarkHighContrastColors = createLiteverColors(
-    primaryDarkHighContrast, onPrimaryDarkHighContrast, primaryContainerDarkHighContrast, onPrimaryContainerDarkHighContrast,
-    secondaryDarkHighContrast, onSecondaryDarkHighContrast, secondaryContainerDarkHighContrast, onSecondaryContainerDarkHighContrast,
-    tertiaryDarkHighContrast, onTertiaryDarkHighContrast, tertiaryContainerDarkHighContrast, onTertiaryContainerDarkHighContrast,
-    errorDarkHighContrast, onErrorDarkHighContrast, errorContainerDarkHighContrast, onErrorContainerDarkHighContrast,
-    backgroundDarkHighContrast, onBackgroundDarkHighContrast, surfaceDarkHighContrast, onSurfaceDarkHighContrast,
-    surfaceVariantDarkHighContrast, onSurfaceVariantDarkHighContrast, outlineDarkHighContrast, outlineVariantDarkHighContrast,
-    scrimDarkHighContrast, inverseSurfaceDarkHighContrast, inverseOnSurfaceDarkHighContrast, inversePrimaryDarkHighContrast,
-    surfaceDimDarkHighContrast, surfaceBrightDarkHighContrast, surfaceContainerLowestDarkHighContrast,
-    surfaceContainerLowDarkHighContrast, surfaceContainerDarkHighContrast, surfaceContainerHighDarkHighContrast,
-    surfaceContainerHighestDarkHighContrast,
-    warningDarkHighContrast, onWarningDarkHighContrast, warningContainerDarkHighContrast, onWarningContainerDarkHighContrast,
-    successDarkHighContrast, onSuccessDarkHighContrast, successContainerDarkHighContrast, onSuccessContainerDarkHighContrast,
-    isLight = false
-)
-
 val LocalLiteverColors = staticCompositionLocalOf<LiteverColors> {
     error("No LiteverColors provided")
 }
 
 /**
  * Creates a complete [LiteverColors] instance for the Light theme.
- * Allows overriding key colors while defaulting the rest to standard system tokens.
  */
 fun lightLiteverColors(
     primary: Color = primaryLight,
@@ -705,55 +517,23 @@ fun lightLiteverColors(
     successContainer: Color = successContainerLight,
     onSuccessContainer: Color = onSuccessContainerLight,
 ): LiteverColors = createLiteverColors(
-    primary = primary,
-    onPrimary = onPrimary,
-    primaryContainer = primaryContainer,
-    onPrimaryContainer = onPrimaryContainer,
-    secondary = secondary,
-    onSecondary = onSecondary,
-    secondaryContainer = secondaryContainer,
-    onSecondaryContainer = onSecondaryContainer,
-    tertiary = tertiary,
-    onTertiary = onTertiary,
-    tertiaryContainer = tertiaryContainer,
-    onTertiaryContainer = onTertiaryContainer,
-    error = error,
-    onError = onError,
-    errorContainer = errorContainer,
-    onErrorContainer = onErrorContainer,
-    background = background,
-    onBackground = onBackground,
-    surface = surface,
-    onSurface = onSurface,
-    surfaceVariant = surfaceVariant,
-    onSurfaceVariant = onSurfaceVariant,
-    outline = outline,
-    outlineVariant = outlineVariant,
-    scrim = scrim,
-    inverseSurface = inverseSurface,
-    inverseOnSurface = inverseOnSurface,
-    inversePrimary = inversePrimary,
-    surfaceDim = surfaceDim,
-    surfaceBright = surfaceBright,
-    surfaceContainerLowest = surfaceContainerLowest,
-    surfaceContainerLow = surfaceContainerLow,
-    surfaceContainer = surfaceContainer,
-    surfaceContainerHigh = surfaceContainerHigh,
+    primary = primary, onPrimary = onPrimary, primaryContainer = primaryContainer, onPrimaryContainer = onPrimaryContainer,
+    secondary = secondary, onSecondary = onSecondary, secondaryContainer = secondaryContainer, onSecondaryContainer = onSecondaryContainer,
+    tertiary = tertiary, onTertiary = onTertiary, tertiaryContainer = tertiaryContainer, onTertiaryContainer = onTertiaryContainer,
+    error = error, onError = onError, errorContainer = errorContainer, onErrorContainer = onErrorContainer,
+    background = background, onBackground = onBackground, surface = surface, onSurface = onSurface,
+    surfaceVariant = surfaceVariant, onSurfaceVariant = onSurfaceVariant, outline = outline, outlineVariant = outlineVariant,
+    scrim = scrim, inverseSurface = inverseSurface, inverseOnSurface = inverseOnSurface, inversePrimary = inversePrimary,
+    surfaceDim = surfaceDim, surfaceBright = surfaceBright, surfaceContainerLowest = surfaceContainerLowest,
+    surfaceContainerLow = surfaceContainerLow, surfaceContainer = surfaceContainer, surfaceContainerHigh = surfaceContainerHigh,
     surfaceContainerHighest = surfaceContainerHighest,
-    warning = warning,
-    onWarning = onWarning,
-    warningContainer = warningContainer,
-    onWarningContainer = onWarningContainer,
-    success = success,
-    onSuccess = onSuccess,
-    successContainer = successContainer,
-    onSuccessContainer = onSuccessContainer,
+    warning = warning, onWarning = onWarning, warningContainer = warningContainer, onWarningContainer = onWarningContainer,
+    success = success, onSuccess = onSuccess, successContainer = successContainer, onSuccessContainer = onSuccessContainer,
     isLight = true
 )
 
 /**
  * Creates a complete [LiteverColors] instance for the Dark theme.
- * Allows overriding key colors while defaulting the rest to standard system tokens.
  */
 fun darkLiteverColors(
     primary: Color = primaryDark,
@@ -800,10 +580,123 @@ fun darkLiteverColors(
     successContainer: Color = successContainerDark,
     onSuccessContainer: Color = onSuccessContainerDark,
 ): LiteverColors = createLiteverColors(
+    primary = primary, onPrimary = onPrimary, primaryContainer = primaryContainer, onPrimaryContainer = onPrimaryContainer,
+    secondary = secondary, onSecondary = onSecondary, secondaryContainer = secondaryContainer, onSecondaryContainer = onSecondaryContainer,
+    tertiary = tertiary, onTertiary = onTertiary, tertiaryContainer = tertiaryContainer, onTertiaryContainer = onTertiaryContainer,
+    error = error, onError = onError, errorContainer = errorContainer, onErrorContainer = onErrorContainer,
+    background = background, onBackground = onBackground, surface = surface, onSurface = onSurface,
+    surfaceVariant = surfaceVariant, onSurfaceVariant = onSurfaceVariant, outline = outline, outlineVariant = outlineVariant,
+    scrim = scrim, inverseSurface = inverseSurface, inverseOnSurface = inverseOnSurface, inversePrimary = inversePrimary,
+    surfaceDim = surfaceDim, surfaceBright = surfaceBright, surfaceContainerLowest = surfaceContainerLowest,
+    surfaceContainerLow = surfaceContainerLow, surfaceContainer = surfaceContainer, surfaceContainerHigh = surfaceContainerHigh,
+    surfaceContainerHighest = surfaceContainerHighest,
+    warning = warning, onWarning = onWarning, warningContainer = warningContainer, onWarningContainer = onWarningContainer,
+    success = success, onSuccess = onSuccess, successContainer = successContainer, onSuccessContainer = onSuccessContainer,
+    isLight = false
+)
+
+val liteverLightColors: LiteverColors = lightLiteverColors()
+val liteverDarkColors: LiteverColors = darkLiteverColors()
+
+// ==========================================
+// M3 COLOR SCHEME INTEROPERABILITY
+// ==========================================
+fun LiteverColors.asMaterial3(): ColorScheme = if (isLight) {
+    lightColorScheme(
+        primary = primary,
+        onPrimary = onPrimary,
+        primaryContainer = primaryContainer,
+        onPrimaryContainer = onPrimaryContainer,
+        inversePrimary = inversePrimary,
+        secondary = secondary,
+        onSecondary = onSecondary,
+        secondaryContainer = secondaryContainer,
+        onSecondaryContainer = onSecondaryContainer,
+        tertiary = tertiary,
+        onTertiary = onTertiary,
+        tertiaryContainer = tertiaryContainer,
+        onTertiaryContainer = onTertiaryContainer,
+        background = background,
+        onBackground = onBackground,
+        surface = surface,
+        onSurface = onSurface,
+        surfaceVariant = surfaceVariant,
+        onSurfaceVariant = onSurfaceVariant,
+        surfaceTint = surfaceTint,
+        inverseSurface = inverseSurface,
+        inverseOnSurface = inverseOnSurface,
+        error = error,
+        onError = onError,
+        errorContainer = errorContainer,
+        onErrorContainer = onErrorContainer,
+        outline = outline,
+        outlineVariant = outlineVariant,
+        scrim = scrim,
+        surfaceBright = surfaceBright,
+        surfaceDim = surfaceDim,
+        surfaceContainerLowest = surfaceContainerLowest,
+        surfaceContainerLow = surfaceContainerLow,
+        surfaceContainer = surfaceContainer,
+        surfaceContainerHigh = surfaceContainerHigh,
+        surfaceContainerHighest = surfaceContainerHighest
+    )
+} else {
+    darkColorScheme(
+        primary = primary,
+        onPrimary = onPrimary,
+        primaryContainer = primaryContainer,
+        onPrimaryContainer = onPrimaryContainer,
+        inversePrimary = inversePrimary,
+        secondary = secondary,
+        onSecondary = onSecondary,
+        secondaryContainer = secondaryContainer,
+        onSecondaryContainer = onSecondaryContainer,
+        tertiary = tertiary,
+        onTertiary = onTertiary,
+        tertiaryContainer = tertiaryContainer,
+        onTertiaryContainer = onTertiaryContainer,
+        background = background,
+        onBackground = onBackground,
+        surface = surface,
+        onSurface = onSurface,
+        surfaceVariant = surfaceVariant,
+        onSurfaceVariant = onSurfaceVariant,
+        surfaceTint = surfaceTint,
+        inverseSurface = inverseSurface,
+        inverseOnSurface = inverseOnSurface,
+        error = error,
+        onError = onError,
+        errorContainer = errorContainer,
+        onErrorContainer = onErrorContainer,
+        outline = outline,
+        outlineVariant = outlineVariant,
+        scrim = scrim,
+        surfaceBright = surfaceBright,
+        surfaceDim = surfaceDim,
+        surfaceContainerLowest = surfaceContainerLowest,
+        surfaceContainerLow = surfaceContainerLow,
+        surfaceContainer = surfaceContainer,
+        surfaceContainerHigh = surfaceContainerHigh,
+        surfaceContainerHighest = surfaceContainerHighest
+    )
+}
+
+fun ColorScheme.asLiteverColors(
+    isLight: Boolean = true,
+    warning: Color = if (isLight) warningLight else warningDark,
+    onWarning: Color = if (isLight) onWarningLight else onWarningDark,
+    warningContainer: Color = if (isLight) warningContainerLight else warningContainerDark,
+    onWarningContainer: Color = if (isLight) onWarningContainerLight else onWarningContainerDark,
+    success: Color = if (isLight) successLight else successDark,
+    onSuccess: Color = if (isLight) onSuccessLight else onSuccessDark,
+    successContainer: Color = if (isLight) successContainerLight else successContainerDark,
+    onSuccessContainer: Color = if (isLight) onSuccessContainerLight else onSuccessContainerDark,
+): LiteverColors = LiteverColors(
     primary = primary,
     onPrimary = onPrimary,
     primaryContainer = primaryContainer,
     onPrimaryContainer = onPrimaryContainer,
+    inversePrimary = inversePrimary,
     secondary = secondary,
     onSecondary = onSecondary,
     secondaryContainer = secondaryContainer,
@@ -812,29 +705,19 @@ fun darkLiteverColors(
     onTertiary = onTertiary,
     tertiaryContainer = tertiaryContainer,
     onTertiaryContainer = onTertiaryContainer,
-    error = error,
-    onError = onError,
-    errorContainer = errorContainer,
-    onErrorContainer = onErrorContainer,
     background = background,
     onBackground = onBackground,
     surface = surface,
     onSurface = onSurface,
     surfaceVariant = surfaceVariant,
     onSurfaceVariant = onSurfaceVariant,
-    outline = outline,
-    outlineVariant = outlineVariant,
-    scrim = scrim,
+    surfaceTint = surfaceTint,
     inverseSurface = inverseSurface,
     inverseOnSurface = inverseOnSurface,
-    inversePrimary = inversePrimary,
-    surfaceDim = surfaceDim,
-    surfaceBright = surfaceBright,
-    surfaceContainerLowest = surfaceContainerLowest,
-    surfaceContainerLow = surfaceContainerLow,
-    surfaceContainer = surfaceContainer,
-    surfaceContainerHigh = surfaceContainerHigh,
-    surfaceContainerHighest = surfaceContainerHighest,
+    error = error,
+    onError = onError,
+    errorContainer = errorContainer,
+    onErrorContainer = onErrorContainer,
     warning = warning,
     onWarning = onWarning,
     warningContainer = warningContainer,
@@ -843,257 +726,15 @@ fun darkLiteverColors(
     onSuccess = onSuccess,
     successContainer = successContainer,
     onSuccessContainer = onSuccessContainer,
-    isLight = false
-)
-
-/**
- * Creates a complete [LiteverColors] instance for the Light Medium Contrast theme.
- */
-fun lightMediumContrastLiteverColors(
-    primary: Color = primaryLightMediumContrast,
-    onPrimary: Color = onPrimaryLightMediumContrast,
-    primaryContainer: Color = primaryContainerLightMediumContrast,
-    onPrimaryContainer: Color = onPrimaryContainerLightMediumContrast,
-    secondary: Color = secondaryLightMediumContrast,
-    onSecondary: Color = onSecondaryLightMediumContrast,
-    secondaryContainer: Color = secondaryContainerLightMediumContrast,
-    onSecondaryContainer: Color = onSecondaryContainerLightMediumContrast,
-    tertiary: Color = tertiaryLightMediumContrast,
-    onTertiary: Color = onTertiaryLightMediumContrast,
-    tertiaryContainer: Color = tertiaryContainerLightMediumContrast,
-    onTertiaryContainer: Color = onTertiaryContainerLightMediumContrast,
-    error: Color = errorLightMediumContrast,
-    onError: Color = onErrorLightMediumContrast,
-    errorContainer: Color = errorContainerLightMediumContrast,
-    onErrorContainer: Color = onErrorContainerLightMediumContrast,
-    background: Color = backgroundLightMediumContrast,
-    onBackground: Color = onBackgroundLightMediumContrast,
-    surface: Color = surfaceLightMediumContrast,
-    onSurface: Color = onSurfaceLightMediumContrast,
-    surfaceVariant: Color = surfaceVariantLightMediumContrast,
-    onSurfaceVariant: Color = onSurfaceVariantLightMediumContrast,
-    outline: Color = outlineLightMediumContrast,
-    outlineVariant: Color = outlineVariantLightMediumContrast,
-    scrim: Color = scrimLightMediumContrast,
-    inverseSurface: Color = inverseSurfaceLightMediumContrast,
-    inverseOnSurface: Color = inverseOnSurfaceLightMediumContrast,
-    inversePrimary: Color = inversePrimaryLightMediumContrast,
-    surfaceDim: Color = surfaceDimLightMediumContrast,
-    surfaceBright: Color = surfaceBrightLightMediumContrast,
-    surfaceContainerLowest: Color = surfaceContainerLowestLightMediumContrast,
-    surfaceContainerLow: Color = surfaceContainerLowLightMediumContrast,
-    surfaceContainer: Color = surfaceContainerLightMediumContrast,
-    surfaceContainerHigh: Color = surfaceContainerHighLightMediumContrast,
-    surfaceContainerHighest: Color = surfaceContainerHighestLightMediumContrast,
-    warning: Color = warningLightMediumContrast,
-    onWarning: Color = onWarningLightMediumContrast,
-    warningContainer: Color = warningContainerLightMediumContrast,
-    onWarningContainer: Color = onWarningContainerLightMediumContrast,
-    success: Color = successLightMediumContrast,
-    onSuccess: Color = onSuccessLightMediumContrast,
-    successContainer: Color = successContainerLightMediumContrast,
-    onSuccessContainer: Color = onSuccessContainerLightMediumContrast,
-): LiteverColors = createLiteverColors(
-    primary = primary, onPrimary = onPrimary, primaryContainer = primaryContainer, onPrimaryContainer = onPrimaryContainer,
-    secondary = secondary, onSecondary = onSecondary, secondaryContainer = secondaryContainer, onSecondaryContainer = onSecondaryContainer,
-    tertiary = tertiary, onTertiary = onTertiary, tertiaryContainer = tertiaryContainer, onTertiaryContainer = onTertiaryContainer,
-    error = error, onError = onError, errorContainer = errorContainer, onErrorContainer = onErrorContainer,
-    background = background, onBackground = onBackground, surface = surface, onSurface = onSurface,
-    surfaceVariant = surfaceVariant, onSurfaceVariant = onSurfaceVariant, outline = outline, outlineVariant = outlineVariant,
-    scrim = scrim, inverseSurface = inverseSurface, inverseOnSurface = inverseOnSurface, inversePrimary = inversePrimary,
-    surfaceDim = surfaceDim, surfaceBright = surfaceBright, surfaceContainerLowest = surfaceContainerLowest,
-    surfaceContainerLow = surfaceContainerLow, surfaceContainer = surfaceContainer, surfaceContainerHigh = surfaceContainerHigh,
+    outline = outline,
+    outlineVariant = outlineVariant,
+    scrim = scrim,
+    surfaceBright = surfaceBright,
+    surfaceDim = surfaceDim,
+    surfaceContainerLowest = surfaceContainerLowest,
+    surfaceContainerLow = surfaceContainerLow,
+    surfaceContainer = surfaceContainer,
+    surfaceContainerHigh = surfaceContainerHigh,
     surfaceContainerHighest = surfaceContainerHighest,
-    warning = warning, onWarning = onWarning, warningContainer = warningContainer, onWarningContainer = onWarningContainer,
-    success = success, onSuccess = onSuccess, successContainer = successContainer, onSuccessContainer = onSuccessContainer,
-    isLight = true
-)
-
-/**
- * Creates a complete [LiteverColors] instance for the Light High Contrast theme.
- */
-fun lightHighContrastLiteverColors(
-    primary: Color = primaryLightHighContrast,
-    onPrimary: Color = onPrimaryLightHighContrast,
-    primaryContainer: Color = primaryContainerLightHighContrast,
-    onPrimaryContainer: Color = onPrimaryContainerLightHighContrast,
-    secondary: Color = secondaryLightHighContrast,
-    onSecondary: Color = onSecondaryLightHighContrast,
-    secondaryContainer: Color = secondaryContainerLightHighContrast,
-    onSecondaryContainer: Color = onSecondaryContainerLightHighContrast,
-    tertiary: Color = tertiaryLightHighContrast,
-    onTertiary: Color = onTertiaryLightHighContrast,
-    tertiaryContainer: Color = tertiaryContainerLightHighContrast,
-    onTertiaryContainer: Color = onTertiaryContainerLightHighContrast,
-    error: Color = errorLightHighContrast,
-    onError: Color = onErrorLightHighContrast,
-    errorContainer: Color = errorContainerLightHighContrast,
-    onErrorContainer: Color = onErrorContainerLightHighContrast,
-    background: Color = backgroundLightHighContrast,
-    onBackground: Color = onBackgroundLightHighContrast,
-    surface: Color = surfaceLightHighContrast,
-    onSurface: Color = onSurfaceLightHighContrast,
-    surfaceVariant: Color = surfaceVariantLightHighContrast,
-    onSurfaceVariant: Color = onSurfaceVariantLightHighContrast,
-    outline: Color = outlineLightHighContrast,
-    outlineVariant: Color = outlineVariantLightHighContrast,
-    scrim: Color = scrimLightHighContrast,
-    inverseSurface: Color = inverseSurfaceLightHighContrast,
-    inverseOnSurface: Color = inverseOnSurfaceLightHighContrast,
-    inversePrimary: Color = inversePrimaryLightHighContrast,
-    surfaceDim: Color = surfaceDimLightHighContrast,
-    surfaceBright: Color = surfaceBrightLightHighContrast,
-    surfaceContainerLowest: Color = surfaceContainerLowestLightHighContrast,
-    surfaceContainerLow: Color = surfaceContainerLowLightHighContrast,
-    surfaceContainer: Color = surfaceContainerLightHighContrast,
-    surfaceContainerHigh: Color = surfaceContainerHighLightHighContrast,
-    surfaceContainerHighest: Color = surfaceContainerHighestLightHighContrast,
-    warning: Color = warningLightHighContrast,
-    onWarning: Color = onWarningLightHighContrast,
-    warningContainer: Color = warningContainerLightHighContrast,
-    onWarningContainer: Color = onWarningContainerLightHighContrast,
-    success: Color = successLightHighContrast,
-    onSuccess: Color = onSuccessLightHighContrast,
-    successContainer: Color = successContainerLightHighContrast,
-    onSuccessContainer: Color = onSuccessContainerLightHighContrast,
-): LiteverColors = createLiteverColors(
-    primary = primary, onPrimary = onPrimary, primaryContainer = primaryContainer, onPrimaryContainer = onPrimaryContainer,
-    secondary = secondary, onSecondary = onSecondary, secondaryContainer = secondaryContainer, onSecondaryContainer = onSecondaryContainer,
-    tertiary = tertiary, onTertiary = onTertiary, tertiaryContainer = tertiaryContainer, onTertiaryContainer = onTertiaryContainer,
-    error = error, onError = onError, errorContainer = errorContainer, onErrorContainer = onErrorContainer,
-    background = background, onBackground = onBackground, surface = surface, onSurface = onSurface,
-    surfaceVariant = surfaceVariant, onSurfaceVariant = onSurfaceVariant, outline = outline, outlineVariant = outlineVariant,
-    scrim = scrim, inverseSurface = inverseSurface, inverseOnSurface = inverseOnSurface, inversePrimary = inversePrimary,
-    surfaceDim = surfaceDim, surfaceBright = surfaceBright, surfaceContainerLowest = surfaceContainerLowest,
-    surfaceContainerLow = surfaceContainerLow, surfaceContainer = surfaceContainer, surfaceContainerHigh = surfaceContainerHigh,
-    surfaceContainerHighest = surfaceContainerHighest,
-    warning = warning, onWarning = onWarning, warningContainer = warningContainer, onWarningContainer = onWarningContainer,
-    success = success, onSuccess = onSuccess, successContainer = successContainer, onSuccessContainer = onSuccessContainer,
-    isLight = true
-)
-
-/**
- * Creates a complete [LiteverColors] instance for the Dark Medium Contrast theme.
- */
-fun darkMediumContrastLiteverColors(
-    primary: Color = primaryDarkMediumContrast,
-    onPrimary: Color = onPrimaryDarkMediumContrast,
-    primaryContainer: Color = primaryContainerDarkMediumContrast,
-    onPrimaryContainer: Color = onPrimaryContainerDarkMediumContrast,
-    secondary: Color = secondaryDarkMediumContrast,
-    onSecondary: Color = onSecondaryDarkMediumContrast,
-    secondaryContainer: Color = secondaryContainerDarkMediumContrast,
-    onSecondaryContainer: Color = onSecondaryContainerDarkMediumContrast,
-    tertiary: Color = tertiaryDarkMediumContrast,
-    onTertiary: Color = onTertiaryDarkMediumContrast,
-    tertiaryContainer: Color = tertiaryContainerDarkMediumContrast,
-    onTertiaryContainer: Color = onTertiaryContainerDarkMediumContrast,
-    error: Color = errorDarkMediumContrast,
-    onError: Color = onErrorDarkMediumContrast,
-    errorContainer: Color = errorContainerDarkMediumContrast,
-    onErrorContainer: Color = onErrorContainerDarkMediumContrast,
-    background: Color = backgroundDarkMediumContrast,
-    onBackground: Color = onBackgroundDarkMediumContrast,
-    surface: Color = surfaceDarkMediumContrast,
-    onSurface: Color = onSurfaceDarkMediumContrast,
-    surfaceVariant: Color = surfaceVariantDarkMediumContrast,
-    onSurfaceVariant: Color = onSurfaceVariantDarkMediumContrast,
-    outline: Color = outlineDarkMediumContrast,
-    outlineVariant: Color = outlineVariantDarkMediumContrast,
-    scrim: Color = scrimDarkMediumContrast,
-    inverseSurface: Color = inverseSurfaceDarkMediumContrast,
-    inverseOnSurface: Color = inverseOnSurfaceDarkMediumContrast,
-    inversePrimary: Color = inversePrimaryDarkMediumContrast,
-    surfaceDim: Color = surfaceDimDarkMediumContrast,
-    surfaceBright: Color = surfaceBrightDarkMediumContrast,
-    surfaceContainerLowest: Color = surfaceContainerLowestDarkMediumContrast,
-    surfaceContainerLow: Color = surfaceContainerLowDarkMediumContrast,
-    surfaceContainer: Color = surfaceContainerDarkMediumContrast,
-    surfaceContainerHigh: Color = surfaceContainerHighDarkMediumContrast,
-    surfaceContainerHighest: Color = surfaceContainerHighestDarkMediumContrast,
-    warning: Color = warningDarkMediumContrast,
-    onWarning: Color = onWarningDarkMediumContrast,
-    warningContainer: Color = warningContainerDarkMediumContrast,
-    onWarningContainer: Color = onWarningContainerDarkMediumContrast,
-    success: Color = successDarkMediumContrast,
-    onSuccess: Color = onSuccessDarkMediumContrast,
-    successContainer: Color = successContainerDarkMediumContrast,
-    onSuccessContainer: Color = onSuccessContainerDarkMediumContrast,
-): LiteverColors = createLiteverColors(
-    primary = primary, onPrimary = onPrimary, primaryContainer = primaryContainer, onPrimaryContainer = onPrimaryContainer,
-    secondary = secondary, onSecondary = onSecondary, secondaryContainer = secondaryContainer, onSecondaryContainer = onSecondaryContainer,
-    tertiary = tertiary, onTertiary = onTertiary, tertiaryContainer = tertiaryContainer, onTertiaryContainer = onTertiaryContainer,
-    error = error, onError = onError, errorContainer = errorContainer, onErrorContainer = onErrorContainer,
-    background = background, onBackground = onBackground, surface = surface, onSurface = onSurface,
-    surfaceVariant = surfaceVariant, onSurfaceVariant = onSurfaceVariant, outline = outline, outlineVariant = outlineVariant,
-    scrim = scrim, inverseSurface = inverseSurface, inverseOnSurface = inverseOnSurface, inversePrimary = inversePrimary,
-    surfaceDim = surfaceDim, surfaceBright = surfaceBright, surfaceContainerLowest = surfaceContainerLowest,
-    surfaceContainerLow = surfaceContainerLow, surfaceContainer = surfaceContainer, surfaceContainerHigh = surfaceContainerHigh,
-    surfaceContainerHighest = surfaceContainerHighest,
-    warning = warning, onWarning = onWarning, warningContainer = warningContainer, onWarningContainer = onWarningContainer,
-    success = success, onSuccess = onSuccess, successContainer = successContainer, onSuccessContainer = onSuccessContainer,
-    isLight = false
-)
-
-/**
- * Creates a complete [LiteverColors] instance for the Dark High Contrast theme.
- */
-fun darkHighContrastLiteverColors(
-    primary: Color = primaryDarkHighContrast,
-    onPrimary: Color = onPrimaryDarkHighContrast,
-    primaryContainer: Color = primaryContainerDarkHighContrast,
-    onPrimaryContainer: Color = onPrimaryContainerDarkHighContrast,
-    secondary: Color = secondaryDarkHighContrast,
-    onSecondary: Color = onSecondaryDarkHighContrast,
-    secondaryContainer: Color = secondaryContainerDarkHighContrast,
-    onSecondaryContainer: Color = onSecondaryContainerDarkHighContrast,
-    tertiary: Color = tertiaryDarkHighContrast,
-    onTertiary: Color = onTertiaryDarkHighContrast,
-    tertiaryContainer: Color = tertiaryContainerDarkHighContrast,
-    onTertiaryContainer: Color = onTertiaryContainerDarkHighContrast,
-    error: Color = errorDarkHighContrast,
-    onError: Color = onErrorDarkHighContrast,
-    errorContainer: Color = errorContainerDarkHighContrast,
-    onErrorContainer: Color = onErrorContainerDarkHighContrast,
-    background: Color = backgroundDarkHighContrast,
-    onBackground: Color = onBackgroundDarkHighContrast,
-    surface: Color = surfaceDarkHighContrast,
-    onSurface: Color = onSurfaceDarkHighContrast,
-    surfaceVariant: Color = surfaceVariantDarkHighContrast,
-    onSurfaceVariant: Color = onSurfaceVariantDarkHighContrast,
-    outline: Color = outlineDarkHighContrast,
-    outlineVariant: Color = outlineVariantDarkHighContrast,
-    scrim: Color = scrimDarkHighContrast,
-    inverseSurface: Color = inverseSurfaceDarkHighContrast,
-    inverseOnSurface: Color = inverseOnSurfaceDarkHighContrast,
-    inversePrimary: Color = inversePrimaryDarkHighContrast,
-    surfaceDim: Color = surfaceDimDarkHighContrast,
-    surfaceBright: Color = surfaceBrightDarkHighContrast,
-    surfaceContainerLowest: Color = surfaceContainerLowestDarkHighContrast,
-    surfaceContainerLow: Color = surfaceContainerLowDarkHighContrast,
-    surfaceContainer: Color = surfaceContainerDarkHighContrast,
-    surfaceContainerHigh: Color = surfaceContainerHighDarkHighContrast,
-    surfaceContainerHighest: Color = surfaceContainerHighestDarkHighContrast,
-    warning: Color = warningDarkHighContrast,
-    onWarning: Color = onWarningDarkHighContrast,
-    warningContainer: Color = warningContainerDarkHighContrast,
-    onWarningContainer: Color = onWarningContainerDarkHighContrast,
-    success: Color = successDarkHighContrast,
-    onSuccess: Color = onSuccessDarkHighContrast,
-    successContainer: Color = successContainerDarkHighContrast,
-    onSuccessContainer: Color = onSuccessContainerDarkHighContrast,
-): LiteverColors = createLiteverColors(
-    primary = primary, onPrimary = onPrimary, primaryContainer = primaryContainer, onPrimaryContainer = onPrimaryContainer,
-    secondary = secondary, onSecondary = onSecondary, secondaryContainer = secondaryContainer, onSecondaryContainer = onSecondaryContainer,
-    tertiary = tertiary, onTertiary = onTertiary, tertiaryContainer = tertiaryContainer, onTertiaryContainer = onTertiaryContainer,
-    error = error, onError = onError, errorContainer = errorContainer, onErrorContainer = onErrorContainer,
-    background = background, onBackground = onBackground, surface = surface, onSurface = onSurface,
-    surfaceVariant = surfaceVariant, onSurfaceVariant = onSurfaceVariant, outline = outline, outlineVariant = outlineVariant,
-    scrim = scrim, inverseSurface = inverseSurface, inverseOnSurface = inverseOnSurface, inversePrimary = inversePrimary,
-    surfaceDim = surfaceDim, surfaceBright = surfaceBright, surfaceContainerLowest = surfaceContainerLowest,
-    surfaceContainerLow = surfaceContainerLow, surfaceContainer = surfaceContainer, surfaceContainerHigh = surfaceContainerHigh,
-    surfaceContainerHighest = surfaceContainerHighest,
-    warning = warning, onWarning = onWarning, warningContainer = warningContainer, onWarningContainer = onWarningContainer,
-    success = success, onSuccess = onSuccess, successContainer = successContainer, onSuccessContainer = onSuccessContainer,
-    isLight = false
+    isLight = isLight
 )

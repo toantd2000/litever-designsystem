@@ -1,33 +1,27 @@
 # Litever Design System - Backlog
 
-This document tracks UI components and features that need to be added to `litever-designsystem` in the future to complete the design system.
+Tài liệu này theo dõi các tính năng, token và component dùng chung cần được bổ sung vào `litever-designsystem` trong tương lai.
 
 ## 1. Icon System (`LiteverIcons.kt`)
-- Create a centralized object for all icons used in the application.
-- Replace direct usages of `Icons.Rounded...` in components (like `LiteverTextField`, `LiteverTopAppBar`) with `LiteverIcons`.
-- This ensures consistency and makes it easy to switch icon sets globally later.
+- Xây dựng object quản lý tập trung các icon thương hiệu / icon tùy chỉnh nếu có.
+- Tránh trùng lặp tài nguyên đồ họa giữa các ứng dụng (FinLog, ReMind).
 
-## 2. Selection Controls
-- **`LiteverCheckbox`**: For multi-selection forms.
-- **`LiteverRadioButton`**: For single-selection forms.
+## 2. Shared UI / Layout Templates
+- **Standardized TopBar / BottomBar Defaults**: Cung cấp WindowInsets và styling defaults cho TopAppBar và NavigationBar của M3.
+- **Pull-to-refresh / Swipe-to-refresh**: Custom refresh indicator chuẩn hóa theo phong cách Litever.
+- **Skeleton Loading View**: Hỗ trợ hiệu ứng shimmer loading đồng nhất cho các list item hoặc card.
 
-## 3. Feedback & Overlays
-- **`LiteverSnackbar`**: Wrapper for showing brief messages at the bottom.
-- **`LiteverModalBottomSheet`**: For bottom sheet dialogs, increasingly popular over traditional dialogs.
-
-## 4. Auxiliary Components
-- **`LiteverDivider`**: Standardized horizontal and vertical dividers.
-- **`LiteverChip`** / **`LiteverFilterChip`**: For tags, filters, and quick actions.
-- **`LiteverBadge`**: For notification counts on icons.
+## 3. Component Defaults bổ sung
+- **`LiteVerCardDefaults`**: Cung cấp default shapes (squircle) và elevation/border cho Card / ElevatedCard / OutlinedCard M3.
+- **`LiteVerChipDefaults`**: Cung cấp colors, shapes chuẩn cho AssistChip, FilterChip, InputChip của M3.
 
 ---
 
-## ✅ Completed Components
-- **`LiteverNavigationDrawer`**: Standardized modal navigation drawer and drawer sheet.
-- **`LiteverListItem`**: Generic list item component for consistent lists.
-- **`LiteverDialog`**: Flexible dialog component supporting custom button layouts.
-- **`LiteverSegmentedButton`**: Themed segmented button for mode switching.
-- **Tailwind Color Palette**: Comprehensive Tailwind CSS v4 color palette accessible via `TailwindColors`.
+## ✅ Completed (V2 Lean Architecture)
+- **Token System**: Typography (Google Font Be Vietnam Pro), Shapes (Squircle), Spacing scale (`LiteverSpacing`).
+- **Dynamic Theming**: `LiteverTheme` cho phép inject `colorScheme` từ client apps mà vẫn giữ nguyên các semantic tokens (`warning`, `success`).
+- **Eliminate Over-Engineering**: Loại bỏ toàn bộ 24 pass-through wrappers; chuyển sang dùng Material 3 gốc kèm Component Defaults.
+- **Component Defaults**: `LiteVerButtonDefaults`, `LiteVerTextFieldDefaults`.
+- **Shared UI Views**: `FeedbackStateView` (Empty, Success, Error, Info), `FullScreenLoading`, `OfflineWarning`, `LiteverLogo`.
+- **Streamlined Sample App**: Tinh gọn các màn hình demo thành Overview, Components và Tokens.
 
-## Notes
-The components above should follow the established pattern of wrapping Material 3 components and integrating seamlessly with `LiteverTheme` (using `LiteverTheme.colors`, `LiteverTheme.typography`, `LiteverTheme.spacing`, etc.).

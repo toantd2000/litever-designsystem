@@ -1,4 +1,4 @@
-package vn.io.litever.sample
+﻿package vn.io.litever.sample
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,21 +14,29 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.automirrored.rounded.Message
 import androidx.compose.material.icons.rounded.DarkMode
-import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.Home
-import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.LightMode
+import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Palette
-import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.Translate
+import androidx.compose.material.icons.rounded.Widgets
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalDrawerSheet
+import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -44,24 +52,9 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
-import vn.io.litever.designsystem.components.LiteverActionButtonBar
-import vn.io.litever.designsystem.components.LiteverDrawerSheet
-import vn.io.litever.designsystem.components.LiteverFloatingActionButton
-import vn.io.litever.designsystem.components.LiteverHorizontalDivider
-import vn.io.litever.designsystem.components.LiteverIconButton
 import vn.io.litever.designsystem.components.LiteverLogo
-import vn.io.litever.designsystem.components.LiteverNavigationDrawer
-import vn.io.litever.designsystem.components.LiteverNavigationDrawerItem
-import vn.io.litever.designsystem.components.LiteverNavigationIconType
-import vn.io.litever.designsystem.components.LiteverScaffold
-import vn.io.litever.designsystem.components.LiteverSnackbarHost
-import vn.io.litever.designsystem.components.LiteverTopAppBar
-import vn.io.litever.designsystem.theme.LiteverIcons
 import vn.io.litever.designsystem.theme.LiteverTheme
-import vn.io.litever.sample.screens.AuxiliaryScreen
-import vn.io.litever.sample.screens.DialogsScreen
-import vn.io.litever.sample.screens.InputsScreen
-import vn.io.litever.sample.screens.ListsScreen
+import vn.io.litever.sample.screens.ComponentsScreen
 import vn.io.litever.sample.screens.OverviewScreen
 import vn.io.litever.sample.screens.TokensScreen
 import vn.io.litever.sample.utils.AppStrings
@@ -84,11 +77,11 @@ class MainActivity : ComponentActivity() {
         )
         setContent {
             var darkTheme by remember { mutableStateOf(false) }
-            var isEnglish by remember { mutableStateOf(true) } // English by default
+            var isEnglish by remember { mutableStateOf(true) }
 
             val appStrings = if (isEnglish) EnglishStrings else VietnameseStrings
 
-            val locale = if (isEnglish) java.util.Locale("en") else java.util.Locale("vi")
+            val locale = java.util.Locale.forLanguageTag(if (isEnglish) "en" else "vi")
             val configuration = android.content.res.Configuration(LocalConfiguration.current).apply {
                 setLocale(locale)
             }
@@ -111,12 +104,9 @@ class MainActivity : ComponentActivity() {
 }
 
 enum class DemoScreen(val getTitle: (AppStrings) -> String, val icon: androidx.compose.ui.graphics.vector.ImageVector) {
-    OVERVIEW({ it.overview }, LiteverIcons.Rounded.Home),
-    INPUTS({ it.inputs }, LiteverIcons.Rounded.Edit),
-    LISTS({ it.lists }, Icons.AutoMirrored.Rounded.List),
-    DIALOGS({ it.dialogs }, LiteverIcons.Rounded.Info),
-    TOKENS({ it.tokens }, LiteverIcons.Rounded.Palette),
-    AUXILIARY({ it.auxiliary }, LiteverIcons.Rounded.Star)
+    OVERVIEW({ it.overview }, Icons.Rounded.Home),
+    COMPONENTS({ if (it.overview == "Tổng quan") "Thành phần UI" else "UI Components" }, Icons.Rounded.Widgets),
+    TOKENS({ it.tokens }, Icons.Rounded.Palette)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -145,10 +135,10 @@ fun MainShowcaseScreen(
         }
     }
 
-    LiteverNavigationDrawer(
+    ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            LiteverDrawerSheet {
+            ModalDrawerSheet {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -164,32 +154,32 @@ fun MainShowcaseScreen(
                         )
                     }
                 }
-                LiteverHorizontalDivider(color = LiteverTheme.colors.outlineVariant, thickness = 0.5.dp)
+                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant, thickness = 0.5.dp)
                 Spacer(modifier = Modifier.height(spacing.medium))
 
                 DemoScreen.entries.forEach { screen ->
-                    LiteverNavigationDrawerItem(
+                    NavigationDrawerItem(
                         label = { Text(screen.getTitle(strings), style = LiteverTheme.typography.bodyLarge) },
                         selected = currentScreen == screen,
                         onClick = {
                             currentScreen = screen
                             scope.launch { drawerState.close() }
                         },
-                        icon = { Icon(screen.icon, contentDescription = null) }
+                        icon = { Icon(screen.icon, contentDescription = null) },
+                        modifier = Modifier.padding(horizontal = spacing.small)
                     )
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
-                LiteverHorizontalDivider(color = LiteverTheme.colors.outlineVariant, thickness = 0.5.dp)
+                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant, thickness = 0.5.dp)
 
-                // Quick details at the bottom of the drawer
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(spacing.medium)
                 ) {
                     Text(
-                        text = "Version: 1.0.5\nLitever Team © 2026",
+                        text = "Version: 1.0.5\nLitever Design System",
                         style = LiteverTheme.typography.labelMedium,
                         color = LiteverTheme.colors.onSurfaceVariant.copy(alpha = 0.7f)
                     )
@@ -197,56 +187,47 @@ fun MainShowcaseScreen(
             }
         }
     ) {
-        LiteverScaffold(
+        Scaffold(
             topBar = {
-                LiteverTopAppBar(
-                    title = currentScreen.getTitle(strings),
-                    navigationIconType = LiteverNavigationIconType.Menu,
-                    onNavigationClick = { scope.launch { drawerState.open() } },
+                TopAppBar(
+                    title = {
+                        Text(
+                            text = currentScreen.getTitle(strings),
+                            style = LiteverTheme.typography.titleLarge
+                        )
+                    },
+                    navigationIcon = {
+                        IconButton(onClick = { scope.launch { drawerState.open() } }) {
+                            Icon(Icons.Rounded.Menu, contentDescription = "Navigation menu")
+                        }
+                    },
                     actions = {
-                        LiteverIconButton(onClick = onLanguageToggle) {
+                        IconButton(onClick = onLanguageToggle) {
                             Icon(
-                                imageVector = LiteverIcons.Rounded.Translate,
+                                imageVector = Icons.Rounded.Translate,
                                 contentDescription = "Switch Language"
                             )
                         }
-                        LiteverIconButton(onClick = onThemeToggle) {
+                        IconButton(onClick = onThemeToggle) {
                             Icon(
-                                imageVector = if (darkTheme) LiteverIcons.Rounded.LightMode else LiteverIcons.Rounded.DarkMode,
+                                imageVector = if (darkTheme) Icons.Rounded.LightMode else Icons.Rounded.DarkMode,
                                 contentDescription = "Toggle Theme"
                             )
                         }
                     }
                 )
             },
-            bottomBar = {
-                if (currentScreen == DemoScreen.INPUTS) {
-                    LiteverActionButtonBar(
-                        primaryText = strings.alertConfirm,
-                        onPrimaryClick = {
-                            scope.launch {
-                                snackbarHostState.showSnackbar(strings.alertConfirm + " successful!")
-                            }
-                        },
-                        secondaryText = strings.alertDismiss,
-                        onSecondaryClick = {
-                            scope.launch {
-                                snackbarHostState.showSnackbar(strings.alertDismiss + " clicked")
-                            }
-                        }
-                    )
-                }
-            },
             snackbarHost = {
-                LiteverSnackbarHost(hostState = snackbarHostState)
+                SnackbarHost(hostState = snackbarHostState)
             },
             floatingActionButton = {
-                LiteverFloatingActionButton(
+                FloatingActionButton(
                     onClick = {
                         scope.launch {
                             snackbarHostState.showSnackbar(strings.welcomeTitle + "!")
                         }
-                    }
+                    },
+                    shape = LiteverTheme.shapes.large
                 ) {
                     Icon(Icons.AutoMirrored.Rounded.Message, contentDescription = "Quick Message")
                 }
@@ -260,11 +241,8 @@ fun MainShowcaseScreen(
             ) {
                 when (currentScreen) {
                     DemoScreen.OVERVIEW -> OverviewScreen()
-                    DemoScreen.INPUTS -> InputsScreen()
-                    DemoScreen.LISTS -> ListsScreen()
-                    DemoScreen.DIALOGS -> DialogsScreen()
+                    DemoScreen.COMPONENTS -> ComponentsScreen()
                     DemoScreen.TOKENS -> TokensScreen()
-                    DemoScreen.AUXILIARY -> AuxiliaryScreen()
                 }
             }
         }

@@ -14,7 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import vn.io.litever.designsystem.components.*
+import vn.io.litever.designsystem.components.LiteverLogo
 import vn.io.litever.designsystem.theme.LiteverTheme
 import vn.io.litever.sample.utils.LocalAppStrings
 
@@ -28,8 +28,9 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
             .padding(LiteverTheme.spacing.medium)
     ) {
         // Hero Section
-        LiteverCard(
+        Card(
             modifier = Modifier.fillMaxWidth(),
+            shape = LiteverTheme.shapes.medium
         ) {
             Column(modifier = Modifier.padding(LiteverTheme.spacing.mediumLarge)) {
                 LiteverLogo(fontSize = 40.sp)
@@ -61,8 +62,9 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.smallMedium)
         ) {
-            LiteverElevatedCard(
-                modifier = Modifier.weight(1f)
+            ElevatedCard(
+                modifier = Modifier.weight(1f),
+                shape = LiteverTheme.shapes.medium
             ) {
                 Column(modifier = Modifier.padding(LiteverTheme.spacing.smallMedium)) {
                     Icon(
@@ -84,8 +86,9 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
                 }
             }
 
-            LiteverOutlinedCard(
-                modifier = Modifier.weight(1f)
+            OutlinedCard(
+                modifier = Modifier.weight(1f),
+                shape = LiteverTheme.shapes.medium
             ) {
                 Column(modifier = Modifier.padding(LiteverTheme.spacing.smallMedium)) {
                     Icon(
@@ -114,8 +117,9 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.smallMedium)
         ) {
-            LiteverCard(
-                modifier = Modifier.weight(1f)
+            Card(
+                modifier = Modifier.weight(1f),
+                shape = LiteverTheme.shapes.medium
             ) {
                 Column(modifier = Modifier.padding(LiteverTheme.spacing.smallMedium)) {
                     Icon(
@@ -137,7 +141,7 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
                 }
             }
 
-            LiteverCard(
+            Card(
                 modifier = Modifier.weight(1f),
                 shape = LiteverTheme.shapes.extraLarge,
                 colors = CardDefaults.cardColors(
@@ -168,8 +172,9 @@ fun OverviewScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(LiteverTheme.spacing.medium))
 
         // Quick Tip
-        LiteverCard(
+        Card(
             modifier = Modifier.fillMaxWidth(),
+            shape = LiteverTheme.shapes.medium,
             border = BorderStroke(1.dp, LiteverTheme.colors.outlineVariant)
         ) {
             Row(

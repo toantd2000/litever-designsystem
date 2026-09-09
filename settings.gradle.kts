@@ -26,5 +26,4 @@ dependencyResolutionManagement {
 rootProject.name = "litever-designsystem"
 include(":designsystem")
 include(":sample")
-include(":lint")
 

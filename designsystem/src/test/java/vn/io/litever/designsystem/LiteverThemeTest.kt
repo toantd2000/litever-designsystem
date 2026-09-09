@@ -1,0 +1,94 @@
+package vn.io.litever.designsystem
+
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Test
+import vn.io.litever.designsystem.theme.LiteverShapes
+import vn.io.litever.designsystem.theme.asLiteverColors
+import vn.io.litever.designsystem.theme.asMaterial3
+import vn.io.litever.designsystem.theme.defaultLiteverDarkColorScheme
+import vn.io.litever.designsystem.theme.defaultLiteverLightColorScheme
+import vn.io.litever.designsystem.theme.liteverDarkColors
+import vn.io.litever.designsystem.theme.liteverLightColors
+import vn.io.litever.designsystem.theme.primaryDark
+import vn.io.litever.designsystem.theme.primaryLight
+import vn.io.litever.designsystem.theme.successDark
+import vn.io.litever.designsystem.theme.successLight
+import vn.io.litever.designsystem.theme.warningDark
+import vn.io.litever.designsystem.theme.warningLight
+
+class LiteverThemeTest {
+
+    @Test
+    fun testDefaultColorSchemes() {
+        assertEquals(primaryLight, defaultLiteverLightColorScheme.primary)
+        assertEquals(primaryDark, defaultLiteverDarkColorScheme.primary)
+        assertNotNull(defaultLiteverLightColorScheme.background)
+        assertNotNull(defaultLiteverDarkColorScheme.background)
+    }
+
+    @Test
+    fun testLiteverShapesScale() {
+        assertEquals(RoundedCornerShape(2.dp), LiteverShapes.extraSmall)
+        assertEquals(RoundedCornerShape(4.dp), LiteverShapes.small)
+        assertEquals(RoundedCornerShape(6.dp), LiteverShapes.medium)
+        assertEquals(RoundedCornerShape(8.dp), LiteverShapes.large)
+        assertEquals(RoundedCornerShape(10.dp), LiteverShapes.extraLarge)
+    }
+
+    @Test
+    fun testCustomColorSchemeMapping() {
+        // Consumer app (e.g. FinLog or ReMind) supplies custom ColorScheme
+        val customPrimary = Color(0xFF112233)
+        val customBackground = Color(0xFFEEFFEE)
+        val customScheme = lightColorScheme(
+            primary = customPrimary,
+            background = customBackground
+        )
+
+        val liteverColors = customScheme.asLiteverColors(isLight = true)
+
+        assertEquals(customPrimary, liteverColors.primary)
+        assertEquals(customBackground, liteverColors.background)
+        assertEquals(customPrimary, liteverColors.brandVer)
+        assertEquals(liteverColors.onSurfaceVariant, liteverColors.brandLite)
+        assertEquals(successLight, liteverColors.success)
+        assertEquals(warningLight, liteverColors.warning)
+    }
+
+    @Test
+    fun testDarkColorSchemeMapping() {
+        val customDarkPrimary = Color(0xFFAABBCC)
+        val customDarkScheme = darkColorScheme(
+            primary = customDarkPrimary
+        )
+
+        val liteverColors = customDarkScheme.asLiteverColors(isLight = false)
+
+        assertEquals(customDarkPrimary, liteverColors.primary)
+        assertEquals(customDarkPrimary, liteverColors.brandVer)
+        assertEquals(successDark, liteverColors.success)
+        assertEquals(warningDark, liteverColors.warning)
+    }
+
+    @Test
+    fun testLiteverColorsRoundTrip() {
+        val lightColors = liteverLightColors
+        val m3Scheme = lightColors.asMaterial3()
+
+        assertEquals(lightColors.primary, m3Scheme.primary)
+        assertEquals(lightColors.secondary, m3Scheme.secondary)
+        assertEquals(lightColors.surface, m3Scheme.surface)
+
+        val darkColors = liteverDarkColors
+        val darkM3Scheme = darkColors.asMaterial3()
+
+        assertEquals(darkColors.primary, darkM3Scheme.primary)
+        assertEquals(darkColors.surface, darkM3Scheme.surface)
+    }
+}

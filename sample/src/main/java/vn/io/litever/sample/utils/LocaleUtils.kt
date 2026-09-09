@@ -97,7 +97,15 @@ data class AppStrings(
     val spacingHeader: String,
     val shapesHeader: String,
     val defaultText: String,
-    // Auxiliary Screen
+    // Auxiliary Screen & Shared UI Views
+    val sharedViewsTitle: String,
+    val emptyStateTitle: String,
+    val emptyStateDesc: String,
+    val emptyStateAction: String,
+    val offlineWarningMsg: String,
+    val offlineRetry: String,
+    val triggerLoading: String,
+    val loadingMessage: String,
     val chipsTitle: String,
     val badgesTitle: String,
     val dividersTitle: String
@@ -198,7 +206,15 @@ val EnglishStrings = AppStrings(
     spacingHeader = "Spacing & Margin Tokens",
     shapesHeader = "Geometric Border Shapes",
     defaultText = "Default",
-    // Auxiliary Screen
+    // Auxiliary Screen & Shared UI Views
+    sharedViewsTitle = "Shared UI Views",
+    emptyStateTitle = "No Records Found",
+    emptyStateDesc = "You haven't added any transactions yet. Start by creating a new entry.",
+    emptyStateAction = "Create Record",
+    offlineWarningMsg = "Unable to connect to Litever cloud services",
+    offlineRetry = "Retry",
+    triggerLoading = "Simulate Full-Screen Loading (2s)",
+    loadingMessage = "Synchronizing data...",
     chipsTitle = "Chips & Tags",
     badgesTitle = "Badges & Counts",
     dividersTitle = "Dividers"
@@ -299,7 +315,15 @@ val VietnameseStrings = AppStrings(
     spacingHeader = "Lề & Khoảng cách (Spacing Tokens)",
     shapesHeader = "Bo góc hình học (Shapes Tokens)",
     defaultText = "Mặc định",
-    // Auxiliary Screen
+    // Auxiliary Screen & Shared UI Views
+    sharedViewsTitle = "Giao diện dùng chung",
+    emptyStateTitle = "Không tìm thấy dữ liệu",
+    emptyStateDesc = "Bạn chưa có bản ghi nào. Hãy bắt đầu bằng cách tạo một mục mới.",
+    emptyStateAction = "Tạo bản ghi",
+    offlineWarningMsg = "Mất kết nối với máy chủ đám mây Litever",
+    offlineRetry = "Thử lại",
+    triggerLoading = "Mô phỏng Đang tải toàn màn hình (2s)",
+    loadingMessage = "Đang đồng bộ dữ liệu...",
     chipsTitle = "Thẻ tùy chọn (Chips)",
     badgesTitle = "Phù hiệu thông báo (Badges)",
     dividersTitle = "Đường kẻ phân cách (Dividers)"

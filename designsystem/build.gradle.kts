@@ -57,7 +57,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "vn.io.litever"
                 artifactId = "designsystem"
-                version = "1.0.3"
+                version = "2.1.0"
             }
         }
     }

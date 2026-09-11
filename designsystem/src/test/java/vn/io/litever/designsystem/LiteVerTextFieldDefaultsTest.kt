@@ -3,8 +3,8 @@ package vn.io.litever.designsystem
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertSame
 import org.junit.Test
-import vn.io.litever.designsystem.components.LiteVerTextFieldDefaults
-import vn.io.litever.designsystem.components.LiteverTextFieldDefaults
+import vn.io.litever.designsystem.components.textfield.LiteVerTextFieldDefaults
+import vn.io.litever.designsystem.components.textfield.LiteverTextFieldDefaults
 
 class LiteVerTextFieldDefaultsTest {
 

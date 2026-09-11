@@ -1,4 +1,4 @@
-package vn.io.litever.designsystem.components
+package vn.io.litever.designsystem.components.textfield
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextFieldDefaults

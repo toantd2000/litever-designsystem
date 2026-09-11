@@ -16,7 +16,6 @@ import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.ErrorOutline
 import androidx.compose.material.icons.rounded.Inbox
 import androidx.compose.material.icons.rounded.Info
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -32,6 +31,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import vn.io.litever.designsystem.components.core.LvSemantic
+import vn.io.litever.designsystem.components.button.LvButton
 import vn.io.litever.designsystem.theme.LiteverSpacing
 import vn.io.litever.designsystem.theme.LiteverTheme
 
@@ -58,7 +59,7 @@ enum class FeedbackStateType {
  * @param badgeColor Color for the optional circular badge background.
  * @param iconTint Color for the icon tint.
  * @param illustration Custom illustration composable slot (takes precedence over [icon]).
- * @param action Optional action button slot (e.g. M3 Button).
+ * @param action Optional action button slot (typically an [LvButton]).
  */
 @Composable
 fun FeedbackStateView(
@@ -174,10 +175,9 @@ fun FeedbackStateViewEmptyLightPreview() {
                 description = "You haven't recorded any expenses or income for this period. Start by adding one below.",
                 type = FeedbackStateType.EMPTY,
                 action = {
-                    Button(
+                    LvButton(
                         onClick = {},
-                        shape = LiteVerButtonDefaults.shape,
-                        colors = LiteVerButtonDefaults.primaryColors()
+                        semantic = LvSemantic.Primary
                     ) {
                         Text("Add Transaction")
                     }
@@ -197,10 +197,9 @@ fun FeedbackStateViewSuccessLightPreview() {
                 description = "Your transaction #TX-98421 has been recorded and a receipt was sent to your email.",
                 type = FeedbackStateType.SUCCESS,
                 action = {
-                    Button(
+                    LvButton(
                         onClick = {},
-                        shape = LiteVerButtonDefaults.shape,
-                        colors = LiteVerButtonDefaults.successColors()
+                        semantic = LvSemantic.Success
                     ) {
                         Text("Complete Flow")
                     }
@@ -220,10 +219,9 @@ fun FeedbackStateViewErrorLightPreview() {
                 description = "We couldn't connect to the server to update your budget. Please check your network and try again.",
                 type = FeedbackStateType.ERROR,
                 action = {
-                    Button(
+                    LvButton(
                         onClick = {},
-                        shape = LiteVerButtonDefaults.shape,
-                        colors = LiteVerButtonDefaults.destructiveColors()
+                        semantic = LvSemantic.Destructive
                     ) {
                         Text("Retry Connection")
                     }
@@ -243,10 +241,9 @@ fun FeedbackStateViewInfoLightPreview() {
                 description = "Update to the latest version to unlock multi-currency wallet support and automated analytics.",
                 type = FeedbackStateType.INFO,
                 action = {
-                    Button(
+                    LvButton(
                         onClick = {},
-                        shape = LiteVerButtonDefaults.shape,
-                        colors = LiteVerButtonDefaults.secondaryColors()
+                        semantic = LvSemantic.Secondary
                     ) {
                         Text("Learn More")
                     }
@@ -266,10 +263,9 @@ fun FeedbackStateViewSuccessDarkPreview() {
                 description = "Congratulations! You've reached your monthly savings target in FinLog.",
                 type = FeedbackStateType.SUCCESS,
                 action = {
-                    Button(
+                    LvButton(
                         onClick = {},
-                        shape = LiteVerButtonDefaults.shape,
-                        colors = LiteVerButtonDefaults.successColors()
+                        semantic = LvSemantic.Success
                     ) {
                         Text("View Summary")
                     }
@@ -289,10 +285,9 @@ fun FeedbackStateViewErrorDarkPreview() {
                 description = "Something went wrong while retrieving your reminders.",
                 type = FeedbackStateType.ERROR,
                 action = {
-                    Button(
+                    LvButton(
                         onClick = {},
-                        shape = LiteVerButtonDefaults.shape,
-                        colors = LiteVerButtonDefaults.destructiveColors()
+                        semantic = LvSemantic.Destructive
                     ) {
                         Text("Try Again")
                     }

@@ -176,6 +176,8 @@ fun LightColorPalettePreview() {
             ColorItem("Warning Container", LiteverTheme.colors.warningContainer, LiteverTheme.colors.onWarningContainer)
             ColorItem("Success", LiteverTheme.colors.success, LiteverTheme.colors.onSuccess)
             ColorItem("Success Container", LiteverTheme.colors.successContainer, LiteverTheme.colors.onSuccessContainer)
+            ColorItem("Neutral", LiteverTheme.colors.neutral, LiteverTheme.colors.onNeutral)
+            ColorItem("Neutral Container", LiteverTheme.colors.neutralContainer, LiteverTheme.colors.onNeutralContainer)
         }
     }
 }
@@ -204,6 +206,8 @@ fun DarkColorPalettePreview() {
             ColorItem("Warning Container", LiteverTheme.colors.warningContainer, LiteverTheme.colors.onWarningContainer)
             ColorItem("Success", LiteverTheme.colors.success, LiteverTheme.colors.onSuccess)
             ColorItem("Success Container", LiteverTheme.colors.successContainer, LiteverTheme.colors.onSuccessContainer)
+            ColorItem("Neutral", LiteverTheme.colors.neutral, LiteverTheme.colors.onNeutral)
+            ColorItem("Neutral Container", LiteverTheme.colors.neutralContainer, LiteverTheme.colors.onNeutralContainer)
         }
     }
 }

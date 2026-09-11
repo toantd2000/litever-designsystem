@@ -14,7 +14,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,6 +23,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import vn.io.litever.designsystem.components.button.LvButton
+import vn.io.litever.designsystem.components.button.LvButtonType
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 /**
@@ -110,8 +111,9 @@ fun OfflineWarning(
                 }
                 onRetry != null -> {
                     Spacer(modifier = Modifier.width(spacing.small))
-                    TextButton(
+                    LvButton(
                         onClick = onRetry,
+                        type = LvButtonType.Text,
                         colors = ButtonDefaults.textButtonColors(contentColor = contentColor)
                     ) {
                         Text(

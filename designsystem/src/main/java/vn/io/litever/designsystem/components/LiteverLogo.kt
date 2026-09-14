@@ -24,33 +24,29 @@ fun LiteverLogo(
     modifier: Modifier = Modifier,
     fontSize: TextUnit = 48.sp
 ) {
-    Row(
-        modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = buildAnnotatedString {
-                withStyle(
-                    style = SpanStyle(
-                        color = LiteverTheme.colors.brandLite,
-                        fontWeight = FontWeight.Light,
-                        fontSize = fontSize
-                    )
-                ) {
-                    append("Lite")
-                }
-                withStyle(
-                    style = SpanStyle(
-                        color = LiteverTheme.colors.brandVer,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = fontSize
-                    )
-                ) {
-                    append("Ver.")
-                }
+    Text(
+        text = buildAnnotatedString {
+            withStyle(
+                style = SpanStyle(
+                    color = LiteverTheme.colors.brandLite,
+                    fontWeight = FontWeight.ExtraLight,
+                )
+            ) {
+                append("Lite")
             }
-        )
-    }
+            withStyle(
+                style = SpanStyle(
+                    color = LiteverTheme.colors.brandVer,
+                    fontWeight = FontWeight.ExtraBold,
+                )
+            ) {
+                append("Ver.")
+            }
+        },
+        style = LiteverTheme.typography.displayLarge.copy(fontSize = fontSize),
+        letterSpacing = 0.sp,
+        modifier = modifier
+    )
 }
 
 @Preview(showBackground = true, name = "Light Mode")

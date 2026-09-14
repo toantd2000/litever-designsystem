@@ -32,7 +32,10 @@ Spacer(modifier = Modifier.height(8.dp))
 
 ## 2. Nguyên tắc sử dụng Colors (Màu sắc) & Dynamic Theming
 - Luôn truy xuất màu thông qua `LiteverTheme.colors` hoặc `MaterialTheme.colorScheme`.
-- Khi app con (FinLog, ReMind) cần bảng màu thương hiệu riêng:
+- Hệ thống cung cấp sẵn 7 bảng màu (7 sắc cầu vồng) qua tham số `themeColor`: `LiteverThemeColor.RED`, `ORANGE`, `YELLOW`, `GREEN`, `BLUE`, `INDIGO`, `VIOLET`. Mặc định là `DEFAULT` (trỏ đến Blue).
+- Khi app con (FinLog, ReMind) cần chọn nhanh một màu thương hiệu, hãy truyền vào `LiteverTheme`:
+  `LiteverTheme(themeColor = LiteverThemeColor.ORANGE) { ... }`
+- Khi app con cần bảng màu đặc thù hoàn toàn mới:
   Truyền trực tiếp `colorScheme = myAppColorScheme` vào `LiteverTheme(colorScheme = ...)` ở cấp Root.
 - Hệ thống tự động bảo toàn và fallback các màu semantic ngoài M3 (`success`, `warning`, `neutral`).
 

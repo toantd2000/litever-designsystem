@@ -22,14 +22,18 @@ Bao bọc nội dung ứng dụng bằng `LiteverTheme`:
 
 ```kotlin
 import vn.io.litever.designsystem.theme.LiteverTheme
+import vn.io.litever.designsystem.theme.LiteverThemeColor
 
 setContent {
-    // Mặc định dùng bảng màu chuẩn của Litever
+    // Mặc định dùng bảng màu chuẩn (Xanh - DEFAULT) của Litever
     LiteverTheme {
         // App content
     }
 
-    // Hoặc truyền ColorScheme tùy chỉnh của từng app:
+    // Hoặc chọn 1 trong 7 bảng màu có sẵn (RED, ORANGE, YELLOW, GREEN, BLUE, INDIGO, VIOLET):
+    // LiteverTheme(themeColor = LiteverThemeColor.ORANGE) { ... }
+
+    // Hoặc truyền ColorScheme hoàn toàn tùy chỉnh của từng app:
     // LiteverTheme(colorScheme = customColorScheme) { ... }
 }
 ```

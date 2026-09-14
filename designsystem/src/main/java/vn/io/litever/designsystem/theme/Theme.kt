@@ -75,6 +75,7 @@ object LiteverTheme {
  */
 @Composable
 fun LiteverTheme(
+    themeColor: LiteverThemeColor = LiteverThemeColor.DEFAULT,
     colorScheme: ColorScheme? = null,
     colors: LiteverColors? = null,
     typography: LiteverTypography = defaultLiteverTypography,
@@ -86,15 +87,26 @@ fun LiteverTheme(
 ) {
     val context = LocalContext.current
 
-    // 1. Determine effective ColorScheme
+    // 1. Determine predefined ColorScheme based on selected themeColor
+    val predefinedColorScheme = when (themeColor) {
+        LiteverThemeColor.RED -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.redDarkColorScheme else vn.io.litever.designsystem.theme.palettes.redLightColorScheme
+        LiteverThemeColor.ORANGE -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.orangeDarkColorScheme else vn.io.litever.designsystem.theme.palettes.orangeLightColorScheme
+        LiteverThemeColor.YELLOW -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.yellowDarkColorScheme else vn.io.litever.designsystem.theme.palettes.yellowLightColorScheme
+        LiteverThemeColor.GREEN -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.greenDarkColorScheme else vn.io.litever.designsystem.theme.palettes.greenLightColorScheme
+        LiteverThemeColor.BLUE -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.blueDarkColorScheme else vn.io.litever.designsystem.theme.palettes.blueLightColorScheme
+        LiteverThemeColor.INDIGO -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.indigoDarkColorScheme else vn.io.litever.designsystem.theme.palettes.indigoLightColorScheme
+        LiteverThemeColor.VIOLET -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.violetDarkColorScheme else vn.io.litever.designsystem.theme.palettes.violetLightColorScheme
+        LiteverThemeColor.DEFAULT -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.redDarkColorScheme else vn.io.litever.designsystem.theme.palettes.redLightColorScheme
+    }
+
+    // 2. Determine effective ColorScheme
     val effectiveColorScheme: ColorScheme = when {
         colorScheme != null -> colorScheme
         colors != null -> colors.asMaterial3()
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
-        darkTheme -> defaultLiteverDarkColorScheme
-        else -> defaultLiteverLightColorScheme
+        else -> predefinedColorScheme
     }
 
     // 2. Determine effective LiteverColors

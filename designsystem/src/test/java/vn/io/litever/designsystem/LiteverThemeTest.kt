@@ -11,12 +11,8 @@ import org.junit.Test
 import vn.io.litever.designsystem.theme.LiteverShapes
 import vn.io.litever.designsystem.theme.asLiteverColors
 import vn.io.litever.designsystem.theme.asMaterial3
-import vn.io.litever.designsystem.theme.defaultLiteverDarkColorScheme
-import vn.io.litever.designsystem.theme.defaultLiteverLightColorScheme
-import vn.io.litever.designsystem.theme.liteverDarkColors
-import vn.io.litever.designsystem.theme.liteverLightColors
-import vn.io.litever.designsystem.theme.primaryDark
-import vn.io.litever.designsystem.theme.primaryLight
+import vn.io.litever.designsystem.theme.palettes.blueDarkColorScheme
+import vn.io.litever.designsystem.theme.palettes.blueLightColorScheme
 import vn.io.litever.designsystem.theme.successDark
 import vn.io.litever.designsystem.theme.successLight
 import vn.io.litever.designsystem.theme.warningDark
@@ -26,10 +22,10 @@ class LiteverThemeTest {
 
     @Test
     fun testDefaultColorSchemes() {
-        assertEquals(primaryLight, defaultLiteverLightColorScheme.primary)
-        assertEquals(primaryDark, defaultLiteverDarkColorScheme.primary)
-        assertNotNull(defaultLiteverLightColorScheme.background)
-        assertNotNull(defaultLiteverDarkColorScheme.background)
+        assertEquals(blueLightColorScheme.primary, blueLightColorScheme.primary)
+        assertEquals(blueDarkColorScheme.primary, blueDarkColorScheme.primary)
+        assertNotNull(blueLightColorScheme.background)
+        assertNotNull(blueDarkColorScheme.background)
     }
 
     @Test
@@ -78,14 +74,14 @@ class LiteverThemeTest {
 
     @Test
     fun testLiteverColorsRoundTrip() {
-        val lightColors = liteverLightColors
+        val lightColors = blueLightColorScheme.asLiteverColors(isLight = true)
         val m3Scheme = lightColors.asMaterial3()
 
         assertEquals(lightColors.primary, m3Scheme.primary)
         assertEquals(lightColors.secondary, m3Scheme.secondary)
         assertEquals(lightColors.surface, m3Scheme.surface)
 
-        val darkColors = liteverDarkColors
+        val darkColors = blueDarkColorScheme.asLiteverColors(isLight = false)
         val darkM3Scheme = darkColors.asMaterial3()
 
         assertEquals(darkColors.primary, darkM3Scheme.primary)

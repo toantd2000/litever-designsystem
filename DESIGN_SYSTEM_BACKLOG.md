@@ -19,9 +19,9 @@ Tài liệu này theo dõi các tính năng, token và component dùng chung c�
 
 ## ✅ Completed (V2 Lean Architecture)
 - **Token System**: Typography (Google Font Be Vietnam Pro), Shapes (Squircle), Spacing scale (`LiteverSpacing`).
-- **Dynamic Theming**: `LiteverTheme` cho phép inject `colorScheme` từ client apps mà vẫn giữ nguyên các semantic tokens (`warning`, `success`).
+- **Dynamic Theming**: `LiteverTheme` cho phép inject `colorScheme` từ client apps hoặc chọn sẵn 1 trong 7 bộ màu (Rainbow Palettes) thông qua enum `LiteverThemeColor`. Tự động giữ nguyên các semantic tokens (`warning`, `success`).
 - **Eliminate Over-Engineering**: Loại bỏ toàn bộ 24 pass-through wrappers; chuyển sang dùng Material 3 gốc kèm Component Defaults.
 - **Component Defaults**: `LiteVerButtonDefaults`, `LiteVerTextFieldDefaults`.
 - **Shared UI Views**: `FeedbackStateView` (Empty, Success, Error, Info), `FullScreenLoading`, `OfflineWarning`, `LiteverLogo`.
-- **Streamlined Sample App**: Tinh gọn các màn hình demo thành Overview, Components và Tokens.
+- **Streamlined Sample App**: Tinh gọn các màn hình demo thành Overview, Components và Tokens, bổ sung Palette Switcher trực quan.
 

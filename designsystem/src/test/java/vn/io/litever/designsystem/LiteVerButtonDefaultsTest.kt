@@ -41,15 +41,15 @@ class LiteVerButtonDefaultsTest {
     @Test
     fun testNeutralColorsInPalette() {
         val lightColors = vn.io.litever.designsystem.theme.palettes.blueLightColorScheme.asLiteverColors(isLight = true)
-        assertEquals(lightColors.onSurfaceVariant, lightColors.neutral)
-        assertEquals(lightColors.surface, lightColors.onNeutral)
-        assertEquals(lightColors.surfaceVariant, lightColors.neutralContainer)
-        assertEquals(lightColors.onSurfaceVariant, lightColors.onNeutralContainer)
+        assertEquals(vn.io.litever.designsystem.theme.neutralLight, lightColors.neutral)
+        assertEquals(vn.io.litever.designsystem.theme.onNeutralLight, lightColors.onNeutral)
+        assertEquals(vn.io.litever.designsystem.theme.neutralContainerLight, lightColors.neutralContainer)
+        assertEquals(vn.io.litever.designsystem.theme.onNeutralContainerLight, lightColors.onNeutralContainer)
 
         val darkColors = vn.io.litever.designsystem.theme.palettes.blueDarkColorScheme.asLiteverColors(isLight = false)
-        assertEquals(darkColors.onSurfaceVariant, darkColors.neutral)
-        assertEquals(darkColors.surface, darkColors.onNeutral)
-        assertEquals(darkColors.surfaceVariant, darkColors.neutralContainer)
-        assertEquals(darkColors.onSurfaceVariant, darkColors.onNeutralContainer)
+        assertEquals(vn.io.litever.designsystem.theme.neutralDark, darkColors.neutral)
+        assertEquals(vn.io.litever.designsystem.theme.onNeutralDark, darkColors.onNeutral)
+        assertEquals(vn.io.litever.designsystem.theme.neutralContainerDark, darkColors.neutralContainer)
+        assertEquals(vn.io.litever.designsystem.theme.onNeutralContainerDark, darkColors.onNeutralContainer)
     }
 }

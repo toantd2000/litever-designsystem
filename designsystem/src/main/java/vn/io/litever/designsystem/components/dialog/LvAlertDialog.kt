@@ -14,18 +14,16 @@ import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
+import vn.io.litever.designsystem.components.button.LvButton
 import vn.io.litever.designsystem.components.button.LvButtonType
 import vn.io.litever.designsystem.components.core.LvSemantic
-import vn.io.litever.designsystem.components.button.LvButton
 import vn.io.litever.designsystem.theme.LiteverTheme
 
 /**
@@ -59,23 +57,20 @@ fun LvAlertDialog(
     containerColor: Color = MaterialTheme.colorScheme.surfaceContainerHigh,
     properties: DialogProperties = DialogProperties()
 ) {
-    val context = LocalContext.current
     BasicAlertDialog(
         onDismissRequest = onDismissRequest,
         modifier = modifier,
         properties = properties
     ) {
-        CompositionLocalProvider(LocalContext provides context) {
-            LvAlertDialogContent(
-                confirmButton = confirmButton,
-                dismissButton = dismissButton,
-                icon = icon,
-                title = title,
-                text = text,
-                shape = shape,
-                containerColor = containerColor
-            )
-        }
+        LvAlertDialogContent(
+            confirmButton = confirmButton,
+            dismissButton = dismissButton,
+            icon = icon,
+            title = title,
+            text = text,
+            shape = shape,
+            containerColor = containerColor
+        )
     }
 }
 

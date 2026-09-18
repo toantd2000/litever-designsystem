@@ -388,7 +388,7 @@ object LiteVerButtonDefaults {
                     contentColor = MaterialTheme.colorScheme.tertiary
                 )
                 LvSemantic.Neutral -> IconButtonDefaults.outlinedIconButtonColors(
-                    contentColor = LiteverTheme.colors.neutral
+                    contentColor = LiteverTheme.colors.neutral,
                 )
                 LvSemantic.Success -> IconButtonDefaults.outlinedIconButtonColors(
                     contentColor = LiteverTheme.colors.success
@@ -410,9 +410,7 @@ object LiteVerButtonDefaults {
                 LvSemantic.Tertiary -> IconButtonDefaults.iconButtonColors(
                     contentColor = MaterialTheme.colorScheme.tertiary
                 )
-                LvSemantic.Neutral -> IconButtonDefaults.iconButtonColors(
-                    contentColor = LiteverTheme.colors.neutral
-                )
+                LvSemantic.Neutral -> IconButtonDefaults.iconButtonColors()
                 LvSemantic.Success -> IconButtonDefaults.iconButtonColors(
                     contentColor = LiteverTheme.colors.success
                 )

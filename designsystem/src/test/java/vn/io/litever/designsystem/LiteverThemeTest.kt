@@ -32,9 +32,9 @@ class LiteverThemeTest {
     fun testLiteverShapesScale() {
         assertEquals(RoundedCornerShape(2.dp), LiteverShapes.extraSmall)
         assertEquals(RoundedCornerShape(4.dp), LiteverShapes.small)
-        assertEquals(RoundedCornerShape(6.dp), LiteverShapes.medium)
-        assertEquals(RoundedCornerShape(8.dp), LiteverShapes.large)
-        assertEquals(RoundedCornerShape(10.dp), LiteverShapes.extraLarge)
+        assertEquals(RoundedCornerShape(8.dp), LiteverShapes.medium)
+        assertEquals(RoundedCornerShape(12.dp), LiteverShapes.large)
+        assertEquals(RoundedCornerShape(20.dp), LiteverShapes.extraLarge)
     }
 
     @Test
@@ -51,8 +51,8 @@ class LiteverThemeTest {
 
         assertEquals(customPrimary, liteverColors.primary)
         assertEquals(customBackground, liteverColors.background)
-        assertEquals(customPrimary, liteverColors.brandVer)
-        assertEquals(liteverColors.onSurfaceVariant, liteverColors.brandLite)
+        assertEquals(Color(0xFF1E1E1E), liteverColors.brandVer)
+        assertEquals(Color(0xFF757575), liteverColors.brandLite)
         assertEquals(successLight, liteverColors.success)
         assertEquals(warningLight, liteverColors.warning)
     }
@@ -67,7 +67,8 @@ class LiteverThemeTest {
         val liteverColors = customDarkScheme.asLiteverColors(isLight = false)
 
         assertEquals(customDarkPrimary, liteverColors.primary)
-        assertEquals(customDarkPrimary, liteverColors.brandVer)
+        assertEquals(Color(0xFFEEEEEE), liteverColors.brandVer)
+        assertEquals(Color(0xFF9E9E9E), liteverColors.brandLite)
         assertEquals(successDark, liteverColors.success)
         assertEquals(warningDark, liteverColors.warning)
     }

@@ -193,10 +193,10 @@ class LiteverColors(
         private set
 
     val brandLite: Color
-        get() = onSurfaceVariant
+        get() = if (isLight) Color(0xFF757575) else Color(0xFF9E9E9E)
 
     val brandVer: Color
-        get() = primary
+        get() = if (isLight) Color(0xFF1E1E1E) else Color(0xFFEEEEEE)
 
     fun updateColorsFrom(other: LiteverColors) {
         primary = other.primary

@@ -96,7 +96,7 @@ fun LiteverTheme(
         LiteverThemeColor.BLUE -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.blueDarkColorScheme else vn.io.litever.designsystem.theme.palettes.blueLightColorScheme
         LiteverThemeColor.INDIGO -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.indigoDarkColorScheme else vn.io.litever.designsystem.theme.palettes.indigoLightColorScheme
         LiteverThemeColor.VIOLET -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.violetDarkColorScheme else vn.io.litever.designsystem.theme.palettes.violetLightColorScheme
-        LiteverThemeColor.DEFAULT -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.redDarkColorScheme else vn.io.litever.designsystem.theme.palettes.redLightColorScheme
+        else -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.redDarkColorScheme else vn.io.litever.designsystem.theme.palettes.redLightColorScheme
     }
 
     // 2. Determine effective ColorScheme

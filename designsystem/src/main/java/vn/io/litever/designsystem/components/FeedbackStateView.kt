@@ -26,13 +26,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import vn.io.litever.designsystem.components.core.LvSemantic
 import vn.io.litever.designsystem.components.button.LvButton
+import vn.io.litever.designsystem.components.core.LvSemantic
 import vn.io.litever.designsystem.theme.LiteverSpacing
 import vn.io.litever.designsystem.theme.LiteverTheme
 
@@ -47,12 +48,91 @@ enum class FeedbackStateType {
 }
 
 /**
- * Universal feedback and status screen/view for Litever applications.
- * Unifies empty states, success confirmations, error alerts, and informational prompts.
+ * Universal feedback and status screen/view for Litever applications (String convenience overload).
  *
  * @param title The primary headline describing the condition.
  * @param modifier The modifier to apply to this composable.
  * @param description Optional supporting text with explanation or instructions.
+ * @param type The semantic feedback type ([FeedbackStateType.EMPTY], [FeedbackStateType.SUCCESS], [FeedbackStateType.ERROR], [FeedbackStateType.INFO]).
+ * @param icon Optional vector icon override (defaults based on [type]).
+ * @param iconSize Size of the icon.
+ * @param badgeColor Color for the optional circular badge background.
+ * @param iconTint Color for the icon tint.
+ * @param titleStyle Custom TextStyle for the title (defaults to [LiteverTheme.typography.titleLarge] with bold weight).
+ * @param titleColor Custom text color for the title (defaults to [MaterialTheme.colorScheme.onSurface]).
+ * @param descriptionStyle Custom TextStyle for the description (defaults to [LiteverTheme.typography.bodyMedium]).
+ * @param descriptionColor Custom text color for the description (defaults to [MaterialTheme.colorScheme.onSurfaceVariant]).
+ * @param maxContentWidth Maximum width constraint for text content.
+ * @param illustration Custom illustration composable slot (takes precedence over [icon]).
+ * @param action Optional action button slot (typically an [LvButton]).
+ */
+@Composable
+fun FeedbackStateView(
+    title: String,
+    modifier: Modifier = Modifier,
+    description: String? = null,
+    type: FeedbackStateType = FeedbackStateType.EMPTY,
+    icon: ImageVector? = null,
+    iconSize: Dp = if (type == FeedbackStateType.EMPTY) LiteverSpacing().tripleLarge else (LiteverSpacing().extraLarge + LiteverSpacing().extraSmall),
+    badgeColor: Color? = when (type) {
+        FeedbackStateType.SUCCESS -> LiteverTheme.colors.successContainer
+        FeedbackStateType.ERROR -> MaterialTheme.colorScheme.errorContainer
+        FeedbackStateType.INFO -> MaterialTheme.colorScheme.secondaryContainer
+        FeedbackStateType.EMPTY -> null
+    },
+    iconTint: Color = when (type) {
+        FeedbackStateType.SUCCESS -> LiteverTheme.colors.onSuccessContainer
+        FeedbackStateType.ERROR -> MaterialTheme.colorScheme.onErrorContainer
+        FeedbackStateType.INFO -> MaterialTheme.colorScheme.onSecondaryContainer
+        FeedbackStateType.EMPTY -> MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
+    },
+    titleStyle: TextStyle = LiteverTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+    titleColor: Color = MaterialTheme.colorScheme.onSurface,
+    descriptionStyle: TextStyle = LiteverTheme.typography.bodyMedium,
+    descriptionColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
+    maxContentWidth: Dp = 360.dp,
+    illustration: @Composable (() -> Unit)? = null,
+    descriptionSlot: @Composable (() -> Unit)? = null,
+    action: @Composable (() -> Unit)? = null,
+) {
+    FeedbackStateView(
+        modifier = modifier,
+        title = {
+            Text(
+                text = title,
+                style = titleStyle,
+                color = titleColor,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.widthIn(max = maxContentWidth)
+            )
+        },
+        description = descriptionSlot ?: description?.let { desc ->
+            {
+                Text(
+                    text = desc,
+                    style = descriptionStyle,
+                    color = descriptionColor,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.widthIn(max = maxContentWidth)
+                )
+            }
+        },
+        type = type,
+        icon = icon,
+        iconSize = iconSize,
+        badgeColor = badgeColor,
+        iconTint = iconTint,
+        illustration = illustration,
+        action = action
+    )
+}
+
+/**
+ * Universal feedback and status screen/view for Litever applications (Composable slot overload).
+ *
+ * @param modifier The modifier to apply to this composable.
+ * @param title Optional composable slot for title.
+ * @param description Optional composable slot for description/content.
  * @param type The semantic feedback type ([FeedbackStateType.EMPTY], [FeedbackStateType.SUCCESS], [FeedbackStateType.ERROR], [FeedbackStateType.INFO]).
  * @param icon Optional vector icon override (defaults based on [type]).
  * @param iconSize Size of the icon.
@@ -63,9 +143,9 @@ enum class FeedbackStateType {
  */
 @Composable
 fun FeedbackStateView(
-    title: String,
     modifier: Modifier = Modifier,
-    description: String? = null,
+    title: @Composable (() -> Unit)? = null,
+    description: @Composable (() -> Unit)? = null,
     type: FeedbackStateType = FeedbackStateType.EMPTY,
     icon: ImageVector? = null,
     iconSize: Dp = if (type == FeedbackStateType.EMPTY) LiteverSpacing().tripleLarge else (LiteverSpacing().extraLarge + LiteverSpacing().extraSmall),
@@ -134,24 +214,15 @@ fun FeedbackStateView(
             }
         }
 
-        Text(
-            text = title,
-            style = LiteverTheme.typography.titleMedium,
-            fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.onSurface,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.widthIn(max = 360.dp)
-        )
+        if (title != null) {
+            title()
+        }
 
-        if (!description.isNullOrBlank()) {
-            Spacer(modifier = Modifier.height(spacing.small))
-            Text(
-                text = description,
-                style = LiteverTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.widthIn(max = 360.dp)
-            )
+        if (description != null) {
+            if (title != null) {
+                Spacer(modifier = Modifier.height(spacing.small))
+            }
+            description()
         }
 
         if (action != null) {
@@ -296,4 +367,3 @@ fun FeedbackStateViewErrorDarkPreview() {
         }
     }
 }
-

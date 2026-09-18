@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -18,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
@@ -91,7 +93,7 @@ fun LvAlertDialogContent(
     title: @Composable (() -> Unit)? = null,
     text: @Composable (() -> Unit)? = null,
     shape: Shape = LiteverTheme.shapes.extraLarge,
-    containerColor: Color = MaterialTheme.colorScheme.surfaceContainerHigh
+    containerColor: Color = AlertDialogDefaults.containerColor
 ) {
     Surface(
         modifier = modifier,
@@ -100,12 +102,12 @@ fun LvAlertDialogContent(
         tonalElevation = AlertDialogDefaults.TonalElevation
     ) {
         Column(
-            modifier = Modifier.padding(24.dp)
+            modifier = Modifier.padding(LiteverTheme.spacing.large)
         ) {
             if (icon != null) {
                 Box(
                     modifier = Modifier
-                        .padding(bottom = 16.dp)
+                        .padding(bottom = LiteverTheme.spacing.medium)
                         .align(Alignment.CenterHorizontally)
                 ) {
                     icon()
@@ -113,10 +115,10 @@ fun LvAlertDialogContent(
             }
             if (title != null) {
                 Box(
-                    modifier = Modifier.padding(bottom = 16.dp)
+                    modifier = Modifier.padding(bottom = LiteverTheme.spacing.smallMedium)
                 ) {
                     ProvideTextStyle(
-                        value = MaterialTheme.typography.headlineSmall
+                        value = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
                     ) {
                         title()
                     }
@@ -124,7 +126,7 @@ fun LvAlertDialogContent(
             }
             if (text != null) {
                 Box(
-                    modifier = Modifier.padding(bottom = 24.dp)
+                    modifier = Modifier.padding(bottom = LiteverTheme.spacing.medium)
                 ) {
                     ProvideTextStyle(
                         value = MaterialTheme.typography.bodyMedium
@@ -136,7 +138,7 @@ fun LvAlertDialogContent(
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(
-                    8.dp,
+                    LiteverTheme.spacing.small,
                     Alignment.End
                 ),
                 verticalAlignment = Alignment.CenterVertically
@@ -152,7 +154,7 @@ fun LvAlertDialogContent(
 @Composable
 fun LvAlertDialogLightPreview() {
     LiteverTheme(darkTheme = false) {
-        Box(modifier = Modifier.padding(16.dp)) {
+        Box(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             LvAlertDialogContent(
                 title = { Text("Delete Confirmation") },
                 text = { Text("Are you sure you want to permanently delete this transaction? This action cannot be undone.") },
@@ -182,7 +184,7 @@ fun LvAlertDialogLightPreview() {
 @Composable
 fun LvAlertDialogDarkPreview() {
     LiteverTheme(darkTheme = true) {
-        Box(modifier = Modifier.padding(16.dp)) {
+        Box(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
             LvAlertDialogContent(
                 title = { Text("Goal Completed") },
                 text = { Text("You have successfully reached your monthly target.") },

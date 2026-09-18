@@ -3,10 +3,9 @@ package vn.io.litever.designsystem.components.dialog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -21,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import vn.io.litever.designsystem.components.button.LvButton
 import vn.io.litever.designsystem.components.button.LvButtonType
@@ -135,13 +133,13 @@ fun LvAlertDialogContent(
                     }
                 }
             }
-            Row(
+            FlowRow(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(
                     LiteverTheme.spacing.small,
                     Alignment.End
                 ),
-                verticalAlignment = Alignment.CenterVertically
+                verticalArrangement = Arrangement.spacedBy(LiteverTheme.spacing.small)
             ) {
                 dismissButton?.invoke()
                 confirmButton()
@@ -194,6 +192,36 @@ fun LvAlertDialogDarkPreview() {
                         semantic = LvSemantic.Success
                     ) {
                         Text("Awesome")
+                    }
+                }
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "LvAlertDialog - Long Buttons Wrapping")
+@Composable
+fun LvAlertDialogLongButtonsPreview() {
+    LiteverTheme(darkTheme = false) {
+        Box(modifier = Modifier.padding(LiteverTheme.spacing.medium)) {
+            LvAlertDialogContent(
+                title = { Text("Unsaved Changes") },
+                text = { Text("Do you want to discard your changes or save them to drafts before leaving?") },
+                confirmButton = {
+                    LvButton(
+                        onClick = {},
+                        semantic = LvSemantic.Primary
+                    ) {
+                        Text("Save Changes and Continue Later")
+                    }
+                },
+                dismissButton = {
+                    LvButton(
+                        onClick = {},
+                        type = LvButtonType.Outlined,
+                        semantic = LvSemantic.Secondary
+                    ) {
+                        Text("Discard Everything")
                     }
                 }
             )

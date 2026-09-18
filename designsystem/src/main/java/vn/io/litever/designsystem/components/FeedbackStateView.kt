@@ -86,7 +86,7 @@ fun FeedbackStateView(
         FeedbackStateType.INFO -> MaterialTheme.colorScheme.onSecondaryContainer
         FeedbackStateType.EMPTY -> MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
     },
-    titleStyle: TextStyle = LiteverTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+    titleStyle: TextStyle = LiteverTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
     titleColor: Color = MaterialTheme.colorScheme.onSurface,
     descriptionStyle: TextStyle = LiteverTheme.typography.bodyMedium,
     descriptionColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,

@@ -29,7 +29,7 @@ fun LiteverLogo(
             withStyle(
                 style = SpanStyle(
                     color = LiteverTheme.colors.brandLite,
-                    fontWeight = FontWeight.ExtraLight,
+                    fontWeight = FontWeight.SemiBold,
                 )
             ) {
                 append("Lite")
@@ -43,7 +43,7 @@ fun LiteverLogo(
                 append("Ver.")
             }
         },
-        style = LiteverTheme.typography.displayLarge.copy(fontSize = fontSize),
+        style = LiteverTheme.typography.titleLarge.copy(fontSize = fontSize),
         letterSpacing = 0.sp,
         modifier = modifier
     )

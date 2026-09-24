@@ -55,6 +55,7 @@ fun LvChip(
         LvSemantic.Primary -> MaterialTheme.colorScheme.primaryContainer
         LvSemantic.Secondary -> MaterialTheme.colorScheme.secondaryContainer
         LvSemantic.Tertiary -> MaterialTheme.colorScheme.tertiaryContainer
+        LvSemantic.Text -> MaterialTheme.colorScheme.onSurface
         LvSemantic.Success -> LiteverTheme.colors.successContainer
         LvSemantic.Destructive -> MaterialTheme.colorScheme.errorContainer
         LvSemantic.Warning -> LiteverTheme.colors.warningContainer
@@ -64,6 +65,7 @@ fun LvChip(
         LvSemantic.Primary -> MaterialTheme.colorScheme.onPrimaryContainer
         LvSemantic.Secondary -> MaterialTheme.colorScheme.onSecondaryContainer
         LvSemantic.Tertiary -> MaterialTheme.colorScheme.onTertiaryContainer
+        LvSemantic.Text -> MaterialTheme.colorScheme.surface
         LvSemantic.Success -> LiteverTheme.colors.onSuccessContainer
         LvSemantic.Destructive -> MaterialTheme.colorScheme.onErrorContainer
         LvSemantic.Warning -> LiteverTheme.colors.onWarningContainer

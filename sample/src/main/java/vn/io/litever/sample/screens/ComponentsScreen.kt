@@ -115,14 +115,14 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
                         Text("Tertiary Filled")
                     }
 
-                    // Neutral Tonal
+                    // Text Tonal
                     LvButton(
-                        onClick = { scope.launch { snackbarHostState.showSnackbar("Neutral LvButton clicked") } },
+                        onClick = { scope.launch { snackbarHostState.showSnackbar("Text LvButton clicked") } },
                         type = LvButtonType.Tonal,
-                        semantic = LvSemantic.Primary,
+                        semantic = LvSemantic.Text,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text("Neutral Tonal")
+                        Text("Text Tonal")
                     }
 
                     // Destructive Outlined
@@ -207,11 +207,11 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
                             Icon(Icons.Rounded.Delete, contentDescription = "Delete")
                         }
 
-                        // Neutral Standard Icon
+                        // Text Standard Icon
                         LvIconButton(
-                            onClick = { scope.launch { snackbarHostState.showSnackbar("Neutral Icon clicked") } },
+                            onClick = { scope.launch { snackbarHostState.showSnackbar("Text Icon clicked") } },
                             type = LvButtonType.Text,
-                            semantic = LvSemantic.Primary
+                            semantic = LvSemantic.Text
                         ) {
                             Icon(Icons.Rounded.Search, contentDescription = "Search")
                         }
@@ -261,8 +261,8 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
                         LvChip(
                             selected = selectedChipIndex == 2,
                             onClick = { selectedChipIndex = 2 },
-                            label = "Neutral",
-                            semantic = LvSemantic.Primary
+                            label = "Text",
+                            semantic = LvSemantic.Text
                         )
                         LvChip(
                             selected = selectedChipIndex == 3,

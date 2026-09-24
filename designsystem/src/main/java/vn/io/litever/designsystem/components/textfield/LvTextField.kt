@@ -59,7 +59,7 @@ fun LvTextField(
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
     errorMessage: String? = null,
-    semantic: LvSemantic = LvSemantic.Primary,
+    semantic: LvSemantic = LvSemantic.Text,
     enabled: Boolean = true,
     readOnly: Boolean = false,
     singleLine: Boolean = true,
@@ -79,7 +79,7 @@ fun LvTextField(
         semantic == LvSemantic.Primary -> MaterialTheme.colorScheme.primary
         semantic == LvSemantic.Secondary -> MaterialTheme.colorScheme.secondary
         semantic == LvSemantic.Tertiary -> MaterialTheme.colorScheme.tertiary
-        semantic == LvSemantic.Primary -> MaterialTheme.colorScheme.onSurfaceVariant
+        semantic == LvSemantic.Text -> MaterialTheme.colorScheme.onSurface
         semantic == LvSemantic.Success -> LiteverTheme.colors.success
         semantic == LvSemantic.Destructive -> MaterialTheme.colorScheme.error
         semantic == LvSemantic.Warning -> LiteverTheme.colors.warning
@@ -195,10 +195,10 @@ fun LvTextFieldLightPreview() {
                     semantic = LvSemantic.Tertiary
                 )
                 LvTextField(
-                    value = "Neutral value",
+                    value = "Text value",
                     onValueChange = {},
-                    label = "Neutral",
-                    semantic = LvSemantic.Primary
+                    label = "Text",
+                    semantic = LvSemantic.Text
                 )
                 LvTextField(
                     value = "Success value",

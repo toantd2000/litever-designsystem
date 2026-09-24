@@ -8,6 +8,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import vn.io.litever.designsystem.theme.palettes.blackDarkColorScheme
+import vn.io.litever.designsystem.theme.palettes.blackLightColorScheme
 
 // ==========================================
 // SUCCESS, WARNING SEMANTIC COLORS
@@ -173,10 +175,10 @@ class LiteverColors(
         private set
 
     val brandLite: Color
-        get() = if (isLight) Color(0xFF757575) else Color(0xFF9E9E9E)
+        get() = if (isLight) blackLightColorScheme.onSurfaceVariant else blackDarkColorScheme.onSurfaceVariant
 
     val brandVer: Color
-        get() = if (isLight) Color(0xFF1E1E1E) else Color(0xFFEEEEEE)
+        get() = if (isLight) blackLightColorScheme.primary else blackDarkColorScheme.primary
 
     fun updateColorsFrom(other: LiteverColors) {
         primary = other.primary

@@ -144,21 +144,6 @@ object LiteVerButtonDefaults {
         disabledContentColor = disabledContentColor
     )
 
-    /**
-     * Neutral button colors for subdued or utility operations.
-     */
-    @Composable
-    fun neutralColors(
-        containerColor: Color = LiteverTheme.colors.neutral,
-        contentColor: Color = LiteverTheme.colors.onNeutral,
-        disabledContainerColor: Color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f),
-        disabledContentColor: Color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
-    ): ButtonColors = ButtonDefaults.buttonColors(
-        containerColor = containerColor,
-        contentColor = contentColor,
-        disabledContainerColor = disabledContainerColor,
-        disabledContentColor = disabledContentColor
-    )
 
     /**
      * Outlined button colors.
@@ -240,7 +225,6 @@ object LiteVerButtonDefaults {
                     containerColor = MaterialTheme.colorScheme.tertiary,
                     contentColor = MaterialTheme.colorScheme.onTertiary
                 )
-                LvSemantic.Neutral -> neutralColors()
                 LvSemantic.Success -> successColors()
                 LvSemantic.Destructive -> destructiveColors()
                 LvSemantic.Warning -> ButtonDefaults.buttonColors(
@@ -257,10 +241,6 @@ object LiteVerButtonDefaults {
                 LvSemantic.Tertiary -> tonalColors(
                     containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                     contentColor = MaterialTheme.colorScheme.onTertiaryContainer
-                )
-                LvSemantic.Neutral -> tonalColors(
-                    containerColor = LiteverTheme.colors.neutralContainer,
-                    contentColor = LiteverTheme.colors.onNeutralContainer
                 )
                 LvSemantic.Success -> tonalColors(
                     containerColor = LiteverTheme.colors.successContainer,
@@ -279,7 +259,6 @@ object LiteVerButtonDefaults {
                 LvSemantic.Primary -> outlinedColors()
                 LvSemantic.Secondary -> outlinedColors(contentColor = MaterialTheme.colorScheme.secondary)
                 LvSemantic.Tertiary -> outlinedColors(contentColor = MaterialTheme.colorScheme.tertiary)
-                LvSemantic.Neutral -> outlinedColors(contentColor = LiteverTheme.colors.neutral)
                 LvSemantic.Success -> outlinedColors(contentColor = LiteverTheme.colors.success)
                 LvSemantic.Destructive -> outlinedColors(contentColor = MaterialTheme.colorScheme.error)
                 LvSemantic.Warning -> outlinedColors(contentColor = LiteverTheme.colors.warning)
@@ -288,7 +267,6 @@ object LiteVerButtonDefaults {
                 LvSemantic.Primary -> textColors()
                 LvSemantic.Secondary -> textColors(contentColor = MaterialTheme.colorScheme.secondary)
                 LvSemantic.Tertiary -> textColors(contentColor = MaterialTheme.colorScheme.tertiary)
-                LvSemantic.Neutral -> textColors(contentColor = LiteverTheme.colors.neutral)
                 LvSemantic.Success -> textColors(contentColor = LiteverTheme.colors.success)
                 LvSemantic.Destructive -> textColors(contentColor = MaterialTheme.colorScheme.error)
                 LvSemantic.Warning -> textColors(contentColor = LiteverTheme.colors.warning)
@@ -306,7 +284,6 @@ object LiteVerButtonDefaults {
         if (type != LvButtonType.Outlined) return null
         val color = when (semantic) {
             LvSemantic.Primary, LvSemantic.Secondary, LvSemantic.Tertiary -> MaterialTheme.colorScheme.outline
-            LvSemantic.Neutral -> MaterialTheme.colorScheme.outlineVariant
             LvSemantic.Success -> LiteverTheme.colors.successContainer.copy(alpha = 0.38f)
             LvSemantic.Destructive -> MaterialTheme.colorScheme.error.copy(alpha = 0.38f)
             LvSemantic.Warning -> LiteverTheme.colors.warning.copy(alpha = 0.38f)
@@ -333,10 +310,6 @@ object LiteVerButtonDefaults {
                     containerColor = MaterialTheme.colorScheme.tertiary,
                     contentColor = MaterialTheme.colorScheme.onTertiary
                 )
-                LvSemantic.Neutral -> IconButtonDefaults.filledIconButtonColors(
-                    containerColor = LiteverTheme.colors.neutral,
-                    contentColor = LiteverTheme.colors.onNeutral
-                )
                 LvSemantic.Success -> IconButtonDefaults.filledIconButtonColors(
                     containerColor = LiteverTheme.colors.success,
                     contentColor = LiteverTheme.colors.onSuccess
@@ -359,10 +332,6 @@ object LiteVerButtonDefaults {
                 LvSemantic.Tertiary -> IconButtonDefaults.filledTonalIconButtonColors(
                     containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                     contentColor = MaterialTheme.colorScheme.onTertiaryContainer
-                )
-                LvSemantic.Neutral -> IconButtonDefaults.filledTonalIconButtonColors(
-                    containerColor = LiteverTheme.colors.neutralContainer,
-                    contentColor = LiteverTheme.colors.onNeutralContainer
                 )
                 LvSemantic.Success -> IconButtonDefaults.filledTonalIconButtonColors(
                     containerColor = LiteverTheme.colors.successContainer,
@@ -387,9 +356,6 @@ object LiteVerButtonDefaults {
                 LvSemantic.Tertiary -> IconButtonDefaults.outlinedIconButtonColors(
                     contentColor = MaterialTheme.colorScheme.tertiary
                 )
-                LvSemantic.Neutral -> IconButtonDefaults.outlinedIconButtonColors(
-                    contentColor = LiteverTheme.colors.neutral,
-                )
                 LvSemantic.Success -> IconButtonDefaults.outlinedIconButtonColors(
                     contentColor = LiteverTheme.colors.success
                 )
@@ -410,7 +376,6 @@ object LiteVerButtonDefaults {
                 LvSemantic.Tertiary -> IconButtonDefaults.iconButtonColors(
                     contentColor = MaterialTheme.colorScheme.tertiary
                 )
-                LvSemantic.Neutral -> IconButtonDefaults.iconButtonColors()
                 LvSemantic.Success -> IconButtonDefaults.iconButtonColors(
                     contentColor = LiteverTheme.colors.success
                 )

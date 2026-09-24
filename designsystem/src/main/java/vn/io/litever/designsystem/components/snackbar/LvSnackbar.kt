@@ -27,7 +27,7 @@ class LvSnackbarVisuals(
     override val actionLabel: String? = null,
     override val withDismissAction: Boolean = false,
     override val duration: SnackbarDuration = if (actionLabel == null) SnackbarDuration.Short else SnackbarDuration.Indefinite,
-    val semantic: LvSemantic = LvSemantic.Neutral
+    val semantic: LvSemantic = LvSemantic.Primary
 ) : SnackbarVisuals
 
 /**
@@ -41,13 +41,12 @@ fun LvSnackbar(
     shape: Shape = LiteverTheme.shapes.medium
 ) {
     val visuals = snackbarData.visuals as? LvSnackbarVisuals
-    val semantic = visuals?.semantic ?: LvSemantic.Neutral
+    val semantic = visuals?.semantic ?: LvSemantic.Primary
 
     val containerColor: Color = when (semantic) {
         LvSemantic.Primary -> MaterialTheme.colorScheme.primaryContainer
         LvSemantic.Secondary -> MaterialTheme.colorScheme.secondaryContainer
         LvSemantic.Tertiary -> MaterialTheme.colorScheme.tertiaryContainer
-        LvSemantic.Neutral -> LiteverTheme.colors.neutralContainer
         LvSemantic.Success -> LiteverTheme.colors.successContainer
         LvSemantic.Destructive -> MaterialTheme.colorScheme.errorContainer
         LvSemantic.Warning -> LiteverTheme.colors.warningContainer
@@ -57,7 +56,6 @@ fun LvSnackbar(
         LvSemantic.Primary -> MaterialTheme.colorScheme.onPrimaryContainer
         LvSemantic.Secondary -> MaterialTheme.colorScheme.onSecondaryContainer
         LvSemantic.Tertiary -> MaterialTheme.colorScheme.onTertiaryContainer
-        LvSemantic.Neutral -> LiteverTheme.colors.onNeutralContainer
         LvSemantic.Success -> LiteverTheme.colors.onSuccessContainer
         LvSemantic.Destructive -> MaterialTheme.colorScheme.onErrorContainer
         LvSemantic.Warning -> LiteverTheme.colors.onWarningContainer

@@ -11,5 +11,6 @@ enum class LiteverThemeColor {
     GREEN,
     BLUE,
     INDIGO,
-    VIOLET
+    VIOLET,
+    BLACK
 }

@@ -37,19 +37,4 @@ class LiteVerButtonDefaultsTest {
         assertEquals(LiteVerButtonDefaults.MinHeight, LiteverButtonDefaults.MinHeight)
         assertEquals(LiteVerButtonDefaults.ContentPadding, LiteverButtonDefaults.ContentPadding)
     }
-
-    @Test
-    fun testNeutralColorsInPalette() {
-        val lightColors = vn.io.litever.designsystem.theme.palettes.blueLightColorScheme.asLiteverColors(isLight = true)
-        assertEquals(vn.io.litever.designsystem.theme.neutralLight, lightColors.neutral)
-        assertEquals(vn.io.litever.designsystem.theme.onNeutralLight, lightColors.onNeutral)
-        assertEquals(vn.io.litever.designsystem.theme.neutralContainerLight, lightColors.neutralContainer)
-        assertEquals(vn.io.litever.designsystem.theme.onNeutralContainerLight, lightColors.onNeutralContainer)
-
-        val darkColors = vn.io.litever.designsystem.theme.palettes.blueDarkColorScheme.asLiteverColors(isLight = false)
-        assertEquals(vn.io.litever.designsystem.theme.neutralDark, darkColors.neutral)
-        assertEquals(vn.io.litever.designsystem.theme.onNeutralDark, darkColors.onNeutral)
-        assertEquals(vn.io.litever.designsystem.theme.neutralContainerDark, darkColors.neutralContainer)
-        assertEquals(vn.io.litever.designsystem.theme.onNeutralContainerDark, darkColors.onNeutralContainer)
-    }
 }

@@ -41,7 +41,7 @@ fun LvIconButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     type: LvButtonType = LvButtonType.Text,
-    semantic: LvSemantic = LvSemantic.Neutral,
+    semantic: LvSemantic = LvSemantic.Primary,
     enabled: Boolean = true,
     shape: Shape = LiteVerButtonDefaults.shape,
     colors: IconButtonColors = LiteVerButtonDefaults.resolveIconButtonColors(type = type, semantic = semantic),

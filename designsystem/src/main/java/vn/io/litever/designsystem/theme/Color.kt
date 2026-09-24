@@ -10,7 +10,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 // ==========================================
-// SUCCESS, WARNING & NEUTRAL SEMANTIC COLORS
+// SUCCESS, WARNING SEMANTIC COLORS
 // ==========================================
 val successLight = Color(0xFF406835)
 val onSuccessLight = Color(0xFFFFFFFF)
@@ -20,10 +20,6 @@ val warningLight = Color(0xFF855317)
 val onWarningLight = Color(0xFFFFFFFF)
 val warningContainerLight = Color(0xFFFFDCBD)
 val onWarningContainerLight = Color(0xFF693C00)
-val neutralLight = Color(0xFF5C5C5C)
-val onNeutralLight = Color(0xFFFFFFFF)
-val neutralContainerLight = Color(0xFFE3E3E3)
-val onNeutralContainerLight = Color(0xFF1A1A1A)
 
 val successDark = Color(0xFFA5D395)
 val onSuccessDark = Color(0xFF12380B)
@@ -33,10 +29,6 @@ val warningDark = Color(0xFFFCB974)
 val onWarningDark = Color(0xFF492900)
 val warningContainerDark = Color(0xFF693C00)
 val onWarningContainerDark = Color(0xFFFFDCBD)
-val neutralDark = Color(0xFFC7C7C7)
-val onNeutralDark = Color(0xFF2E2E2E)
-val neutralContainerDark = Color(0xFF474747)
-val onNeutralContainerDark = Color(0xFFE3E3E3)
 
 // ==========================================
 // ==========================================
@@ -77,10 +69,6 @@ class LiteverColors(
     onSuccess: Color,
     successContainer: Color,
     onSuccessContainer: Color,
-    neutral: Color,
-    onNeutral: Color,
-    neutralContainer: Color,
-    onNeutralContainer: Color,
     outline: Color,
     outlineVariant: Color,
     scrim: Color,
@@ -161,14 +149,6 @@ class LiteverColors(
         private set
     var onSuccessContainer by mutableStateOf(onSuccessContainer)
         private set
-    var neutral by mutableStateOf(neutral)
-        private set
-    var onNeutral by mutableStateOf(onNeutral)
-        private set
-    var neutralContainer by mutableStateOf(neutralContainer)
-        private set
-    var onNeutralContainer by mutableStateOf(onNeutralContainer)
-        private set
     var outline by mutableStateOf(outline)
         private set
     var outlineVariant by mutableStateOf(outlineVariant)
@@ -233,10 +213,6 @@ class LiteverColors(
         onSuccess = other.onSuccess
         successContainer = other.successContainer
         onSuccessContainer = other.onSuccessContainer
-        neutral = other.neutral
-        onNeutral = other.onNeutral
-        neutralContainer = other.neutralContainer
-        onNeutralContainer = other.onNeutralContainer
         outline = other.outline
         outlineVariant = other.outlineVariant
         scrim = other.scrim
@@ -285,10 +261,6 @@ class LiteverColors(
         onSuccess = onSuccess,
         successContainer = successContainer,
         onSuccessContainer = onSuccessContainer,
-        neutral = neutral,
-        onNeutral = onNeutral,
-        neutralContainer = neutralContainer,
-        onNeutralContainer = onNeutralContainer,
         outline = outline,
         outlineVariant = outlineVariant,
         scrim = scrim,
@@ -317,8 +289,6 @@ fun createLiteverColors(
     surfaceContainerHighest: Color,
     warning: Color, onWarning: Color, warningContainer: Color, onWarningContainer: Color,
     success: Color, onSuccess: Color, successContainer: Color, onSuccessContainer: Color,
-    neutral: Color, onNeutral: Color,
-    neutralContainer: Color, onNeutralContainer: Color,
     isLight: Boolean
 ) = LiteverColors(
     primary = primary, onPrimary = onPrimary, primaryContainer = primaryContainer, onPrimaryContainer = onPrimaryContainer,
@@ -333,7 +303,6 @@ fun createLiteverColors(
     surfaceContainerHighest = surfaceContainerHighest,
     warning = warning, onWarning = onWarning, warningContainer = warningContainer, onWarningContainer = onWarningContainer,
     success = success, onSuccess = onSuccess, successContainer = successContainer, onSuccessContainer = onSuccessContainer,
-    neutral = neutral, onNeutral = onNeutral, neutralContainer = neutralContainer, onNeutralContainer = onNeutralContainer,
     surfaceTint = primary,
     isLight = isLight
 )
@@ -360,8 +329,6 @@ fun lightLiteverColors(
     warningContainer: Color = warningContainerLight, onWarningContainer: Color = onWarningContainerLight,
     success: Color = successLight, onSuccess: Color = onSuccessLight,
     successContainer: Color = successContainerLight, onSuccessContainer: Color = onSuccessContainerLight,
-    neutral: Color = neutralLight, onNeutral: Color = onNeutralLight,
-    neutralContainer: Color = neutralContainerLight, onNeutralContainer: Color = onNeutralContainerLight,
 ) = createLiteverColors(
     primary = primary, onPrimary = onPrimary, primaryContainer = primaryContainer, onPrimaryContainer = onPrimaryContainer,
     secondary = secondary, onSecondary = onSecondary, secondaryContainer = secondaryContainer, onSecondaryContainer = onSecondaryContainer,
@@ -375,7 +342,6 @@ fun lightLiteverColors(
     surfaceContainerHighest = surfaceContainerHighest,
     warning = warning, onWarning = onWarning, warningContainer = warningContainer, onWarningContainer = onWarningContainer,
     success = success, onSuccess = onSuccess, successContainer = successContainer, onSuccessContainer = onSuccessContainer,
-    neutral = neutral, onNeutral = onNeutral, neutralContainer = neutralContainer, onNeutralContainer = onNeutralContainer,
     isLight = true
 )
 
@@ -397,8 +363,6 @@ fun darkLiteverColors(
     warningContainer: Color = warningContainerDark, onWarningContainer: Color = onWarningContainerDark,
     success: Color = successDark, onSuccess: Color = onSuccessDark,
     successContainer: Color = successContainerDark, onSuccessContainer: Color = onSuccessContainerDark,
-    neutral: Color = neutralDark, onNeutral: Color = onNeutralDark,
-    neutralContainer: Color = neutralContainerDark, onNeutralContainer: Color = onNeutralContainerDark,
 ) = createLiteverColors(
     primary = primary, onPrimary = onPrimary, primaryContainer = primaryContainer, onPrimaryContainer = onPrimaryContainer,
     secondary = secondary, onSecondary = onSecondary, secondaryContainer = secondaryContainer, onSecondaryContainer = onSecondaryContainer,
@@ -412,7 +376,6 @@ fun darkLiteverColors(
     surfaceContainerHighest = surfaceContainerHighest,
     warning = warning, onWarning = onWarning, warningContainer = warningContainer, onWarningContainer = onWarningContainer,
     success = success, onSuccess = onSuccess, successContainer = successContainer, onSuccessContainer = onSuccessContainer,
-    neutral = neutral, onNeutral = onNeutral, neutralContainer = neutralContainer, onNeutralContainer = onNeutralContainer,
     isLight = false
 )
 
@@ -508,10 +471,6 @@ fun ColorScheme.asLiteverColors(
     onSuccess: Color = if (isLight) onSuccessLight else onSuccessDark,
     successContainer: Color = if (isLight) successContainerLight else successContainerDark,
     onSuccessContainer: Color = if (isLight) onSuccessContainerLight else onSuccessContainerDark,
-    neutral: Color = if (isLight) neutralLight else neutralDark,
-    onNeutral: Color = if (isLight) onNeutralLight else onNeutralDark,
-    neutralContainer: Color = if (isLight) neutralContainerLight else neutralContainerDark,
-    onNeutralContainer: Color = if (isLight) onNeutralContainerLight else onNeutralContainerDark,
 ): LiteverColors = LiteverColors(
     primary = primary,
     onPrimary = onPrimary,
@@ -547,10 +506,6 @@ fun ColorScheme.asLiteverColors(
     onSuccess = onSuccess,
     successContainer = successContainer,
     onSuccessContainer = onSuccessContainer,
-    neutral = neutral,
-    onNeutral = onNeutral,
-    neutralContainer = neutralContainer,
-    onNeutralContainer = onNeutralContainer,
     outline = outline,
     outlineVariant = outlineVariant,
     scrim = scrim,

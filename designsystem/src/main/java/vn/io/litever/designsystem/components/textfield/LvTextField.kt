@@ -79,7 +79,7 @@ fun LvTextField(
         semantic == LvSemantic.Primary -> MaterialTheme.colorScheme.primary
         semantic == LvSemantic.Secondary -> MaterialTheme.colorScheme.secondary
         semantic == LvSemantic.Tertiary -> MaterialTheme.colorScheme.tertiary
-        semantic == LvSemantic.Neutral -> MaterialTheme.colorScheme.onSurfaceVariant
+        semantic == LvSemantic.Primary -> MaterialTheme.colorScheme.onSurfaceVariant
         semantic == LvSemantic.Success -> LiteverTheme.colors.success
         semantic == LvSemantic.Destructive -> MaterialTheme.colorScheme.error
         semantic == LvSemantic.Warning -> LiteverTheme.colors.warning
@@ -198,7 +198,7 @@ fun LvTextFieldLightPreview() {
                     value = "Neutral value",
                     onValueChange = {},
                     label = "Neutral",
-                    semantic = LvSemantic.Neutral
+                    semantic = LvSemantic.Primary
                 )
                 LvTextField(
                     value = "Success value",

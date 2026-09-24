@@ -96,6 +96,7 @@ fun LiteverTheme(
         LiteverThemeColor.BLUE -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.blueDarkColorScheme else vn.io.litever.designsystem.theme.palettes.blueLightColorScheme
         LiteverThemeColor.INDIGO -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.indigoDarkColorScheme else vn.io.litever.designsystem.theme.palettes.indigoLightColorScheme
         LiteverThemeColor.VIOLET -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.violetDarkColorScheme else vn.io.litever.designsystem.theme.palettes.violetLightColorScheme
+        LiteverThemeColor.BLACK -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.blackDarkColorScheme else vn.io.litever.designsystem.theme.palettes.blackLightColorScheme
         else -> if (darkTheme) vn.io.litever.designsystem.theme.palettes.redDarkColorScheme else vn.io.litever.designsystem.theme.palettes.redLightColorScheme
     }
 
@@ -188,8 +189,6 @@ fun LightColorPalettePreview() {
             ColorItem("Warning Container", LiteverTheme.colors.warningContainer, LiteverTheme.colors.onWarningContainer)
             ColorItem("Success", LiteverTheme.colors.success, LiteverTheme.colors.onSuccess)
             ColorItem("Success Container", LiteverTheme.colors.successContainer, LiteverTheme.colors.onSuccessContainer)
-            ColorItem("Neutral", LiteverTheme.colors.neutral, LiteverTheme.colors.onNeutral)
-            ColorItem("Neutral Container", LiteverTheme.colors.neutralContainer, LiteverTheme.colors.onNeutralContainer)
         }
     }
 }
@@ -218,8 +217,6 @@ fun DarkColorPalettePreview() {
             ColorItem("Warning Container", LiteverTheme.colors.warningContainer, LiteverTheme.colors.onWarningContainer)
             ColorItem("Success", LiteverTheme.colors.success, LiteverTheme.colors.onSuccess)
             ColorItem("Success Container", LiteverTheme.colors.successContainer, LiteverTheme.colors.onSuccessContainer)
-            ColorItem("Neutral", LiteverTheme.colors.neutral, LiteverTheme.colors.onNeutral)
-            ColorItem("Neutral Container", LiteverTheme.colors.neutralContainer, LiteverTheme.colors.onNeutralContainer)
         }
     }
 }

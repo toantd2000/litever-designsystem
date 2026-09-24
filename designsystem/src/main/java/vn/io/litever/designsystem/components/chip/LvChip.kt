@@ -55,7 +55,6 @@ fun LvChip(
         LvSemantic.Primary -> MaterialTheme.colorScheme.primaryContainer
         LvSemantic.Secondary -> MaterialTheme.colorScheme.secondaryContainer
         LvSemantic.Tertiary -> MaterialTheme.colorScheme.tertiaryContainer
-        LvSemantic.Neutral -> LiteverTheme.colors.neutralContainer
         LvSemantic.Success -> LiteverTheme.colors.successContainer
         LvSemantic.Destructive -> MaterialTheme.colorScheme.errorContainer
         LvSemantic.Warning -> LiteverTheme.colors.warningContainer
@@ -65,7 +64,6 @@ fun LvChip(
         LvSemantic.Primary -> MaterialTheme.colorScheme.onPrimaryContainer
         LvSemantic.Secondary -> MaterialTheme.colorScheme.onSecondaryContainer
         LvSemantic.Tertiary -> MaterialTheme.colorScheme.onTertiaryContainer
-        LvSemantic.Neutral -> LiteverTheme.colors.onNeutralContainer
         LvSemantic.Success -> LiteverTheme.colors.onSuccessContainer
         LvSemantic.Destructive -> MaterialTheme.colorScheme.onErrorContainer
         LvSemantic.Warning -> LiteverTheme.colors.onWarningContainer
@@ -126,7 +124,6 @@ fun LvChipDarkPreview() {
             ) {
                 LvChip(selected = true, onClick = {}, label = "Primary")
                 LvChip(selected = true, onClick = {}, label = "Tertiary", semantic = LvSemantic.Tertiary)
-                LvChip(selected = true, onClick = {}, label = "Neutral", semantic = LvSemantic.Neutral)
                 LvChip(selected = false, onClick = {}, label = "Unselected")
             }
         }

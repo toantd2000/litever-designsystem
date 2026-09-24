@@ -10,7 +10,6 @@ enum class LvSemantic {
     Primary,
     Secondary,
     Tertiary,
-    Neutral,
     Success,
     Destructive,
     Warning

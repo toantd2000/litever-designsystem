@@ -87,8 +87,6 @@ fun TokensScreen(modifier: Modifier = Modifier) {
                 DemoColorSwatch("Success Container", LiteverTheme.colors.successContainer, LiteverTheme.colors.onSuccessContainer)
                 DemoColorSwatch("Warning", LiteverTheme.colors.warning, LiteverTheme.colors.onWarning)
                 DemoColorSwatch("Warning Container", LiteverTheme.colors.warningContainer, LiteverTheme.colors.onWarningContainer)
-                DemoColorSwatch("Neutral", LiteverTheme.colors.neutral, LiteverTheme.colors.onNeutral)
-                DemoColorSwatch("Neutral Container", LiteverTheme.colors.neutralContainer, LiteverTheme.colors.onNeutralContainer)
             }
         }
 

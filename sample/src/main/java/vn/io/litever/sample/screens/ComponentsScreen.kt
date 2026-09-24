@@ -119,7 +119,7 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
                     LvButton(
                         onClick = { scope.launch { snackbarHostState.showSnackbar("Neutral LvButton clicked") } },
                         type = LvButtonType.Tonal,
-                        semantic = LvSemantic.Neutral,
+                        semantic = LvSemantic.Primary,
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text("Neutral Tonal")
@@ -211,7 +211,7 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
                         LvIconButton(
                             onClick = { scope.launch { snackbarHostState.showSnackbar("Neutral Icon clicked") } },
                             type = LvButtonType.Text,
-                            semantic = LvSemantic.Neutral
+                            semantic = LvSemantic.Primary
                         ) {
                             Icon(Icons.Rounded.Search, contentDescription = "Search")
                         }
@@ -262,7 +262,7 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
                             selected = selectedChipIndex == 2,
                             onClick = { selectedChipIndex = 2 },
                             label = "Neutral",
-                            semantic = LvSemantic.Neutral
+                            semantic = LvSemantic.Primary
                         )
                         LvChip(
                             selected = selectedChipIndex == 3,

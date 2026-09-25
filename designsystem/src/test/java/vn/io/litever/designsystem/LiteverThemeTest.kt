@@ -11,6 +11,8 @@ import org.junit.Test
 import vn.io.litever.designsystem.theme.LiteverShapes
 import vn.io.litever.designsystem.theme.asLiteverColors
 import vn.io.litever.designsystem.theme.asMaterial3
+import vn.io.litever.designsystem.theme.palettes.blackDarkColorScheme
+import vn.io.litever.designsystem.theme.palettes.blackLightColorScheme
 import vn.io.litever.designsystem.theme.palettes.blueDarkColorScheme
 import vn.io.litever.designsystem.theme.palettes.blueLightColorScheme
 import vn.io.litever.designsystem.theme.successDark
@@ -51,8 +53,8 @@ class LiteverThemeTest {
 
         assertEquals(customPrimary, liteverColors.primary)
         assertEquals(customBackground, liteverColors.background)
-        assertEquals(Color(0xFF1E1E1E), liteverColors.brandVer)
-        assertEquals(Color(0xFF757575), liteverColors.brandLite)
+        assertEquals(blackLightColorScheme.primary, liteverColors.brandVer)
+        assertEquals(blackLightColorScheme.onSurfaceVariant, liteverColors.brandLite)
         assertEquals(successLight, liteverColors.success)
         assertEquals(warningLight, liteverColors.warning)
     }
@@ -67,8 +69,8 @@ class LiteverThemeTest {
         val liteverColors = customDarkScheme.asLiteverColors(isLight = false)
 
         assertEquals(customDarkPrimary, liteverColors.primary)
-        assertEquals(Color(0xFFEEEEEE), liteverColors.brandVer)
-        assertEquals(Color(0xFF9E9E9E), liteverColors.brandLite)
+        assertEquals(blackDarkColorScheme.primary, liteverColors.brandVer)
+        assertEquals(blackDarkColorScheme.onSurfaceVariant, liteverColors.brandLite)
         assertEquals(successDark, liteverColors.success)
         assertEquals(warningDark, liteverColors.warning)
     }
